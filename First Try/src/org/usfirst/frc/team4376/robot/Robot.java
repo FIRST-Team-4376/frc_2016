@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new AutoDrive());
         chooser.addObject("Rocky Terrain", new RockyTerrain());
         SmartDashboard.putData("Auto mode", chooser);
-        SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
+       // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     }
 	
 	/**

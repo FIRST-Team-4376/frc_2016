@@ -1,15 +1,15 @@
 
 package org.usfirst.frc.team4376.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4376.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class DriveCommand extends Command {
-
+	
     public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.chassis);
@@ -21,7 +21,7 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.driveMe(Robot.oi.driveStick.getRawAxis(5), Robot.oi.driveStick.getRawAxis(1));
+    	Robot.chassis.driveMe(Robot.oi.driveStick.getRawAxis(1), Robot.oi.driveStick.getRawAxis(5));
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4376.robot;
 
+import java.awt.Button;
+
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
@@ -39,11 +40,11 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	public Joystick driveStick;
-	public Button liftUp;
+	public Button liftUp; 
 	
 	public OI() {
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
-		liftUp = new JoystickButton(driveStick, 3);
+		JoystickButton liftUp = new JoystickButton(driveStick, 3);
 		
 		liftUp.whileHeld(new LiftUpCommand());
 	}
