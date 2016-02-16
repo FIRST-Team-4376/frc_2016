@@ -24,7 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
 	public static final LifterSubsystem lift = new LifterSubsystem();
-	public static OI oi;
+	public static OI oi = new OI();
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -34,12 +34,14 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
-        chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutoDrive());
-        chooser.addObject("Rocky Terrain", new RockyTerrain());
-        SmartDashboard.putData("Auto mode", chooser);
+    	
+		System.out.println("does this work");
+		chooser = new SendableChooser();
+		chooser.addDefault("Default Auto", new AutoDrive());
+		chooser.addObject("Rocky Terrain", new RockyTerrain());
+		SmartDashboard.putData("Auto mode", chooser);
        // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
+    	
     }
 	
 	/**

@@ -2,6 +2,8 @@ package org.usfirst.frc.team4376.robot.subsystems;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team4376.robot.RobotMap;
+
 
 /**
  *
@@ -14,7 +16,7 @@ public class LifterSubsystem extends Subsystem {
 	TalonSRX liftMotor;
 	
 	public LifterSubsystem() {
-		liftMotor = new TalonSRX(1);
+		liftMotor = new TalonSRX(RobotMap.LIFT_MOTOR);
 	}
 	
 	public void robotUp(){

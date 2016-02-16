@@ -40,11 +40,13 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	public Joystick driveStick;
-	public Button liftUp; 
+	public Button liftUp;
+	public Joystick buttonStick;
 	
 	public OI() {
+		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
-		JoystickButton liftUp = new JoystickButton(driveStick, 3);
+		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
 		
 		liftUp.whileHeld(new LiftUpCommand());
 	}
