@@ -3,6 +3,7 @@ package org.usfirst.frc.team4376.robot;
 import java.awt.Button;
 
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.InvertCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -42,13 +43,16 @@ public class OI {
 	public Joystick driveStick;
 	public Button liftUp;
 	public Joystick buttonStick;
+	public Button invert;
 	
 	public OI() {
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
 		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
+		JoystickButton invert = new JoystickButton(buttonStick, 6);
 		
 		liftUp.whileHeld(new LiftUpCommand());
+		invert.whileHeld(new InvertCommand());
 	}
 }
 

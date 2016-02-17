@@ -5,7 +5,9 @@ import org.usfirst.frc.team4376.robot.commands.autonomous.AutoDrive;
 import org.usfirst.frc.team4376.robot.commands.autonomous.RockyTerrain;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LifterSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.InvertSubsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -24,10 +26,13 @@ public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
 	public static final LifterSubsystem lift = new LifterSubsystem();
+	public static final InvertSubsystem invertSub = new InvertSubsystem();
+
 	public static OI oi = new OI();
 
     Command autonomousCommand;
     SendableChooser chooser;
+    CameraServer server;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,6 +46,10 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Rocky Terrain", new RockyTerrain());
 		SmartDashboard.putData("Auto mode", chooser);
        // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
+		
+		server = CameraServer.getInstance();
+		server.setQuality(50);
+		server.startAutomaticCapture("cam0");
     	
     }
 	

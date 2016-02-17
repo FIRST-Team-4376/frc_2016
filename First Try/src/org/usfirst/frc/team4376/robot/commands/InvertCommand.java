@@ -1,19 +1,19 @@
-
 package org.usfirst.frc.team4376.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4376.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class DriveCommand extends Command {
+public class InvertCommand extends Command {
 	
-    public DriveCommand() {
+    public InvertCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.chassis);
-        requires(Robot.invertSub);
+        // eg. requires(chassis);
+    	//requires(Robot.lift);
+    	requires(Robot.invertSub);
     }
 
     // Called just before this Command runs the first time
@@ -22,18 +22,19 @@ public class DriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.chassis.driveMe(Robot.oi.driveStick.getRawAxis(1) * Robot.invertSub.invertVal * -1.0, Robot.oi.driveStick.getRawAxis(3) * Robot.invertSub.invertVal * -1.0);
+    	
+    	Robot.invertSub.invertVal = -1;
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        Robot.invertSub.invertVal = 1;
+    	return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.chassis.stopMe();
     }
 
     // Called when another command which requires one or more of the same
