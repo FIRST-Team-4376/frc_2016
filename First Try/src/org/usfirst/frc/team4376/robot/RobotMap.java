@@ -16,11 +16,18 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
+	
+	//USB Ports
 	public static int DRIVE_JOYSTICK = 0;
 	public static int BUTTON_JOYSTICK = 1;
 	
+	//PWM Ports
 	public static int LEFT_DRIVE_MOTOR = 0;
 	public static int RIGHT_DRIVE_MOTOR = 1;
+	
+	//Talon SRX Ports
 	public static int LIFT_MOTOR = 4;
+	public static int LEFT_LAUNCH_MOTOR_SRX = 2;
+	public static int RIGHT_LAUNCH_MOTOR_SRX = 3;
 	
 }
