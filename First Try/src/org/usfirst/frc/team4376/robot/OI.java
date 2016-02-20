@@ -4,6 +4,7 @@ import java.awt.Button;
 
 import org.usfirst.frc.team4376.robot.commands.InvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
@@ -54,6 +55,7 @@ public class OI {
 	public Button portcullisIn;
 	
 	public OI() {
+		System.out.println("does this workmmmmmmmmmmmmmmm");
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
 		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
@@ -63,7 +65,9 @@ public class OI {
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
 		
-		liftUp.whileHeld(new LiftUpCommand());
+		System.out.println("does this worjkhuykghjlghjklhjkk");
+		liftUp.whenPressed(new LiftUpCommand());
+		liftUp.whenReleased(new StopLiftUpCommand());
 		invertButton.whileHeld(new InvertCommand(varHolder));
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());

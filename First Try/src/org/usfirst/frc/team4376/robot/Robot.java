@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	
-		System.out.println("does this work");
+    	System.out.println("does this work");
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new AutoDrive());
 		chooser.addObject("Rocky Terrain", new RockyTerrain());
