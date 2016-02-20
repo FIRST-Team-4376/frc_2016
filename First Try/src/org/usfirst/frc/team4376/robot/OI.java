@@ -6,6 +6,9 @@ import org.usfirst.frc.team4376.robot.commands.InvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
+
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -47,6 +50,8 @@ public class OI {
 	public Joystick buttonStick;
 	public Button launchButton;
 	public GlobalVariableHolder varHolder;
+	public Button portcullisOut;
+	public Button portcullisIn;
 	
 	public OI() {
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
@@ -55,11 +60,15 @@ public class OI {
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		varHolder = new GlobalVariableHolder();
 		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
+		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
 		
 		liftUp.whileHeld(new LiftUpCommand());
 		invertButton.whileHeld(new InvertCommand(varHolder));
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());
+		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
+		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		System.out.println("BURKE WAS HERE");
 	}
 }

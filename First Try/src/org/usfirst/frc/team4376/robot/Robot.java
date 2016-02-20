@@ -4,8 +4,9 @@ package org.usfirst.frc.team4376.robot;
 import org.usfirst.frc.team4376.robot.commands.autonomous.AutoDrive;
 import org.usfirst.frc.team4376.robot.commands.autonomous.RockyTerrain;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
-import org.usfirst.frc.team4376.robot.subsystems.LifterSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LauncherSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,8 +25,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
-	public static final LifterSubsystem lift = new LifterSubsystem();
+	public static final LiftUpSubsystem lift = new LiftUpSubsystem();
 	public static final LauncherSubsystem launcher = new LauncherSubsystem();
+	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();
 
     Command autonomousCommand;

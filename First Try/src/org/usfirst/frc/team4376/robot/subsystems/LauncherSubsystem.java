@@ -33,7 +33,7 @@ public class LauncherSubsystem extends Subsystem {
 	
 	public LauncherSubsystem() {
 		//liftMotor = new TalonSRX(RobotMap.LIFT_MOTOR);
-		pusher = new DoubleSolenoid(1, 2);
+		pusher = new DoubleSolenoid(RobotMap.PUSH_BALL_FORWARD_SOLENOID, RobotMap.PUSH_BALL_REVERSE_SOLENOID);
 		leftLaunchMotor = new CANTalon(RobotMap.LEFT_LAUNCH_MOTOR_SRX);
 		rightLaunchMotor = new CANTalon(RobotMap.RIGHT_LAUNCH_MOTOR_SRX);
 	}
@@ -47,7 +47,7 @@ public class LauncherSubsystem extends Subsystem {
 		//System.out.print("LAUNCHBALL!");
 		leftLaunchMotor.set(-.8);
 		rightLaunchMotor.set(.8);
-		//pusher.set(DoubleSolenoid.Value.kForward);
+		pusher.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	public void stopLaunchBall(){
@@ -67,8 +67,8 @@ public class LauncherSubsystem extends Subsystem {
 	
 	public void resetPusher(){
 		
-		//pusher.set(DoubleSolenoid.Value.kReverse);
-	   // pusher.set(DoubleSolenoid.Value.kOff); 
+		pusher.set(DoubleSolenoid.Value.kReverse);
+		pusher.set(DoubleSolenoid.Value.kOff); 
 	}
 	
     public void initDefaultCommand() {
