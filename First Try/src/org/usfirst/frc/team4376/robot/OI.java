@@ -2,7 +2,10 @@ package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
 
+import org.usfirst.frc.team4376.robot.commands.InvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -43,15 +46,21 @@ public class OI {
 	public Button liftUp;
 	public Joystick buttonStick;
 	public Button launchButton;
+	public GlobalVariableHolder varHolder;
 	
 	public OI() {
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
 		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
-		JoystickButton launchButton = new JoystickButton(buttonStick, 5);
-		
+		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
+		varHolder = new GlobalVariableHolder();
+		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
 		
 		liftUp.whileHeld(new LiftUpCommand());
+		invertButton.whileHeld(new InvertCommand(varHolder));
+		launchButton.whenPressed(new LauncherCommand());
+		launchButton.whenReleased(new StopLauncherCommand());
+		System.out.println("BURKE WAS HERE");
 	}
 }
 
