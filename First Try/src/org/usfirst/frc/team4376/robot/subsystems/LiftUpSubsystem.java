@@ -21,12 +21,16 @@ public class LiftUpSubsystem extends Subsystem {
 	}
 	
 	public void robotUp(){
-		liftMotor.set(0.25);
+		liftMotor.set(0.375);
 		System.out.println("robotUp is called");
 	}
 	
 	public void stopLiftUp(){
 		liftMotor.set(0.0);
+	}
+	
+	public void robotDown(){
+		liftMotor.set(-0.25);
 	}
 
     public void initDefaultCommand() {

@@ -4,8 +4,10 @@ import java.awt.Button;
 
 import org.usfirst.frc.team4376.robot.commands.InvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
@@ -48,9 +50,11 @@ public class OI {
 	
 	public Joystick driveStick;
 	public Button liftUp;
+	public Button liftDown;
 	public Joystick buttonStick;
 	public Button launchButton;
-	public GlobalVariableHolder varHolder;
+	public Button getBallButton;
+	//public GlobalVariableHolder varHolder;
 	public Button portcullisOut;
 	public Button portcullisIn;
 	
@@ -59,18 +63,25 @@ public class OI {
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
 		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
+		JoystickButton liftDown = new JoystickButton(buttonStick, 4);
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
-		varHolder = new GlobalVariableHolder();
-		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+		//varHolder = new GlobalVariableHolder();
+		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
 		
 		System.out.println("does this worjkhuykghjlghjklhjkk");
 		liftUp.whenPressed(new LiftUpCommand());
 		liftUp.whenReleased(new StopLiftUpCommand());
-		invertButton.whileHeld(new InvertCommand(varHolder));
+		liftDown.whenPressed(new LiftDownCommand());
+		liftDown.whenReleased(new StopLiftUpCommand());
+		//invertButton.whileHeld(new InvertCommand(varHolder));
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());
+		getBallButton.whenPressed(new GetBallCommand());
+		getBallButton.whenReleased(new StopLauncherCommand());
+		
 		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		System.out.println("BURKE WAS HERE");

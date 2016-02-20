@@ -55,6 +55,11 @@ public class LauncherSubsystem extends Subsystem {
 		rightLaunchMotor.set(0.0);
 	}
 	
+	public void getBall(){
+		leftLaunchMotor.set(.3);
+		rightLaunchMotor.set(-.3);
+	}
+	
 	protected boolean isFinished() {
 		 //System.out.print("IS FINISHED!");
 		 
