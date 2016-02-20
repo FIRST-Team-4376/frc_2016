@@ -1,12 +1,11 @@
 package org.usfirst.frc.team4376.robot.subsystems;
 
-import org.usfirst.frc.team4376.robot.RobotMap;
-import org.usfirst.frc.team4376.robot.OI;
 import org.usfirst.frc.team4376.robot.Robot;
+import org.usfirst.frc.team4376.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 

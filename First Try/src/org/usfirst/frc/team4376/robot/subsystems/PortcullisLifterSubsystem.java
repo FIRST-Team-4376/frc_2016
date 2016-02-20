@@ -21,12 +21,11 @@ public class PortcullisLifterSubsystem extends Subsystem {
 	}
 	
 	public void portcullisLifterOut(){
-		portcullisLifter.set(DoubleSolenoid.Value.kForward);
+		portcullisLifter.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	public void portcullisLifterIn(){
-		portcullisLifter.set(DoubleSolenoid.Value.kReverse);
-		portcullisLifter.set(DoubleSolenoid.Value.kOff);
+		portcullisLifter.set(DoubleSolenoid.Value.kForward);
 	}
 	
 	
