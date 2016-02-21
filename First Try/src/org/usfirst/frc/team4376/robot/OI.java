@@ -69,8 +69,8 @@ public class OI {
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
 		
-		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
-		JoystickButton liftDown = new JoystickButton(buttonStick, 4);
+		JoystickButton liftUp = new JoystickButton(buttonStick, 4);
+		JoystickButton liftDown = new JoystickButton(buttonStick, 3);
 		liftUp.whenPressed(new LiftUpCommand());
 		liftUp.whenReleased(new StopLiftUpCommand());
 		liftDown.whenPressed(new LiftDownCommand());

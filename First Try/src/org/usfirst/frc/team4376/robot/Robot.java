@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final LauncherSubsystem launcher = new LauncherSubsystem();
 	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();
-	Compressor compressor = new Compressor(0);                                                                                                          
+	Compressor compressor = new Compressor(1);                                                                                                          
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -49,7 +49,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Rocky Terrain", new RockyTerrain());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		compressor.setClosedLoopControl(true);
+		compressor.setClosedLoopControl(false);
 		
        // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
@@ -61,7 +61,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-		compressor.setClosedLoopControl(false);
+		compressor.setClosedLoopControl(true);
     }
 	
 	public void disabledPeriodic() {
