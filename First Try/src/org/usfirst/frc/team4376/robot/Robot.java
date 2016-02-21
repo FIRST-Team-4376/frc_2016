@@ -6,6 +6,7 @@ import org.usfirst.frc.team4376.robot.commands.autonomous.RockyTerrain;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LauncherSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
 	public static final LiftUpSubsystem lift = new LiftUpSubsystem();
+	public static final TapeMeasureSubsystem tape = new TapeMeasureSubsystem();
 	public static final LauncherSubsystem launcher = new LauncherSubsystem();
 	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();
@@ -48,7 +50,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		compressor.setClosedLoopControl(true);
-		compressor.setClosedLoopControl(false);
 		
        // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
@@ -60,7 +61,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+		compressor.setClosedLoopControl(false);
     }
 	
 	public void disabledPeriodic() {

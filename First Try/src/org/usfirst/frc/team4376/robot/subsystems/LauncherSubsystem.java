@@ -72,7 +72,7 @@ public class LauncherSubsystem extends Subsystem {
 	public void resetPusher(){
 		
 		pusher.set(DoubleSolenoid.Value.kReverse);
-		pusher.set(DoubleSolenoid.Value.kOff); 
+		//pusher.set(DoubleSolenoid.Value.kOff); 
 	}
 	
     public void initDefaultCommand() {

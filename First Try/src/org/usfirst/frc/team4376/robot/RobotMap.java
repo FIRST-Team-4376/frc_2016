@@ -24,6 +24,7 @@ public class RobotMap {
 	//PWM Ports
 	public static int LEFT_DRIVE_MOTOR = 0;
 	public static int RIGHT_DRIVE_MOTOR = 1;
+	public static int TAPE_MEASURE_MOTOR = 2;
 	
 	//Talon SRX Ports
 	public static int LIFT_MOTOR = 3;

@@ -11,7 +11,9 @@ import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
-
+import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -57,34 +59,49 @@ public class OI {
 	//public GlobalVariableHolder varHolder;
 	public Button portcullisOut;
 	public Button portcullisIn;
+	public Button tapeExtend;
+	public Button tapeRetract;
 	
 	public OI() {
 		System.out.println("does this workmmmmmmmmmmmmmmm");
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
 		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
+		
+		
 		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
 		JoystickButton liftDown = new JoystickButton(buttonStick, 4);
+		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+		
 		//varHolder = new GlobalVariableHolder();
 		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
+		JoystickButton tapeExtend = new JoystickButton(driveStick, 5);
+		JoystickButton tapeRetract = new JoystickButton(driveStick, 6);
 		
-		System.out.println("does this worjkhuykghjlghjklhjkk");
 		liftUp.whenPressed(new LiftUpCommand());
 		liftUp.whenReleased(new StopLiftUpCommand());
 		liftDown.whenPressed(new LiftDownCommand());
 		liftDown.whenReleased(new StopLiftUpCommand());
+		
 		//invertButton.whileHeld(new InvertCommand(varHolder));
+		
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());
+		
 		getBallButton.whenPressed(new GetBallCommand());
 		getBallButton.whenReleased(new StopLauncherCommand());
 		
 		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
-		System.out.println("BURKE WAS HERE");
+		
+		tapeExtend.whenPressed(new TapeExtendCommand());
+		tapeExtend.whenReleased(new TapeStopCommand());
+		tapeRetract.whenPressed(new TapeRetractCommand());
+		tapeRetract.whenReleased(new TapeStopCommand());
 	}
 }
 
