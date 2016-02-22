@@ -29,7 +29,6 @@ public GlobalVariableHolder varHolder;
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	varHolder.invertVal = 1;
         return false;
     }
 
