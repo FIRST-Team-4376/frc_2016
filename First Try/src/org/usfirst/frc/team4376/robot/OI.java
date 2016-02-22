@@ -51,7 +51,8 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
-	public Joystick driveStick;
+	public Joystick leftDriveStick;
+	public Joystick rightDriveStick;
 	public Button liftUp;
 	public Button liftDown;
 	public Joystick buttonStick;
@@ -67,7 +68,8 @@ public class OI {
 	public OI() {
 		
 		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
-		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
+		leftDriveStick = new Joystick(RobotMap.LEFT_DRIVE_JOYSTICK);
+		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
 		
 		JoystickButton liftUp = new JoystickButton(buttonStick, 4);
 		JoystickButton liftDown = new JoystickButton(buttonStick, 3);
@@ -93,9 +95,9 @@ public class OI {
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		
 		
-		JoystickButton tapeExtend = new JoystickButton(driveStick, 5);
-		JoystickButton tapeRetract = new JoystickButton(driveStick, 6);
-		JoystickButton pitTapeRetract = new JoystickButton(driveStick, 9);
+		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
+		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
+		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());

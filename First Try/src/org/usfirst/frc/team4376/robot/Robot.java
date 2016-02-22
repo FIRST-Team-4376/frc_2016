@@ -6,9 +6,10 @@ import org.usfirst.frc.team4376.robot.commands.autonomous.RockyTerrain;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LauncherSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
-import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,6 +36,9 @@ public class Robot extends IterativeRobot {
 	public static OI oi = new OI();
 	Compressor compressor = new Compressor(1);                                                                                                          
 
+	CameraServer camServer;
+	USBCamera lifecam;
+	
     Command autonomousCommand;
     SendableChooser chooser;
 
@@ -50,6 +55,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		compressor.setClosedLoopControl(false);
+		
+		camServer = CameraServer.getInstance();
+		lifecam = new USBCamera("USB0::0x045E::0x00F5::NI-VISA-1003::0::RAW");
 		
        // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
@@ -108,6 +116,10 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        lifecam.setFPS(30);
+        lifecam.openCamera();
+        camServer.startAutomaticCapture(lifecam);
     }
 
     /**

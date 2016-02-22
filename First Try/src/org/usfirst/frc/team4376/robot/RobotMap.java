@@ -18,8 +18,10 @@ public class RobotMap {
 	
 	
 	//USB Ports
-	public static int DRIVE_JOYSTICK = 0;
-	public static int BUTTON_JOYSTICK = 1;
+	//public static int DRIVE_JOYSTICK = 0;
+	public static int BUTTON_JOYSTICK = 2;
+	public static int LEFT_DRIVE_JOYSTICK = 0;
+	public static int RIGHT_DRIVE_JOYSTICK = 1;
 	
 	//PWM Ports
 	public static int LEFT_DRIVE_MOTOR = 0;
