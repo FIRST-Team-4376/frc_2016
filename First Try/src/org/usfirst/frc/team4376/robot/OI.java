@@ -3,6 +3,7 @@ package org.usfirst.frc.team4376.robot;
 import java.awt.Button;
 
 import org.usfirst.frc.team4376.robot.commands.InvertCommand;
+import org.usfirst.frc.team4376.robot.commands.UnInvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
@@ -58,7 +59,7 @@ public class OI {
 	public Joystick buttonStick;
 	public Button launchButton;
 	public Button getBallButton;
-	//public GlobalVariableHolder varHolder;
+	public GlobalVariableHolder varHolder;
 	public Button portcullisOut;
 	public Button portcullisIn;
 	public Button tapeExtend;
@@ -79,15 +80,17 @@ public class OI {
 		liftDown.whenReleased(new StopLiftUpCommand());
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
-		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
-		launchButton.whenPressed(new LauncherCommand());
-		launchButton.whenReleased(new StopLauncherCommand());
-		getBallButton.whenPressed(new GetBallCommand());
-		getBallButton.whenReleased(new StopLauncherCommand());
+		//JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+
+		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		varHolder = new GlobalVariableHolder();
+		invertButton.whileHeld(new InvertCommand(varHolder));
+		invertButton.whenReleased(new UnInvertCommand(varHolder));
 		
-		//varHolder = new GlobalVariableHolder();
-		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
-		//invertButton.whileHeld(new InvertCommand(varHolder));
+		launchButton.whenPressed(new LauncherCommand(varHolder));
+		launchButton.whenReleased(new StopLauncherCommand());
+		//getBallButton.whenPressed(new GetBallCommand());
+		//getBallButton.whenReleased(new StopLauncherCommand());
 		
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
