@@ -84,7 +84,7 @@ public class OI {
 
 		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
 		varHolder = new GlobalVariableHolder();
-		invertButton.whenPressed(new InvertCommand(varHolder));
+		invertButton.whileHeld(new InvertCommand(varHolder));
 		invertButton.whenReleased(new UnInvertCommand(varHolder));
 		
 		launchButton.whenPressed(new LauncherCommand(varHolder));
