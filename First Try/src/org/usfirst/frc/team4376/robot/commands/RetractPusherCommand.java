@@ -9,10 +9,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PushBallCommand extends Command {
+public class RetractPusherCommand extends Command {
 	public GlobalVariableHolder varHolder;
 
-    public PushBallCommand() {
+    public RetractPusherCommand() {
     	//varHolder = holder;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -28,7 +28,7 @@ public class PushBallCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-			Robot.launcher.pushBall();
+			Robot.launcher.resetPusher();
 
     	/*if (varHolder.invertVal == 1) {
     		Robot.launcher.pushBall();

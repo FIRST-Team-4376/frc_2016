@@ -11,6 +11,7 @@ import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
+import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
@@ -67,6 +68,7 @@ public class OI {
 	public Button tapeRetract;
 	public Button pitTapeRetract;
 	public Button pushBall;
+	public Button retractPusher;
 	
 	public OI() {
 		
@@ -94,8 +96,10 @@ public class OI {
 		//getBallButton.whenPressed(new GetBallCommand());
 		//getBallButton.whenReleased(new StopLauncherCommand());
 		
-		JoystickButton pushBall = new JoystickButton(buttonStick, 7);
-		pushBall.whenPressed(new PushBallCommand(varHolder));
+		JoystickButton pushBall = new JoystickButton(buttonStick, 8);
+		JoystickButton retractPusher = new JoystickButton(buttonStick, 7);
+		pushBall.whenPressed(new PushBallCommand());
+		retractPusher.whenPressed(new RetractPusherCommand());
 		
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
