@@ -84,17 +84,17 @@ public class OI {
 		liftDown.whenReleased(new StopLiftUpCommand());
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
-		//JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
 
-		JoystickButton invertButton = new JoystickButton(buttonStick, 5);
-		varHolder = new GlobalVariableHolder();
-		invertButton.whileHeld(new InvertCommand(varHolder));
-		invertButton.whenReleased(new UnInvertCommand(varHolder));
+		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		//varHolder = new GlobalVariableHolder();
+		//invertButton.whileHeld(new InvertCommand(varHolder));
+		//invertButton.whenReleased(new UnInvertCommand(varHolder));
 		
-		launchButton.whenPressed(new LauncherCommand(varHolder));
+		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());
-		//getBallButton.whenPressed(new GetBallCommand());
-		//getBallButton.whenReleased(new StopLauncherCommand());
+		getBallButton.whenPressed(new GetBallCommand());
+		getBallButton.whenReleased(new StopLauncherCommand());
 		
 		JoystickButton pushBall = new JoystickButton(buttonStick, 8);
 		JoystickButton retractPusher = new JoystickButton(buttonStick, 7);

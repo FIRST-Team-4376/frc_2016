@@ -25,7 +25,7 @@ public class LiftUpSubsystem extends Subsystem {
 	}
 	
 	public void robotUp(){
-		liftMotor.set(0.25);
+		liftMotor.set(0.375);
 		System.out.println("robotUp is called");
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 	}
@@ -36,7 +36,7 @@ public class LiftUpSubsystem extends Subsystem {
 	}
 	
 	public void robotDown(){
-		liftMotor.set(-0.25);
+		liftMotor.set(-0.375);
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}

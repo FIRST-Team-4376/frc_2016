@@ -40,5 +40,7 @@ public class RobotMap {
 	public static int LIFT_PORTCULLIS_REVERSE_SOLENOID = 3;
 	public static int LOCK_SHOOTER_FORWARD_SOLENOID = 4;
 	public static int LOCK_SHOOTER_REVERSE_SOLENOID = 5;
+	public static int LOCK_TAPE_MEASURE_FORWARD_SOLENOID = 0;
+	public static int LOCK_TAPE_MEASURE_REVERSE_SOLENOID = 1;
 
 }

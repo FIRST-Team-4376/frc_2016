@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LauncherCommand extends Command {
-	public GlobalVariableHolder varHolder;
+	//public GlobalVariableHolder varHolder;
 
-    public LauncherCommand(GlobalVariableHolder holder) {
-    	varHolder = holder;
+    public LauncherCommand() {
+    	//varHolder = holder;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	//System.out.println("ehhhhh");
@@ -27,11 +27,14 @@ public class LauncherCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (varHolder.invertVal == 1) {
+    	
+    	Robot.launcher.launchBall();
+    	
+    	/*if (varHolder.invertVal == 1) {
     		Robot.launcher.launchBall();
     	} else {
     		Robot.launcher.getBall();
-    	}
+    	}*/
     	//System.out.println("might work");
     }
 
