@@ -46,6 +46,9 @@ public class LauncherSubsystem extends Subsystem {
 		//System.out.print("LAUNCHBALL!");
 		leftLaunchMotor.set(-.8);
 		rightLaunchMotor.set(.8);
+	}
+	
+	public void pushBall(){
 		pusher.set(DoubleSolenoid.Value.kForward);
 	}
 	
@@ -70,9 +73,7 @@ public class LauncherSubsystem extends Subsystem {
 	    }
 	
 	public void resetPusher(){
-		
 		pusher.set(DoubleSolenoid.Value.kReverse);
-		//pusher.set(DoubleSolenoid.Value.kOff); 
 	}
 	
     public void initDefaultCommand() {

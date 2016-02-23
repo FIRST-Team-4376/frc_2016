@@ -10,6 +10,7 @@ import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
@@ -65,6 +66,7 @@ public class OI {
 	public Button tapeExtend;
 	public Button tapeRetract;
 	public Button pitTapeRetract;
+	public Button pushBall;
 	
 	public OI() {
 		
@@ -73,7 +75,7 @@ public class OI {
 		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
 		
 		JoystickButton liftUp = new JoystickButton(buttonStick, 4);
-		JoystickButton liftDown = new JoystickButton(buttonStick, 3);
+		JoystickButton liftDown = new JoystickButton(buttonStick, 1);
 		liftUp.whenPressed(new LiftUpCommand());
 		liftUp.whenReleased(new StopLiftUpCommand());
 		liftDown.whenPressed(new LiftDownCommand());
@@ -91,6 +93,9 @@ public class OI {
 		launchButton.whenReleased(new StopLauncherCommand());
 		//getBallButton.whenPressed(new GetBallCommand());
 		//getBallButton.whenReleased(new StopLauncherCommand());
+		
+		JoystickButton pushBall = new JoystickButton(buttonStick, 7);
+		pushBall.whenPressed(new PushBallCommand(varHolder));
 		
 		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
