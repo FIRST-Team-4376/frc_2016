@@ -34,8 +34,8 @@ public class RobotMap {
 	public static int RIGHT_LAUNCH_MOTOR_SRX = 4;
 
 	//Solenoids
-	public static int PUSH_BALL_FORWARD_SOLENOID = 0;
-	public static int PUSH_BALL_REVERSE_SOLENOID = 1;
+	public static int PUSH_BALL_FORWARD_SOLENOID = 7;
+	public static int PUSH_BALL_REVERSE_SOLENOID = 6;
 	public static int LIFT_PORTCULLIS_FORWARD_SOLENOID = 2;
 	public static int LIFT_PORTCULLIS_REVERSE_SOLENOID = 3;
 	public static int LOCK_SHOOTER_FORWARD_SOLENOID = 4;
