@@ -34,7 +34,7 @@ public class Robot extends IterativeRobot {
 	public static final LauncherSubsystem launcher = new LauncherSubsystem();
 	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();
-	Compressor compressor = new Compressor(1);                                                                                                          
+	Compressor compressor = new Compressor(0);                                                                                                          
 
 	//CameraServer camServer;
 	//USBCamera lifecam;

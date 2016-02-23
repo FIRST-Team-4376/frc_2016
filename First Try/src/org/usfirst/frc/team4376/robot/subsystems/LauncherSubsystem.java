@@ -49,7 +49,7 @@ public class LauncherSubsystem extends Subsystem {
 	}
 
 	public void pushBall(){
-		pusher.set(DoubleSolenoid.Value.kForward);
+		pusher.set(DoubleSolenoid.Value.kReverse);
 	}
 
 	public void stopLaunchBall(){
@@ -73,7 +73,7 @@ public class LauncherSubsystem extends Subsystem {
 	    }
 
 	public void resetPusher(){
-		pusher.set(DoubleSolenoid.Value.kReverse);
+		pusher.set(DoubleSolenoid.Value.kForward);
 	}
 
     public void initDefaultCommand() {

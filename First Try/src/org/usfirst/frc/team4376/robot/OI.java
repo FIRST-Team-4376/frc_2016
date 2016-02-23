@@ -101,7 +101,7 @@ public class OI {
 		pushBall.whenPressed(new PushBallCommand());
 		retractPusher.whenPressed(new RetractPusherCommand());
 		
-		JoystickButton portcullisOut = new JoystickButton(buttonStick, 1);
+		JoystickButton portcullisOut = new JoystickButton(buttonStick, 3);
 		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
 		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
