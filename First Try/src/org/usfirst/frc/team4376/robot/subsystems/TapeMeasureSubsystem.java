@@ -34,7 +34,7 @@ public class TapeMeasureSubsystem extends Subsystem {
 	}
 	
 	public void tapeRetract(){
-		tapeMotor.set(-0.5);
+		tapeMotor.set(-1);
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}

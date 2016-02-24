@@ -16,11 +16,11 @@ public class LiftUpSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	CANTalon liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
-	//DoubleSolenoid shooterBrake;
+	DoubleSolenoid shooterBrake;
 	
 	public LiftUpSubsystem() {
 		liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
-		//shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
+		shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
 		
 	}
 	
@@ -32,7 +32,6 @@ public class LiftUpSubsystem extends Subsystem {
 	
 	public void stopLiftUp(){
 		liftMotor.set(0.0);
-		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void robotDown(){
@@ -41,6 +40,14 @@ public class LiftUpSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}
 
+	public void lockAngle(){
+		shooterBrake.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void unlockAngle(){
+		shooterBrake.set(DoubleSolenoid.Value.kReverse);
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

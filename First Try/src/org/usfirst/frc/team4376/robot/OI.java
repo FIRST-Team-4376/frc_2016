@@ -106,6 +106,7 @@ public class OI {
 		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		
+		//9 = unlock, 10 = lock
 		
 		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
 		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
