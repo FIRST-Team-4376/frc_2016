@@ -4,14 +4,20 @@ package org.usfirst.frc.team4376.robot;
 import org.usfirst.frc.team4376.robot.commands.autonomous.AutoDrive;
 import org.usfirst.frc.team4376.robot.commands.autonomous.RockyTerrain;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
-import org.usfirst.frc.team4376.robot.subsystems.LifterSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.LauncherSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,9 +29,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
-	public static final LifterSubsystem lift = new LifterSubsystem();
+	public static final LiftUpSubsystem lift = new LiftUpSubsystem();
+	public static final TapeMeasureSubsystem tape = new TapeMeasureSubsystem();
+	public static final LauncherSubsystem launcher = new LauncherSubsystem();
+	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();
+	Compressor compressor = new Compressor(0);                                                                                                          
 
+	CameraServer camServer;
+	USBCamera lifecam;
+	
     Command autonomousCommand;
     SendableChooser chooser;
 
@@ -35,12 +48,18 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	
-		System.out.println("does this work");
+    	System.out.println("does this work");
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new AutoDrive());
 		chooser.addObject("Rocky Terrain", new RockyTerrain());
 		SmartDashboard.putData("Auto mode", chooser);
-       // SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
+		
+		compressor.setClosedLoopControl(false);
+		
+		camServer = CameraServer.getInstance();
+		lifecam = new USBCamera("cam0");
+		
+		//SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
     }
 	
@@ -50,7 +69,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+		compressor.setClosedLoopControl(true);
     }
 	
 	public void disabledPeriodic() {
@@ -97,6 +116,10 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        lifecam.setFPS(30);
+        lifecam.openCamera();
+        camServer.startAutomaticCapture(lifecam);
     }
 
     /**

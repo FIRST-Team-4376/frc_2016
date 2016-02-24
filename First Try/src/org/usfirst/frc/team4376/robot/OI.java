@@ -2,7 +2,22 @@ package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
 
+import org.usfirst.frc.team4376.robot.commands.InvertCommand;
+import org.usfirst.frc.team4376.robot.commands.UnInvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
+import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
+import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
+import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
+import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -39,16 +54,69 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
 	
-	public Joystick driveStick;
+	public Joystick leftDriveStick;
+	public Joystick rightDriveStick;
 	public Button liftUp;
+	public Button liftDown;
 	public Joystick buttonStick;
+	public Button launchButton;
+	public Button getBallButton;
+	public GlobalVariableHolder varHolder;
+	public Button portcullisOut;
+	public Button portcullisIn;
+	public Button tapeExtend;
+	public Button tapeRetract;
+	public Button pitTapeRetract;
+	public Button pushBall;
+	public Button retractPusher;
 	
 	public OI() {
-		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
-		driveStick = new Joystick(RobotMap.DRIVE_JOYSTICK);
-		JoystickButton liftUp = new JoystickButton(buttonStick, 3);
 		
-		liftUp.whileHeld(new LiftUpCommand());
+		buttonStick = new Joystick(RobotMap.BUTTON_JOYSTICK);
+		leftDriveStick = new Joystick(RobotMap.LEFT_DRIVE_JOYSTICK);
+		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
+		
+		JoystickButton liftUp = new JoystickButton(buttonStick, 4);
+		JoystickButton liftDown = new JoystickButton(buttonStick, 1);
+		liftUp.whenPressed(new LiftUpCommand());
+		liftUp.whenReleased(new StopLiftUpCommand());
+		liftDown.whenPressed(new LiftDownCommand());
+		liftDown.whenReleased(new StopLiftUpCommand());
+		
+		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
+		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+
+		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
+		//varHolder = new GlobalVariableHolder();
+		//invertButton.whileHeld(new InvertCommand(varHolder));
+		//invertButton.whenReleased(new UnInvertCommand(varHolder));
+		
+		launchButton.whenPressed(new LauncherCommand());
+		launchButton.whenReleased(new StopLauncherCommand());
+		getBallButton.whenPressed(new GetBallCommand());
+		getBallButton.whenReleased(new StopLauncherCommand());
+		
+		JoystickButton pushBall = new JoystickButton(buttonStick, 8);
+		JoystickButton retractPusher = new JoystickButton(buttonStick, 7);
+		pushBall.whenPressed(new PushBallCommand());
+		retractPusher.whenPressed(new RetractPusherCommand());
+		
+		JoystickButton portcullisOut = new JoystickButton(buttonStick, 3);
+		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
+		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
+		portcullisIn.whenPressed(new PortcullisLifterInCommand());
+		
+		
+		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
+		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
+		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
+		tapeExtend.whenPressed(new TapeExtendCommand());
+		tapeExtend.whenReleased(new TapeStopCommand());
+		tapeRetract.whenPressed(new TapeRetractCommand());
+		tapeRetract.whenReleased(new TapeStopCommand());
+		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
+		pitTapeRetract.whenReleased(new TapeStopCommand());
+		
 	}
 }
 
