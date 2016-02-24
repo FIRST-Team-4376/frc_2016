@@ -9,8 +9,10 @@ import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 
+import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -41,6 +43,10 @@ public class Robot extends IterativeRobot {
 	
     Command autonomousCommand;
     SendableChooser chooser;
+    
+    //Encoder liftAngleEncoder;
+    
+	//CANTalon liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
 
     /**
      * This function is run when the robot is first started up and should be
@@ -55,6 +61,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		compressor.setClosedLoopControl(false);
+		
+		//liftAngleEncoder = new Encoder(RobotMap.LIFT_ANGLE_ENCODER_A, RobotMap.LIFT_ANGLE_ENCODER_B, true, Encoder.EncodingType.k1X);
 		
 		camServer = CameraServer.getInstance();
 		lifecam = new USBCamera("cam0");
@@ -117,6 +125,8 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
+        //liftAngleEncoder.reset();
+        
         lifecam.setFPS(30);
         lifecam.openCamera();
         camServer.startAutomaticCapture(lifecam);
@@ -127,6 +137,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+		
     }
     
     /**
