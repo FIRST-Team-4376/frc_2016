@@ -18,6 +18,7 @@ import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -69,6 +70,7 @@ public class OI {
 	public Button pitTapeRetract;
 	public Button pushBall;
 	public Button retractPusher;
+	public Button portcullisUp;
 	
 	public OI() {
 		
@@ -82,6 +84,10 @@ public class OI {
 		liftUp.whenReleased(new StopLiftUpCommand());
 		liftDown.whenPressed(new LiftDownCommand());
 		liftDown.whenReleased(new StopLiftUpCommand());
+		
+		JoystickButton portcullisUp = new JoystickButton(buttonStick, 10);
+		portcullisUp.whenPressed(new PortcullisUpCommand());
+		portcullisUp.whenReleased(new StopLiftUpCommand());
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
