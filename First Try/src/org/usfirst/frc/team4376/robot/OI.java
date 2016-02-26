@@ -76,12 +76,13 @@ public class OI {
 		leftDriveStick = new Joystick(RobotMap.LEFT_DRIVE_JOYSTICK);
 		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
 		
-		JoystickButton liftUp = new JoystickButton(buttonStick, 4);
+		/*JoystickButton liftUp = new JoystickButton(buttonStick, 4);
 		JoystickButton liftDown = new JoystickButton(buttonStick, 1);
 		liftUp.whenPressed(new LiftUpCommand());
 		liftUp.whenReleased(new StopLiftUpCommand());
 		liftDown.whenPressed(new LiftDownCommand());
 		liftDown.whenReleased(new StopLiftUpCommand());
+		*/
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
