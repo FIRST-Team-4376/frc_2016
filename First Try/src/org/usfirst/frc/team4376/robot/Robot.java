@@ -56,8 +56,8 @@ public class Robot extends IterativeRobot {
 		
 		compressor.setClosedLoopControl(false);
 		
-		camServer = CameraServer.getInstance();
-		lifecam = new USBCamera("cam0");
+		//camServer = CameraServer.getInstance();
+		//lifecam = new USBCamera("cam0");
 		
 		//SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
@@ -117,9 +117,9 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        lifecam.setFPS(30);
-        lifecam.openCamera();
-        camServer.startAutomaticCapture(lifecam);
+        //lifecam.setFPS(30);
+        //lifecam.openCamera();
+        //camServer.startAutomaticCapture(lifecam);
     }
 
     /**
