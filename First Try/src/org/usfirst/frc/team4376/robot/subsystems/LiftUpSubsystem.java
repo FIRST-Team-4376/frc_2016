@@ -40,6 +40,10 @@ public class LiftUpSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}
+	
+	public void portcullisUp(){
+		liftMotor.set(1.0);
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

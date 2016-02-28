@@ -8,15 +8,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class AutoDrive extends Command {
+public class BurkesAuto extends Command {
 
-	public Timer timer1;
-	public Timer timer2;
+	private Timer timer1;
 	
-    public AutoDrive() {
+    public BurkesAuto() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
@@ -24,22 +22,36 @@ public class AutoDrive extends Command {
     	timer1 = new Timer();
     	timer1.reset();
     	timer1.start();
-    	
-    	timer2 = new Timer();
-    	timer2.reset();
-    	timer2.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-
-    	while (timer1.get() <= 5.0){
-    		Robot.chassis.driveForward(-0.5);
+    	Robot.portcullisLifter.portcullisLifterOut();
+    	
+    	while(timer1.get() <= 1.0){
+    		Robot.lift.robotDown();
     	}
     	
-    	while(timer2.get() <= 0.5){
-   	Robot.lift.robotDown();
+    	while(1.0 < timer1.get() && timer1.get() <= 3.0){
+    		Robot.chassis.driveForward(.3);
     	}
+    	
+    	while(timer1.get() > 3.0 && timer1.get() <= 3.5){
+    		Robot.lift.portcullisUp();
+    	}
+    	
+    	while(timer1.get() >= 4.0 && timer1.get() <= 8.0){
+    		Robot.chassis.driveForward(.5);
+    	}
+    	
+    	while(timer1.get() > 8.0 && timer1.get() <= 8.5){
+    		Robot.portcullisLifter.portcullisLifterIn();
+    		Robot.lift.robotDown();
+    	}
+    	
+    	/*for (int i =0; i < 100; i++){
+    		Robot.winCompetition;
+    	}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -56,6 +68,5 @@ public class AutoDrive extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
