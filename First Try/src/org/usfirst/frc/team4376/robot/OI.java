@@ -93,7 +93,7 @@ public class OI {
 		
 		JoystickButton powerDown = new JoystickButton(buttonStick, 9);
 		powerDown.whenPressed(new PowerDownCommand());
-		powerDown.whenPressed(new LiftUpCommand());
+		powerDown.whenReleased(new LiftUpCommand());
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
