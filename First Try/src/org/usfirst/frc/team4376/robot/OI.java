@@ -20,6 +20,9 @@ import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
 import org.usfirst.frc.team4376.robot.commands.PowerDownCommand;
+import org.usfirst.frc.team4376.robot.commands.LockShooterCommand;
+import org.usfirst.frc.team4376.robot.commands.UnlockShooterCommand;
+
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -58,12 +61,12 @@ public class OI {
 	
 	public Joystick leftDriveStick;
 	public Joystick rightDriveStick;
-	public Button liftUp;
-	public Button liftDown;
+	//public Button liftUp;
+	//public Button liftDown;
 	public Joystick buttonStick;
 	public Button launchButton;
 	public Button getBallButton;
-	public GlobalVariableHolder varHolder;
+	//public GlobalVariableHolder varHolder;
 	public Button portcullisOut;
 	public Button portcullisIn;
 	public Button tapeExtend;
@@ -73,6 +76,9 @@ public class OI {
 	public Button retractPusher;
 	public Button portcullisUp;
 	public Button powerDown;
+	
+	public Button lockShooter;
+	public Button unlockShooter;
 	
 	public OI() {
 		
@@ -128,6 +134,11 @@ public class OI {
 		tapeRetract.whenReleased(new TapeStopCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
+		
+		JoystickButton lockShooter = new JoystickButton(buttonStick, 4);
+		JoystickButton unlockShooter = new JoystickButton(buttonStick, 1);
+		lockShooter.whenPressed(new LockShooterCommand());
+		unlockShooter.whenPressed(new UnlockShooterCommand());
 		
 	}
 }
