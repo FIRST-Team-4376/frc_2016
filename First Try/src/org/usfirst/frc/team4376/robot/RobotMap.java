@@ -28,6 +28,10 @@ public class RobotMap {
 	public static int RIGHT_DRIVE_MOTOR = 1;
 	public static int TAPE_MEASURE_MOTOR = 2;
 
+  //DIO Ports
+  public static int LIFT_ANGLE_ENCODER_A = 0;
+  public static int LIFT_ANGLE_ENCODER_B = 1;
+
 	//Talon SRX Ports
 	public static int LIFT_MOTOR = 3;
 	public static int LEFT_LAUNCH_MOTOR_SRX = 2;
