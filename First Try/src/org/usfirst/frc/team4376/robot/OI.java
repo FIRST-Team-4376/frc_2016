@@ -20,9 +20,13 @@ import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
 import org.usfirst.frc.team4376.robot.commands.PowerDownCommand;
+import org.usfirst.frc.team4376.robot.commands.Camera1Command;
+import org.usfirst.frc.team4376.robot.commands.Camera2Command;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -73,6 +77,9 @@ public class OI {
 	public Button retractPusher;
 	public Button portcullisUp;
 	public Button powerDown;
+	
+	public Button camera1Switch;
+	public Button camera2Switch;
 	
 	public OI() {
 		
@@ -129,6 +136,11 @@ public class OI {
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
 		
+		
+		JoystickButton camera1Switch = new JoystickButton(leftDriveStick, 4);
+		JoystickButton camera2Switch = new JoystickButton(leftDriveStick, 5);
+		camera1Switch.whenPressed(new Camera1Command());
+		camera2Switch.whenPressed(new Camera2Command());
 	}
 }
 
