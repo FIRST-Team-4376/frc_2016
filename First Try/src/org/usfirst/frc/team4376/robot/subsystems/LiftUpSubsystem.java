@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4376.robot.subsystems;
 
+import org.usfirst.frc.team4376.robot.Robot;
 import org.usfirst.frc.team4376.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -39,6 +40,10 @@ public class LiftUpSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
 	}
 	
+	public void aimerThingy(){
+		 liftMotor.set(Robot.oi.buttonStick.getRawAxis(1) * -0.45);	
+	}
+	
 	public void robotDown(){
 		liftMotor.set(-0.375);
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
@@ -48,6 +53,7 @@ public class LiftUpSubsystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new LiftUpCommand());
     }
 }
 
