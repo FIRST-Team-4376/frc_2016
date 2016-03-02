@@ -24,22 +24,32 @@ public class AutoDrive extends Command {
     	timer1 = new Timer();
     	timer1.reset();
     	timer1.start();
-    	
-    	timer2 = new Timer();
-    	timer2.reset();
-    	timer2.start();
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 
-    	while (timer1.get() <= 5.0){
+    	while(timer1.get() <= 0.75){
+    	   	Robot.lift.robotDown();
+    	 }
+    	
+    	while (timer1.get() <= 5.0 && timer1.get() > 1.0){
     		Robot.chassis.driveForward(-0.5);
     	}
     	
-    	while(timer2.get() <= 0.5){
-   	Robot.lift.robotDown();
+    	while (timer1.get() > 5.0 && timer1.get() <= 6.0){
+    		Robot.chassis.driveMe(0.0, -.25);
     	}
+
+    	while (timer1.get() > 6.0 && timer1.get() <= 7.5){
+    		Robot.chassis.driveForward(-.5);
+    	}
+    	
+    	while (timer1.get() > 7.5 && timer1.get() <= 10){
+    		Robot.launcher.launchBall();
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -51,6 +61,7 @@ public class AutoDrive extends Command {
     protected void end() {
     	Robot.chassis.stopMe();
     	Robot.lift.stopLiftUp();
+    	Robot.launcher.stopLaunchBall();
     }
 
     // Called when another command which requires one or more of the same
