@@ -35,13 +35,17 @@ public class LiftUpSubsystem extends Subsystem {
 		liftMotor.set(.75);
 	}
 	
+	public void powerDown(){
+		liftMotor.set(-.5);
+	}
+	
 	public void stopLiftUp(){
 		liftMotor.set(0.0);
 		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void aimerThingy(){
-		 liftMotor.set(Robot.oi.buttonStick.getRawAxis(1) * -0.45);	
+		 liftMotor.set(Robot.oi.buttonStick.getRawAxis(1) * -0.4);	
 	}
 	
 	public void robotDown(){
