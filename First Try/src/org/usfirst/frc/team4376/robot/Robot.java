@@ -39,7 +39,7 @@ public class Robot extends IterativeRobot {
 
 	CameraServer camServer;
 	//CameraServer camServer2;
-	USBCamera lifecam;
+	//USBCamera lifecam;
 	//USBCamera lifecam2;
 	
     Command autonomousCommand;
@@ -59,8 +59,8 @@ public class Robot extends IterativeRobot {
 		
 		compressor.setClosedLoopControl(false);
 		
-		camServer = CameraServer.getInstance();
-		lifecam = new USBCamera("cam0");
+		//camServer = CameraServer.getInstance();
+		//lifecam = new USBCamera("cam0");
 		//camServer2 = CameraServer.getInstance();
 		//lifecam2 = new USBCamera("cam1");
 		

@@ -28,7 +28,7 @@ public class TapeMeasureSubsystem extends Subsystem {
 		
 		camServer = CameraServer.getInstance();
 		lifecam = new USBCamera("cam0");
-		camServer2 = CameraServer.getInstance();
+		//camServer2 = CameraServer.getInstance();
 		lifecam2 = new USBCamera("cam1");
 		
 	}
@@ -54,14 +54,20 @@ public class TapeMeasureSubsystem extends Subsystem {
 	}
 	
 	public void switchtoCamera1(){
-		
-		lifecam.setFPS(30);
+		//lifecam.closeCamera();
+	    lifecam2.closeCamera();
+	    lifecam.setFPS(30);
         lifecam.openCamera();
         camServer.startAutomaticCapture(lifecam);
     }
 	
 	public void switchtoCamera2(){
-		lifecam2.setFPS(30);
+		//lifecam.closeCamera();
+		//lifecam2.closeCamera();
+		//lifecam2.setFPS(30);
+        //lifecam2.openCamera();
+	    lifecam.closeCamera();
+	    lifecam2.setFPS(30);
         lifecam2.openCamera();
         camServer.startAutomaticCapture(lifecam2);
 	}
