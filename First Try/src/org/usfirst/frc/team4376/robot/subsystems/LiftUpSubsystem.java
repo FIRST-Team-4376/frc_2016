@@ -30,6 +30,10 @@ public class LiftUpSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 	}
 	
+	public void autonomousDown(){
+		liftMotor.set(-.2);
+	}
+	
 	public void stopLiftUp(){
 		liftMotor.set(0.0);
 		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
