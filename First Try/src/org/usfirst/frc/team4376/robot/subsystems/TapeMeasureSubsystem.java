@@ -1,10 +1,12 @@
 package org.usfirst.frc.team4376.robot.subsystems;
 
 import org.usfirst.frc.team4376.robot.RobotMap;
+import org.usfirst.frc.team4376.robot.Robot;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
 
 
 /**
