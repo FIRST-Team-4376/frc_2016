@@ -49,7 +49,7 @@ public class LiftUpSubsystem extends Subsystem {
 	}
 	
 	public void robotDown(){
-		liftMotor.set(-0.375);
+		liftMotor.set(-0.25);
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}
