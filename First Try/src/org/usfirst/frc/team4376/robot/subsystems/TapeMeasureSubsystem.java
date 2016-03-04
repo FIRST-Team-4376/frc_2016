@@ -42,7 +42,7 @@ public class TapeMeasureSubsystem extends Subsystem {
 	}
 	
 	public void tapeJoystick(){
-		tapeMotor.set(Robot.oi.buttonStick.getRawAxis(3) * 1.5);
+		tapeMotor.set(Robot.oi.buttonStick.getRawAxis(3) * -1.5);
 	}
 	
 	public void pitTapeRetract(){

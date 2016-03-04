@@ -125,7 +125,7 @@ public class OI {
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
-		tapeRetract.whenReleased(new TapeStopCommand());
+		tapeRetract.whenReleased(new TapeExtendCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
 		
