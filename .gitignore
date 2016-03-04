@@ -1,6 +1,9 @@
 */sysProps.xml
 sysProps.xml
 *target*
+.recommenders*
+*.recommenders/*
+*.recommenders*
 *.jar
 *.war
 *.ear
