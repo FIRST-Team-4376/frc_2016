@@ -38,10 +38,6 @@ public class TapeMeasureSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kForward);
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}
-	
-	public void pitTapeRetract(){
-		tapeMotor.set(-.25);
-	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
