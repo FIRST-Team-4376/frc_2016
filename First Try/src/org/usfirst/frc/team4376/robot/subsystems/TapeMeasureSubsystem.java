@@ -27,6 +27,7 @@ public class TapeMeasureSubsystem extends Subsystem {
 	
 	int session;
 	Image frame;
+	Image frame2;
 	//DoubleSolenoid shooterBrake;
 	
 	public TapeMeasureSubsystem() {
@@ -93,8 +94,8 @@ public class TapeMeasureSubsystem extends Subsystem {
 	  NIVision.IMAQdxConfigureGrab(session);
 	  NIVision.IMAQdxStartAcquisition(session);
 
-	  NIVision.IMAQdxGrab(session, frame, 1);
-	  CameraServer.getInstance().setImage(frame);
+	  NIVision.IMAQdxGrab(session, frame2, 1);
+	  CameraServer.getInstance().setImage(frame2);
 
 
 		//lifecam.closeCamera();
