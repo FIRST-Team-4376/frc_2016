@@ -7,21 +7,22 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PitTapeRetractCommand extends Command {
+public class LockShooterCommand extends Command {
 
-    public PitTapeRetractCommand() {
+    public LockShooterCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.tape);
+    	requires(Robot.lift);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tape.pitTapeRetract();
+    	Robot.lift.lockShooter();
     }
 
     // Make this return true when this Command no longer needs to run execute()
