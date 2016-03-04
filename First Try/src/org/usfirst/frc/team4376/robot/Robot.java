@@ -122,9 +122,9 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        lifecam.setFPS(15);
-        lifecam.openCamera();
-        camServer.startAutomaticCapture(lifecam);
+//        lifecam.setFPS(15);
+//        lifecam.openCamera();
+//        camServer.startAutomaticCapture(lifecam);
         
         /*lifecam2.setFPS(30);
         lifecam2.openCamera();
