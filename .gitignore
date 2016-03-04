@@ -4,6 +4,11 @@ sysProps.xml
 .recommenders*
 *.recommenders/*
 *.recommenders*
+*.class
+*.xml
+*.xml*
+*.class*
+
 *.jar
 *.war
 *.ear

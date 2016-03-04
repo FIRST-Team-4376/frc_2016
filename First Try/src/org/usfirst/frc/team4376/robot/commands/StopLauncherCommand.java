@@ -25,8 +25,8 @@ public class StopLauncherCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.launcher.stopLaunchBall();
-    	Robot.launcher.resetPusher();
-    	System.out.println("might work");
+    	//Robot.launcher.resetPusher();
+    	//System.out.println("might work");
     }
 
     // Make this return true when this Command no longer needs to run execute()
