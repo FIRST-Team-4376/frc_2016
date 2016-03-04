@@ -36,6 +36,12 @@ public class TapeMeasureSubsystem extends Subsystem {
 		// lifecam = new USBCamera("cam0");
 		//camServer2 = CameraServer.getInstance();
 		//lifecam2 = new USBCamera("cam1");
+
+	  session = NIVision.IMAQdxOpenCamera("cam0",
+	          NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+	  NIVision.IMAQdxConfigureGrab(session);
+	  NIVision.IMAQdxStartAcquisition(session);
+
 		
 	}
 	
@@ -60,11 +66,12 @@ public class TapeMeasureSubsystem extends Subsystem {
 	}
 	
 	public void switchtoCamera1(){
-
+		NIVision.IMAQdxStopAcquisition(session);
 	  // the camera name (ex "cam0") can be found through the roborio web interface
 	  session = NIVision.IMAQdxOpenCamera("cam0",
 	          NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 	  NIVision.IMAQdxConfigureGrab(session);
+	  NIVision.IMAQdxStartAcquisition(session);
 
 	  NIVision.IMAQdxGrab(session, frame, 1);
 	  CameraServer.getInstance().setImage(frame);
@@ -80,9 +87,11 @@ public class TapeMeasureSubsystem extends Subsystem {
     }
 	
 	public void switchtoCamera2(){
+		NIVision.IMAQdxStopAcquisition(session);
 	  session = NIVision.IMAQdxOpenCamera("cam1",
 	          NIVision.IMAQdxCameraControlMode.CameraControlModeController);
 	  NIVision.IMAQdxConfigureGrab(session);
+	  NIVision.IMAQdxStartAcquisition(session);
 
 	  NIVision.IMAQdxGrab(session, frame, 1);
 	  CameraServer.getInstance().setImage(frame);
