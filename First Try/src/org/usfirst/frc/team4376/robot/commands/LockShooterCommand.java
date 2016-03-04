@@ -12,7 +12,6 @@ public class LockShooterCommand extends Command {
     public LockShooterCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	System.out.println("lift up is kinda close");
     	requires(Robot.lift);
     }
 
