@@ -23,7 +23,7 @@ public class TapeExtendCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tape.tapeExtend();
+    	Robot.tape.tapeJoystick();
     	System.out.println("tape extend is executed");
     }
 

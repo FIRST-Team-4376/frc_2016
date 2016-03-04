@@ -39,6 +39,10 @@ public class TapeMeasureSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kOff);
 	}
 	
+	public void tapeJoystick(){
+		tapeMotor.set(Robot.oi.buttonStick.getRawAxis(3) * 1.5);
+	}
+	
 	public void pitTapeRetract(){
 		tapeMotor.set(-.25);
 	}
@@ -46,6 +50,8 @@ public class TapeMeasureSubsystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	
+    	setDefaultCommand(new TapeExtendCommand());
     }
 }
 
