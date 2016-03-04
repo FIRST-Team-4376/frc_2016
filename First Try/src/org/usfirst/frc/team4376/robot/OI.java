@@ -2,24 +2,23 @@ package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
 
-import org.usfirst.frc.team4376.robot.commands.InvertCommand;
-import org.usfirst.frc.team4376.robot.commands.UnInvertCommand;
-import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
-import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
-import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
-import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
-import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
-import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
-import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
-import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
-import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
+import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
+import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
 import org.usfirst.frc.team4376.robot.commands.PowerDownCommand;
+import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
+import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
+import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
+
+import org.usfirst.frc.team4376.robot.commands.LockTapeMeasureCommand;
+import org.usfirst.frc.team4376.robot.commands.ReleaseTapeMeasureCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -73,6 +72,9 @@ public class OI {
 	public Button retractPusher;
 	public Button portcullisUp;
 	public Button powerDown;
+	
+	public Button lockTape;
+	public Button unlockTape;
 	
 	public OI() {
 		
@@ -128,6 +130,11 @@ public class OI {
 		tapeRetract.whenReleased(new TapeStopCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
+		
+		JoystickButton lockTape = new JoystickButton(leftDriveStick, 4);
+		JoystickButton unlockTape = new JoystickButton(leftDriveStick, 5);
+		lockTape.whenPressed(new LockTapeMeasureCommand());
+		unlockTape.whenPressed(new ReleaseTapeMeasureCommand());
 		
 	}
 }
