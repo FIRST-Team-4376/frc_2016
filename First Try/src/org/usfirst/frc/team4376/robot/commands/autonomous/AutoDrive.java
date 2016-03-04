@@ -35,10 +35,10 @@ public class AutoDrive extends Command {
     	 }
     	
     	while (timer1.get() <= 7.0 && timer1.get() > 1.0){
-    		Robot.chassis.driveForward(0.6);
+    		Robot.chassis.driveMe(0.52, .5);
     	}
     	
-    	while (timer1.get() > 7.0 && timer1.get() <= 8.0){
+    	/*while (timer1.get() > 7.0 && timer1.get() <= 8.0){
     		Robot.chassis.driveMe(.5, 0);
     	}
 
@@ -53,7 +53,7 @@ public class AutoDrive extends Command {
     	
     	while (timer1.get() > 12.0){
     		Robot.launcher.pushBall();
-    	}
+    	}	*/
     	
     }
 
