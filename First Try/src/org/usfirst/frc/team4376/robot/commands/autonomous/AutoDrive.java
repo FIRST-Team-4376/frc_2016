@@ -29,21 +29,22 @@ public class AutoDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	while(timer.get() <= 1.0){
-    		Robot.lift.robotDown();
-    	}
-    	
     	while(timer.get() > 1.0 && timer.get() <= 10.0){
     		Robot.chassis.driveMe(.553, .5);
     	}
     	
     	while(timer.get() > 10.0 && timer.get() <= 11.0){
-    		Robot.chassis.driveMe(.75, .25);
+    		Robot.chassis.driveMe(.75, .3);
     	}
     	
     	while(timer.get() > 10.5 && timer.get() <= 12.0){
     		Robot.chassis.driveMe(.553, .5);
     	}
+    	
+    	while(timer.get() > 12.0 && timer.get() <= 13.0){
+    		Robot.lift.robotDown();
+    	}
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -54,6 +55,7 @@ public class AutoDrive extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.chassis.stopMe();
+    	Robot.lift.stopLiftUp();
     }
 
     // Called when another command which requires one or more of the same
