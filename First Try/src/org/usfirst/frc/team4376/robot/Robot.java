@@ -38,7 +38,9 @@ public class Robot extends IterativeRobot {
 	Compressor compressor = new Compressor(0);                                                                                                          
 
 	CameraServer camServer;
-	USBCamera lifecam;
+	//CameraServer camServer2;
+	//USBCamera lifecam;
+	//USBCamera lifecam2;
 	
     Command autonomousCommand;
     SendableChooser chooser;
@@ -57,8 +59,10 @@ public class Robot extends IterativeRobot {
 		
 		compressor.setClosedLoopControl(false);
 		
-		camServer = CameraServer.getInstance();
-		lifecam = new USBCamera("cam0");
+		//camServer = CameraServer.getInstance();
+		//lifecam = new USBCamera("cam0");
+		//camServer2 = CameraServer.getInstance();
+		//lifecam2 = new USBCamera("cam1");
 		
 		//SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
@@ -118,9 +122,13 @@ public class Robot extends IterativeRobot {
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         
-        lifecam.setFPS(15);
-        lifecam.openCamera();
-        camServer.startAutomaticCapture(lifecam);
+//        lifecam.setFPS(15);
+//        lifecam.openCamera();
+//        camServer.startAutomaticCapture(lifecam);
+        
+        /*lifecam2.setFPS(30);
+        lifecam2.openCamera();
+        camServer2.startAutomaticCapture(lifecam2);*/
     }
 
     /**
