@@ -13,25 +13,20 @@ public class GetBallCommand extends Command {
     public GetBallCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//System.out.println("ehhhhh");
     	requires(Robot.launcher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//System.out.println("let's see");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.launcher.getBall();
-    	//System.out.println("might work");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-      //Robot.launcher.resetPusher();
-    	
     	return false;
     }
 

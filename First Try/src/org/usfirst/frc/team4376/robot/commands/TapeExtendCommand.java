@@ -12,19 +12,16 @@ public class TapeExtendCommand extends Command {
     public TapeExtendCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	System.out.println("tape extend is kinda close");
     	requires(Robot.tape);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("tape extend command is initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.tape.tapeExtend();
-    	System.out.println("tape extend is executed");
     }
 
     // Make this return true when this Command no longer needs to run execute()

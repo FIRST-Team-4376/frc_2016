@@ -31,19 +31,12 @@ public class LauncherSubsystem extends Subsystem {
 		}
 
 	public LauncherSubsystem() {
-		//liftMotor = new TalonSRX(RobotMap.LIFT_MOTOR);
 		pusher = new DoubleSolenoid(RobotMap.PUSH_BALL_FORWARD_SOLENOID, RobotMap.PUSH_BALL_REVERSE_SOLENOID);
 		leftLaunchMotor = new CANTalon(RobotMap.LEFT_LAUNCH_MOTOR_SRX);
 		rightLaunchMotor = new CANTalon(RobotMap.RIGHT_LAUNCH_MOTOR_SRX);
 	}
 
-
-	//public void robotUp(){
-		//liftMotor.set(0.5);
-	//}
-
 	public void launchBall(){
-		//System.out.print("LAUNCHBALL!");
 		leftLaunchMotor.set(-1);
 		rightLaunchMotor.set(1);
 	}
@@ -63,7 +56,6 @@ public class LauncherSubsystem extends Subsystem {
 	}
 
 	protected boolean isFinished() {
-		 //System.out.print("IS FINISHED!");
 
 		 leftLaunchMotor.set(0.0);
 		 rightLaunchMotor.set(0.0);

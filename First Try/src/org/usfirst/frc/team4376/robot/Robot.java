@@ -49,7 +49,6 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	
-    	System.out.println("does this work");
 		chooser = new SendableChooser();
 		chooser.addDefault("Default Auto", new AutoDrive());
 		chooser.addObject("Rocky Terrain", new RockyTerrain());
@@ -59,8 +58,6 @@ public class Robot extends IterativeRobot {
 		
 		camServer = CameraServer.getInstance();
 		lifecam = new USBCamera("cam0");
-		
-		//SmartDashboard.putBoolean("Test Button Value", oi.liftUp.get());
     	
     }
 	

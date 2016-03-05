@@ -12,13 +12,11 @@ public class LiftUpCommand extends Command {
     public LiftUpCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	System.out.println("lift up is kinda close");
     	requires(Robot.lift);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("lift up command is initialized");
     }
 
     // Called repeatedly when this Command is scheduled to run
