@@ -41,16 +41,8 @@ public class AutoDrive extends Command {
     		Robot.chassis.driveMe(.75, .25);
     	}
     	
-    	while(timer.get() > 10.5 && timer.get() <= 12.5){
+    	while(timer.get() > 10.5 && timer.get() <= 12.0){
     		Robot.chassis.driveMe(.553, .5);
-    	}
-    	
-    	while(timer.get() > 12.5 && timer.get() <= 14.0){
-    		Robot.launcher.launchBall();
-    	}
-    	
-    	while(timer.get() > 13.0){
-    		Robot.launcher.pushBall();
     	}
     }
 
@@ -62,7 +54,6 @@ public class AutoDrive extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	Robot.chassis.stopMe();
-    	Robot.launcher.stopLaunchBall();
     }
 
     // Called when another command which requires one or more of the same
