@@ -128,7 +128,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        Timer.delay(0.01);
+        Timer.delay(0.02);
     }
     
     /**
