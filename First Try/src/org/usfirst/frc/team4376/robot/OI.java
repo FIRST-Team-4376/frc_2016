@@ -63,7 +63,6 @@ public class OI {
 	public Joystick buttonStick;
 	public Button launchButton;
 	public Button getBallButton;
-	public GlobalVariableHolder varHolder;
 	public Button portcullisOut;
 	public Button portcullisIn;
 	public Button tapeExtend;
@@ -80,13 +79,6 @@ public class OI {
 		leftDriveStick = new Joystick(RobotMap.LEFT_DRIVE_JOYSTICK);
 		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
 		
-		/*JoystickButton liftUp = new JoystickButton(buttonStick, 4);
-		JoystickButton liftDown = new JoystickButton(buttonStick, 1);
-		liftUp.whenPressed(new LiftUpCommand());
-		liftUp.whenReleased(new StopLiftUpCommand());
-		liftDown.whenPressed(new LiftDownCommand());
-		liftDown.whenReleased(new StopLiftUpCommand());*/
-		
 		JoystickButton portcullisUp = new JoystickButton(buttonStick, 10);
 		portcullisUp.whenPressed(new PortcullisUpCommand());
 		portcullisUp.whenReleased(new LiftUpCommand());
@@ -97,11 +89,6 @@ public class OI {
 		
 		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
 		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
-
-		//JoystickButton invertButton = new JoystickButton(buttonStick, 5);
-		//varHolder = new GlobalVariableHolder();
-		//invertButton.whileHeld(new InvertCommand(varHolder));
-		//invertButton.whenReleased(new UnInvertCommand(varHolder));
 		
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());

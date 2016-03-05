@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4376.robot.commands;
 
-import org.usfirst.frc.team4376.robot.GlobalVariableHolder;
 import org.usfirst.frc.team4376.robot.Robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -10,19 +9,16 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RetractPusherCommand extends Command {
-	public GlobalVariableHolder varHolder;
 
     public RetractPusherCommand() {
     	//varHolder = holder;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	//System.out.println("ehhhhh");
     	requires(Robot.launcher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	//System.out.println("let's see");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,7 +31,6 @@ public class RetractPusherCommand extends Command {
     	} else {
     		Robot.launcher.resetPusher();
     	}*/
-    	//System.out.println("might work");
     }
 
     // Make this return true when this Command no longer needs to run execute()
