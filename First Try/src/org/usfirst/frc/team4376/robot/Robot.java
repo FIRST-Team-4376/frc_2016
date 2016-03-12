@@ -7,7 +7,6 @@ import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LauncherSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.PortcullisLifterSubsystem;
-import org.usfirst.frc.team4376.robot.subsystems.TapeMeasureSubsystem;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -31,7 +30,6 @@ public class Robot extends IterativeRobot {
 
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
 	public static final LiftUpSubsystem lift = new LiftUpSubsystem();
-	public static final TapeMeasureSubsystem tape = new TapeMeasureSubsystem();
 	public static final LauncherSubsystem launcher = new LauncherSubsystem();
 	public static final PortcullisLifterSubsystem portcullisLifter = new PortcullisLifterSubsystem();
 	public static OI oi = new OI();

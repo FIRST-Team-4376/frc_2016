@@ -12,10 +12,6 @@ import org.usfirst.frc.team4376.robot.commands.PushBallCommand;
 import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
-import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
-import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
 import org.usfirst.frc.team4376.robot.commands.PowerDownCommand;
 
@@ -106,13 +102,6 @@ public class OI {
 		
 		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
 		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
-		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
-		tapeExtend.whenPressed(new TapeExtendCommand());
-		tapeExtend.whenReleased(new TapeStopCommand());
-		tapeRetract.whenPressed(new TapeRetractCommand());
-		tapeRetract.whenReleased(new TapeStopCommand());
-		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
-		pitTapeRetract.whenReleased(new TapeStopCommand());
 		
 	}
 }
