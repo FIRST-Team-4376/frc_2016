@@ -1,6 +1,7 @@
 */sysProps.xml
 sysProps.xml
 *target*
+.recommenders/
 .recommenders*
 *.recommenders/*
 *.recommenders*
