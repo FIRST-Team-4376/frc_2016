@@ -2,17 +2,18 @@ package org.usfirst.frc.team4376.robot.commands;
 
 import org.usfirst.frc.team4376.robot.Robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TapeStopCommand extends Command {
+public class LifterRetractCommand extends Command {
 
-    public TapeStopCommand() {
+    public LifterRetractCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.tape);
+    	requires(Robot.portcullisLifter);
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +22,14 @@ public class TapeStopCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.tape.tapeStop();
+    	Robot.portcullisLifter.lifterRetract();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+      //Robot.launcher.resetPusher();
+    	
+    	return false;
     }
 
     // Called once after isFinished returns true

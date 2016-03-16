@@ -15,9 +15,11 @@ public class PortcullisLifterSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	DoubleSolenoid portcullisLifter;
+	DoubleSolenoid liftingRobot;
 	
 	public PortcullisLifterSubsystem() {
 		portcullisLifter = new DoubleSolenoid(RobotMap.LIFT_PORTCULLIS_FORWARD_SOLENOID, RobotMap.LIFT_PORTCULLIS_REVERSE_SOLENOID);
+		liftingRobot = new DoubleSolenoid(RobotMap.LIFTING_ROBOT_FORWARD_SOLENOID, RobotMap.LIFTING_ROBOT_REVERSE_SOLENOID);
 	}
 	
 	public void portcullisLifterOut(){
@@ -26,6 +28,14 @@ public class PortcullisLifterSubsystem extends Subsystem {
 
 	public void portcullisLifterIn(){
 		portcullisLifter.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void lifterExtend(){
+		liftingRobot.set(DoubleSolenoid.Value.kForward);
+	}
+	
+	public void lifterRetract(){
+		liftingRobot.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	
