@@ -2,8 +2,6 @@ package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
 
-import org.usfirst.frc.team4376.robot.commands.InvertCommand;
-import org.usfirst.frc.team4376.robot.commands.UnInvertCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
