@@ -1,3 +1,5 @@
+
+// PWM 3 ANOTHER SOLENOID - on/off buttons
 package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
