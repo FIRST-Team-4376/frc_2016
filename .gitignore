@@ -3,8 +3,10 @@ sysProps.xml
 *target*
 .recommenders/
 .recommenders*
+*recommenders*
 *.recommenders/*
 *.recommenders*
+First\ Try/*.recommenders/*
 *.class
 *.xml
 *.xml*
