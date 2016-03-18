@@ -39,7 +39,7 @@ public class AutoDrive extends Command {
     	}
     	
     	while(timer.get() > 8.0 && timer.get() <= 9.0){
-    		Robot.chassis.driveMe(.75, .28);
+    		Robot.chassis.driveMe(.825, .28);
     	}
     	
     	while(timer.get() > 9.0 && timer.get() <= 10.5){
