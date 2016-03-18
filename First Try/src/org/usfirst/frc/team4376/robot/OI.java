@@ -111,14 +111,16 @@ public class OI {
 		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, RobotMap.BUTTON_RETRACT_TAPE);
 		JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
     	JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
-		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
-		JoystickButton pitTapeExtend = new JoystickButton(leftDriveStick, 8);
+    	JoystickButton tapeUnlock2 = new JoystickButton(leftDriveStick, 2);
+		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 8);
+		JoystickButton pitTapeExtend = new JoystickButton(leftDriveStick, 9);
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
 		tapeRetract.whenReleased(new TapeStopCommand());
 		tapeLock.whenReleased(new TapeLockCommand());
 		tapeUnlock.whenReleased(new TapeUnlockCommand());
+		tapeUnlock2.whenReleased(new TapeUnlockCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
 		pitTapeExtend.whenPressed(new PitTapeExtendCommand());
