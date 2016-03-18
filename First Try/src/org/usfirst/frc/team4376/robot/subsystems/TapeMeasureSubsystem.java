@@ -5,6 +5,7 @@ import org.usfirst.frc.team4376.robot.RobotMap;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 
 /**
@@ -17,10 +18,13 @@ public class TapeMeasureSubsystem extends Subsystem {
 	
 	Victor tapeMotor = new Victor(RobotMap.TAPE_MEASURE_MOTOR);
 	//DoubleSolenoid shooterBrake;
+	DoubleSolenoid tapeBrake;
 	
 	public TapeMeasureSubsystem() {
 		//shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
-		
+		tapeBrake = new DoubleSolenoid(RobotMap.LOCK_TAPE_MEASURE_FORWARD_SOLENOID, RobotMap.LOCK_TAPE_MEASURE_FORWARD_SOLENOID);
+
+
 	}
 	
 	public void tapeExtend(){
@@ -32,6 +36,12 @@ public class TapeMeasureSubsystem extends Subsystem {
 		tapeMotor.set(0.0);
 		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
 	}
+	public void lockTape(){
+		tapeBrake.set(DoubleSolenoid.Value.kReverse);
+	}
+	public void unlockTape(){
+ 		tapeBrake.set(DoubleSolenoid.Value.kForward);
+ 	}
 	
 	public void tapeRetract(){
 		tapeMotor.set(-0.5);
