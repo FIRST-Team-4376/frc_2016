@@ -22,7 +22,7 @@ public class TapeMeasureSubsystem extends Subsystem {
 	
 	public TapeMeasureSubsystem() {
 		//shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
-		tapeBrake = new DoubleSolenoid(RobotMap.LOCK_TAPE_MEASURE_FORWARD_SOLENOID, RobotMap.LOCK_TAPE_MEASURE_FORWARD_SOLENOID);
+		tapeBrake = new DoubleSolenoid(RobotMap.LOCK_TAPE_MEASURE_FORWARD_SOLENOID, RobotMap.LOCK_TAPE_MEASURE_REVERSE_SOLENOID);
 
 
 	}
@@ -37,10 +37,10 @@ public class TapeMeasureSubsystem extends Subsystem {
 		//shooterBrake.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void lockTape(){
-		tapeBrake.set(DoubleSolenoid.Value.kReverse);
+		tapeBrake.set(DoubleSolenoid.Value.kForward);
 	}
 	public void unlockTape(){
- 		tapeBrake.set(DoubleSolenoid.Value.kForward);
+ 		tapeBrake.set(DoubleSolenoid.Value.kReverse);
  	}
 	
 	public void tapeRetract(){
