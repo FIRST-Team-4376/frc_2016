@@ -43,4 +43,8 @@ public class RobotMap {
 	public static int LOCK_TAPE_MEASURE_FORWARD_SOLENOID = 0;
 	public static int LOCK_TAPE_MEASURE_REVERSE_SOLENOID = 1;
 
+  //Buttons
+  public static int BUTTON_LOCK_TAPE = 1;
+  public static int BUTTON_UNLOCK_TAPE = 0;
+
 }

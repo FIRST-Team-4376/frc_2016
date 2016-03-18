@@ -8,9 +8,9 @@ package org.usfirst.frc.team4376.robot.commands;
  /**
   *
   */
- public class LockTapeCommand extends Command {
+ public class TapeLockCommand extends Command {
 
-     public LockTapeCommand() {
+     public TapeLockCommand() {
          // Use requires() here to declare subsystem dependencies
          // eg. requires(chassis);
        //System.out.println("ehhhhh");

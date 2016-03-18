@@ -2,6 +2,8 @@ package org.usfirst.frc.team4376.robot;
 
 import java.awt.Button;
 
+import org.usfirst.frc.team4376.robot.RobotMap;
+
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
@@ -106,6 +108,8 @@ public class OI {
 		
 		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
 		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
+    JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
+    JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
 		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
