@@ -111,6 +111,7 @@ public class OI {
 		JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
     	JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
 		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
+		JoystickButton pitTapeExtend = new JoystickButton(leftDriveStick, 8);
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
@@ -119,6 +120,8 @@ public class OI {
 		tapeUnlock.whenReleased(new TapeUnlockCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
+		pitTapeExtend.whenPressed(new PitTapeExtendCommand());
+		pitTapeExtend.whenReleased(new TapeStopCommand());
 		
 	}
 }
