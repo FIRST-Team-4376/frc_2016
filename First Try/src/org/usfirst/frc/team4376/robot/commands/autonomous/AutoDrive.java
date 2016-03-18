@@ -48,11 +48,12 @@ public class AutoDrive extends Command {
     	}
     	
     	while(timer.get() > 10.5 && timer.get() <= 11.5){
+    		Robot.launcher.pushBall();
     		Robot.launcher.launchBall();
     	}
-    	while(timer.get() > 11.0 && timer.get() <= 11.5){
-    		Robot.launcher.pushBall();
-    	}
+//    	while(timer.get() > 11.0 && timer.get() <= 11.5){
+//    		Robot.launcher.pushBall();
+//    	}
     	
     	while(timer.get() > 11.5 && timer.get() <= 12.5){
     		Robot.launcher.stopLaunchBall();
