@@ -106,8 +106,8 @@ public class OI {
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		
 		
-		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, 3);
-		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, 2);
+		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, RobotMap.BUTTON_EXTEND_TAPE);
+		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, RobotMap.BUTTON_RETRACT_TAPE);
     JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
     JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
 		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
@@ -115,6 +115,8 @@ public class OI {
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
 		tapeRetract.whenReleased(new TapeStopCommand());
+    tapeLock.whenReleased(new TapeLockCommand());
+    tapeUnlock.whenReleased(new TapeUnlockCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
 		

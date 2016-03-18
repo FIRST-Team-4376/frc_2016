@@ -17,23 +17,23 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 
 
-	//USB Ports
+	//USB PORTS /////////////////////////////////////////////////////
 	//public static int DRIVE_JOYSTICK = 0;
 	public static int BUTTON_JOYSTICK = 2;
 	public static int LEFT_DRIVE_JOYSTICK = 0;
 	public static int RIGHT_DRIVE_JOYSTICK = 1;
 
-	//PWM Ports
+	// PWM PORTS /////////////////////////////////////////////////////
 	public static int LEFT_DRIVE_MOTOR = 1;
 	public static int RIGHT_DRIVE_MOTOR = 0;
 	public static int TAPE_MEASURE_MOTOR = 2;
 
-	//Talon SRX Ports
+	// TALON SRX PORTS /////////////////////////////////////////////////////
 	public static int LIFT_MOTOR = 3;
 	public static int LEFT_LAUNCH_MOTOR_SRX = 2;
 	public static int RIGHT_LAUNCH_MOTOR_SRX = 4;
 
-	//Solenoids
+	// SOLENOIDS /////////////////////////////////////////////////////
 	public static int PUSH_BALL_FORWARD_SOLENOID = 7;
 	public static int PUSH_BALL_REVERSE_SOLENOID = 6;
 	public static int LIFT_PORTCULLIS_FORWARD_SOLENOID = 2;
@@ -43,8 +43,13 @@ public class RobotMap {
 	public static int LOCK_TAPE_MEASURE_FORWARD_SOLENOID = 0;
 	public static int LOCK_TAPE_MEASURE_REVERSE_SOLENOID = 1;
 
-  //Buttons
+  // BUTTONS /////////////////////////////////////////////////////
+
+  // Left Drive Stick
   public static int BUTTON_LOCK_TAPE = 1;
-  public static int BUTTON_UNLOCK_TAPE = 0;
+  public static int BUTTON_UNLOCK_TAPE = 3;
+  public static int BUTTON_EXTEND_TAPE = 5;
+  public static int BUTTON_RETRACT_TAPE = 4;
+
 
 }
