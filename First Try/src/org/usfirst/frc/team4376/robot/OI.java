@@ -5,8 +5,6 @@ import java.awt.Button;
 import org.usfirst.frc.team4376.robot.RobotMap;
 
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
-import org.usfirst.frc.team4376.robot.commands.LiftDownCommand;
-import org.usfirst.frc.team4376.robot.commands.StopLiftUpCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
@@ -15,7 +13,9 @@ import org.usfirst.frc.team4376.robot.commands.RetractPusherCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterOutCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisLifterInCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeExtendCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeLockCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeStopCommand;
+import org.usfirst.frc.team4376.robot.commands.TapeUnlockCommand;
 import org.usfirst.frc.team4376.robot.commands.TapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PitTapeRetractCommand;
 import org.usfirst.frc.team4376.robot.commands.PortcullisUpCommand;
@@ -108,15 +108,15 @@ public class OI {
 		
 		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, RobotMap.BUTTON_EXTEND_TAPE);
 		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, RobotMap.BUTTON_RETRACT_TAPE);
-    JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
-    JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
+		JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
+    	JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
 		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 9);
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
 		tapeRetract.whenReleased(new TapeStopCommand());
-    tapeLock.whenReleased(new TapeLockCommand());
-    tapeUnlock.whenReleased(new TapeUnlockCommand());
+		tapeLock.whenReleased(new TapeLockCommand());
+		tapeUnlock.whenReleased(new TapeUnlockCommand());
 		pitTapeRetract.whenPressed(new PitTapeRetractCommand());
 		pitTapeRetract.whenReleased(new TapeStopCommand());
 		
