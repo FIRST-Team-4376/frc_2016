@@ -51,8 +51,8 @@ public class LauncherSubsystem extends Subsystem {
 	}
 
 	public void getBall(){
-		leftLaunchMotor.set(.4);
-		rightLaunchMotor.set(-.4);
+		leftLaunchMotor.set(.3);
+		rightLaunchMotor.set(-.3);
 	}
 
 	protected boolean isFinished() {
