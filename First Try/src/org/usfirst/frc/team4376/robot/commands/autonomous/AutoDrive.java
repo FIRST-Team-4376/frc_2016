@@ -51,13 +51,14 @@ public class AutoDrive extends Command {
     		Robot.launcher.pushBall();
     		Robot.launcher.launchBall();
     	}
-//    	while(timer.get() > 11.0 && timer.get() <= 11.5){
-//    		Robot.launcher.pushBall();
-//    	}
     	
-    	while(timer.get() > 12.0 && timer.get() <= 13.0){
+    	while(timer.get() > 12.0 && timer.get() <= 12.5){
     		Robot.launcher.stopLaunchBall();
     		Robot.launcher.resetPusher();
+    	}
+    	
+    	while(timer.get() > 12.5 && timer.get() <= 14.0){
+    		Robot.chassis.driveMe(.63595, -.6325);
     	}
     }
 

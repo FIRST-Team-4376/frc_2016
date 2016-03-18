@@ -44,7 +44,7 @@ public class LiftUpSubsystem extends Subsystem {
 	}
 	
 	public void aimerThingy(){
-		 liftMotor.set(Robot.oi.buttonStick.getRawAxis(1) * -0.6);	
+		 liftMotor.set(Robot.oi.buttonStick.getRawAxis(1) * -0.55);	
 	}
 	
 	public void robotDown(){
