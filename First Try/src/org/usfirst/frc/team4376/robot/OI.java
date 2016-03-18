@@ -5,6 +5,7 @@ import java.awt.Button;
 import org.usfirst.frc.team4376.robot.RobotMap;
 
 import org.usfirst.frc.team4376.robot.commands.LiftUpCommand;
+import org.usfirst.frc.team4376.robot.commands.PitTapeExtendCommand;
 import org.usfirst.frc.team4376.robot.commands.LauncherCommand;
 import org.usfirst.frc.team4376.robot.commands.GetBallCommand;
 import org.usfirst.frc.team4376.robot.commands.StopLauncherCommand;
