@@ -17,8 +17,8 @@ public class LauncherSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-	CANTalon leftLaunchMotor = new CANTalon(RobotMap.LEFT_LAUNCH_MOTOR_SRX);
-	CANTalon rightLaunchMotor = new CANTalon(RobotMap.RIGHT_LAUNCH_MOTOR_SRX);
+	CANTalon leftLaunchMotor;
+	CANTalon rightLaunchMotor;
 	DoubleSolenoid pusher;
 	//private Timer timer;
 
@@ -31,6 +31,8 @@ public class LauncherSubsystem extends Subsystem {
 		}
 
 	public LauncherSubsystem() {
+	  leftLaunchMotor = new CANTalon(RobotMap.LEFT_LAUNCH_MOTOR_SRX);
+	  rightLaunchMotor = new CANTalon(RobotMap.RIGHT_LAUNCH_MOTOR_SRX);
 		pusher = new DoubleSolenoid(RobotMap.PUSH_BALL_FORWARD_SOLENOID, RobotMap.PUSH_BALL_REVERSE_SOLENOID);
 	}
 
@@ -53,14 +55,14 @@ public class LauncherSubsystem extends Subsystem {
 		rightLaunchMotor.set(-.4);
 	}
 
-	protected boolean isFinished() {
+	// protected boolean isFinished() {
 
-		 leftLaunchMotor.set(0.0);
-		 rightLaunchMotor.set(0.0);
+	// 	 leftLaunchMotor.set(0.0);
+	// 	 rightLaunchMotor.set(0.0);
 
-		 return Robot.oi.buttonStick.getRawButton(6);
+	// 	 return Robot.oi.buttonStick.getRawButton(6);
 
-	    }
+	//     }
 
 	public void resetPusher(){
 		pusher.set(DoubleSolenoid.Value.kForward);
