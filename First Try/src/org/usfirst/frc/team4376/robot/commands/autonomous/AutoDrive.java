@@ -55,6 +55,7 @@ public class AutoDrive extends Command {
     	if(timer.get() > 12.0 && timer.get() <= 12.30){
     		Robot.launcher.stopLaunchBall();
     		Robot.launcher.resetPusher();
+    		Robot.lift.stopLiftUp();
     	}
     	
     	if(timer.get() > 12.30 && timer.get() <= 14.20){
