@@ -59,20 +59,26 @@ public class OI {
 	
 	public Joystick leftDriveStick;
 	public Joystick rightDriveStick;
-	public Button liftUp;
-	public Button liftDown;
+	// public Button liftUp;
+	// public Button liftDown;
 	public Joystick buttonStick;
-	public Button launchButton;
-	public Button getBallButton;
-	public Button portcullisOut;
-	public Button portcullisIn;
-	public Button tapeExtend;
-	public Button tapeRetract;
-	public Button pitTapeRetract;
-	public Button pushBall;
-	public Button retractPusher;
-	public Button portcullisUp;
-	public Button powerDown;
+	JoystickButton launchButton = new JoystickButton(buttonStick, 6);
+	JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
+	JoystickButton portcullisOut = new JoystickButton(buttonStick, 3);
+	JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
+	JoystickButton pushBall = new JoystickButton(buttonStick, 8);
+	JoystickButton retractPusher = new JoystickButton(buttonStick, 7);
+	JoystickButton portcullisUp = new JoystickButton(buttonStick, 10);
+  JoystickButton powerDown = new JoystickButton(buttonStick, 9);
+
+
+  JoystickButton tapeExtend = new JoystickButton(leftDriveStick, RobotMap.BUTTON_EXTEND_TAPE);
+  JoystickButton tapeRetract = new JoystickButton(leftDriveStick, RobotMap.BUTTON_RETRACT_TAPE);
+  JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
+  JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
+  JoystickButton tapeUnlock2 = new JoystickButton(leftDriveStick, 2);
+  JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 8);
+  JoystickButton pitTapeExtend = new JoystickButton(leftDriveStick, 9);
 	
 	public OI() {
 		
@@ -80,40 +86,26 @@ public class OI {
 		leftDriveStick = new Joystick(RobotMap.LEFT_DRIVE_JOYSTICK);
 		rightDriveStick = new Joystick(RobotMap.RIGHT_DRIVE_JOYSTICK);
 		
-		JoystickButton portcullisUp = new JoystickButton(buttonStick, 10);
 		portcullisUp.whenPressed(new PortcullisUpCommand());
 		portcullisUp.whenReleased(new LiftUpCommand());
 		
-		JoystickButton powerDown = new JoystickButton(buttonStick, 9);
 		powerDown.whenPressed(new PowerDownCommand());
 		powerDown.whenReleased(new LiftUpCommand());
 		
-		JoystickButton launchButton = new JoystickButton(buttonStick, 6);
-		JoystickButton getBallButton = new JoystickButton(buttonStick, 5);
 		
 		launchButton.whenPressed(new LauncherCommand());
 		launchButton.whenReleased(new StopLauncherCommand());
 		getBallButton.whenPressed(new GetBallCommand());
 		getBallButton.whenReleased(new StopLauncherCommand());
 		
-		JoystickButton pushBall = new JoystickButton(buttonStick, 8);
-		JoystickButton retractPusher = new JoystickButton(buttonStick, 7);
 		pushBall.whenPressed(new PushBallCommand());
 		retractPusher.whenPressed(new RetractPusherCommand());
 		
-		JoystickButton portcullisOut = new JoystickButton(buttonStick, 3);
-		JoystickButton portcullisIn = new JoystickButton(buttonStick, 2);
 		portcullisOut.whenPressed(new PortcullisLifterOutCommand());
 		portcullisIn.whenPressed(new PortcullisLifterInCommand());
 		
 		
-		JoystickButton tapeExtend = new JoystickButton(leftDriveStick, RobotMap.BUTTON_EXTEND_TAPE);
-		JoystickButton tapeRetract = new JoystickButton(leftDriveStick, RobotMap.BUTTON_RETRACT_TAPE);
-		JoystickButton tapeLock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_LOCK_TAPE);
-    	JoystickButton tapeUnlock = new JoystickButton(leftDriveStick, RobotMap.BUTTON_UNLOCK_TAPE);
-    	JoystickButton tapeUnlock2 = new JoystickButton(leftDriveStick, 2);
-		JoystickButton pitTapeRetract = new JoystickButton(leftDriveStick, 8);
-		JoystickButton pitTapeExtend = new JoystickButton(leftDriveStick, 9);
+
 		tapeExtend.whenPressed(new TapeExtendCommand());
 		tapeExtend.whenReleased(new TapeStopCommand());
 		tapeRetract.whenPressed(new TapeRetractCommand());
