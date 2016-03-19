@@ -38,27 +38,27 @@ public class AutoDrive extends Command {
     		Robot.chassis.driveMe(.63595, .6330);
     	}
     	
-    	if(timer.get() > 7.5 && timer.get() <= 9.10){
+    	if(timer.get() > 7.5 && timer.get() <= 8.90){
     		Robot.chassis.driveMe(.75, .28);
     	}
     	
-    	if(timer.get() > 9.101 && timer.get() <= 10.85){
+    	if(timer.get() > 8.9 && timer.get() <= 10.65){
     		Robot.chassis.driveMe(.63595, .6325);
     		Robot.launcher.resetPusher();
     	}
     	
-    	if(timer.get() > 10.85 && timer.get() <= 11.85){
+    	if(timer.get() > 10.65 && timer.get() <= 11.65){
     		Robot.launcher.pushBall();
     		Robot.launcher.launchBall();
     	}
     	
-    	if(timer.get() > 11.85 && timer.get() <= 12.15){
+    	if(timer.get() > 11.65 && timer.get() <= 11.95){
     		Robot.launcher.stopLaunchBall();
     		Robot.launcher.resetPusher();
     		Robot.lift.stopLiftUp();
     	}
     	
-    	if(timer.get() > 12.15 && timer.get() <= 14.05){
+    	if(timer.get() > 11.95 && timer.get() <= 13.85){
     		Robot.chassis.driveMe(.699545, -.69575);
     	}
     }
