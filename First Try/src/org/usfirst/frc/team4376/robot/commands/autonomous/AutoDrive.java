@@ -29,35 +29,35 @@ public class AutoDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	while(timer.get() <= 1.0){
+    	if(timer.get() <= 1.0){
     		Robot.launcher.pushBall();
     		Robot.lift.robotDown();
     	}
     	
-    	while(timer.get() > 1.0 && timer.get() <= 7.5){
+    	if(timer.get() > 1.0 && timer.get() <= 7.5){
     		Robot.chassis.driveMe(.63595, .6330);
     	}
     	
-    	while(timer.get() > 7.5 && timer.get() <= 9.25){
+    	if(timer.get() > 7.5 && timer.get() <= 9.25){
     		Robot.chassis.driveMe(.75, .28);
     	}
     	
-    	while(timer.get() > 9.25 && timer.get() <= 11.0){
+    	if(timer.get() > 9.25 && timer.get() <= 11.0){
     		Robot.chassis.driveMe(.63595, .6325);
     		Robot.launcher.resetPusher();
     	}
     	
-    	while(timer.get() > 11.0 && timer.get() <= 12.0){
+    	if(timer.get() > 11.0 && timer.get() <= 12.0){
     		Robot.launcher.pushBall();
     		Robot.launcher.launchBall();
     	}
     	
-    	while(timer.get() > 12.0 && timer.get() <= 12.30){
+    	if(timer.get() > 12.0 && timer.get() <= 12.30){
     		Robot.launcher.stopLaunchBall();
     		Robot.launcher.resetPusher();
     	}
     	
-    	while(timer.get() > 12.30 && timer.get() <= 14.20){
+    	if(timer.get() > 12.30 && timer.get() <= 14.20){
     		Robot.chassis.driveMe(.699545, -.69575);
     	}
     }
