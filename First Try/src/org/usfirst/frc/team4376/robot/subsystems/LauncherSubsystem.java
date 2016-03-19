@@ -32,8 +32,6 @@ public class LauncherSubsystem extends Subsystem {
 
 	public LauncherSubsystem() {
 		pusher = new DoubleSolenoid(RobotMap.PUSH_BALL_FORWARD_SOLENOID, RobotMap.PUSH_BALL_REVERSE_SOLENOID);
-		leftLaunchMotor = new CANTalon(RobotMap.LEFT_LAUNCH_MOTOR_SRX);
-		rightLaunchMotor = new CANTalon(RobotMap.RIGHT_LAUNCH_MOTOR_SRX);
 	}
 
 	public void launchBall(){

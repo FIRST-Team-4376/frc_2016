@@ -20,7 +20,6 @@ public class LiftUpSubsystem extends Subsystem {
 	//DoubleSolenoid shooterBrake;
 	
 	public LiftUpSubsystem() {
-		liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
 		//shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
 		
 	}
