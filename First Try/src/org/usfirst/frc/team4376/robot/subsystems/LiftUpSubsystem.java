@@ -16,11 +16,10 @@ public class LiftUpSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	CANTalon liftMotor;
+	CANTalon liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
 	//DoubleSolenoid shooterBrake;
 	
 	public LiftUpSubsystem() {
-		CANTalon liftMotor = new CANTalon(RobotMap.LIFT_MOTOR);
 		//shooterBrake = new DoubleSolenoid(RobotMap.LOCK_SHOOTER_FORWARD_SOLENOID, RobotMap.LOCK_SHOOTER_REVERSE_SOLENOID);
 		
 	}
