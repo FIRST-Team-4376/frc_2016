@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
 	public static final RampMotorSubsystem ramp = new RampMotorSubsystem();
+	public static final BallDoorSubsystem ballDoor = new BallDoorSubsystem();
 
 	public static OI oi;
 	

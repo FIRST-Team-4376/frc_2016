@@ -53,6 +53,12 @@ public class OI {
 		
 		JoystickButton rampUp = new JoystickButton(driveStick, 10);
 		JoystickButton rampDown = new JoystickButton(driveStick, 9);
+
+		JoystickButton ballDoorOpen = new JoystickButton(driveStick, 3);
+		JoystickButton ballDoorClose = new JoystickButton(driveStick, 4);
+
+		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
+		ballDoorClose.whenPressed(new BallDoorCloseCommand());
 		
 		rampUp.whenPressed(new RampUpCommand());
 		rampUp.whenReleased(new RampAtRestCommand());
