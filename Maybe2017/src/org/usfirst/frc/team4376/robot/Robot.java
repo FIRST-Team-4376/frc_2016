@@ -36,13 +36,6 @@ public class Robot extends IterativeRobot {
 	public static final BallDoorSubsystem ballDoor = new BallDoorSubsystem();
 	public static final PickUpSubsystem pickUp = new PickUpSubsystem();
 
-
-	private final int camCenter;
-	private final int camRight;
-	private int curCam;
-	private Image frame;
-	private CameraServer server;
-
 	public static OI oi;
 	
 	CameraServer camServer;
@@ -61,23 +54,9 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new FirstAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-
-		// camServer = CameraServer.getInstance();
-		// lifecam = new UsbCamera("cam0", 0);
-
-
-
-		// Get camera ids by supplying camera name ex 'cam0', found on roborio web interface
-		camLeft = NIVision.IMAQdxOpenCamera("cam0", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-		camRight = NIVision.IMAQdxOpenCamera("cam1", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
-		curCam = camLeft;
-		// Img that will contain camera img
-		frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
-		// Server that we'll give the img to
-		server = CameraServer.getInstance();
-		server.setQuality(60);
-
-
+		
+		camServer = CameraServer.getInstance();
+		lifecam = new UsbCamera("cam0", 0);
 	}
 
 	/**
@@ -138,32 +117,10 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-
-		if(contr.getButton(Config.CameraFeeds.btCamCenter))
-			changeCam(camCenter);
-
-		if(contr.getButton(Config.CameraFeeds.btCamRight))
-			changeCam(camRight);
-
-		updateCam();
-
-		// lifecam.setFPS(15);
-  //       //lifecam.openCamera();
-  //       camServer.startAutomaticCapture(lifecam);
-	}
-
-	public void changeCam(int newId)
-	{
-		NIVision.IMAQdxStopAcquisition(curCam);
-		NIVision.IMAQdxConfigureGrab(newId);
-		NIVision.IMAQdxStartAcquisition(newId);
-		curCam = newId;
-	}
-
-	public void updateCam()
-	{
-		NIVision.IMAQdxGrab(curCam, frame, 1);
-		server.setImage(frame);
+		
+		lifecam.setFPS(15);
+        //lifecam.openCamera();
+        camServer.startAutomaticCapture(lifecam);
 	}
 
 	/**
