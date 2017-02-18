@@ -18,6 +18,9 @@ import org.usfirst.frc.team4376.robot.commands.PickUpBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
 
+import org.usfirst.frc.team4376.robot.commands.UseCamera1Command;
+import org.usfirst.frc.team4376.robot.commands.UseCamera2Command;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -57,11 +60,16 @@ public class OI {
 	public Button rampDown;
 	public Button ballDoorOpen;
 	public Button ballDoorClose;
+	public Button useCamera1;
+	public Button useCamera2;
 	
 	public OI(){
 		
 		driveStick = new Joystick(RobotMap.driveStick);
-		
+
+		JoystickButton useCamera1 = new JoystickButton(driveStick, 1);
+		JoystickButton useCamera2 = new JoystickButton(driveStick, 2);
+
 		JoystickButton rampUp = new JoystickButton(driveStick, 10);
 		JoystickButton rampDown = new JoystickButton(driveStick, 9);
 
@@ -73,6 +81,9 @@ public class OI {
 
 		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
 		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
+
+		useCamera1.whenPressed(new UseCamera1Command());
+		useCamera2.whenReleased(new UseCamera2Command());
 
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
