@@ -77,8 +77,8 @@ public class OI {
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
 		ballDoorClose.whenPressed(new BallDoorCloseCommand());
-		ballDoorOpen.whenReleased(new BallDoorRestCommand());
-		ballDoorClose.whenReleased(new BallDoorRestCommand());
+		//ballDoorOpen.whenReleased(new BallDoorRestCommand());
+		//ballDoorClose.whenReleased(new BallDoorRestCommand());
 		
 		rampUp.whenPressed(new RampUpCommand());
 		rampUp.whenReleased(new RampAtRestCommand());
@@ -94,10 +94,26 @@ public class OI {
 		
 		putDownBalls.whenPressed(new PutDownBallsCommand());
 		putDownBalls.whenReleased(new StopBallsCommand());
-
 		pickUpBalls.whenPressed(new PickUpBallsCommand());
 		pickUpBalls.whenReleased(new StopBallsCommand());
-
+		
+		// Ball pick-up attempt to toggle:
+		
+		boolean toggle = true;
+		boolean pickUp = false;
+		if (toggle && pickUpBalls.get() == true) {
+			toggle = false;
+			if (pickUp){
+				pickUp = false;
+				new PickUpBallsCommand();
+			}	else{
+			pickUp = true;
+				new StopBallsCommand();
+		} }
+			else if(pickUpBalls.get() == false) {
+				toggle = true;
+			}
 	}
 	
 }
+
