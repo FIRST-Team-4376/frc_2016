@@ -15,7 +15,10 @@ import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.LiftSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,8 +31,10 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final ChassisSubsystem chassis = new ChassisSubsystem();
+	public static final LiftSubsystem lift = new LiftSubsystem();
 	public static final RampMotorSubsystem ramp = new RampMotorSubsystem();
 	public static final BallDoorSubsystem ballDoor = new BallDoorSubsystem();
+	public static final PickUpSubsystem pickUp = new PickUpSubsystem();
 
 	public static OI oi;
 	

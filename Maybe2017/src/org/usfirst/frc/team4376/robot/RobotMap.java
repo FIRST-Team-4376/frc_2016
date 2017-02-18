@@ -26,7 +26,11 @@ public class RobotMap {
 	
 	public static int rampMotor = 0;
 	
-	public static int liftMotor = 9;
+	public static int pickUpMotor = 6;
+	
+	public static int ballDoorServo = 7;
+	
+	public static int liftMotor = 1;
 	
 	public static int driveStick = 0;
 	

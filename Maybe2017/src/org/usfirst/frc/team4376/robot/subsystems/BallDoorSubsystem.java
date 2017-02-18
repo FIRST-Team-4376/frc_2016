@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4376.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4376.robot.RobotMap;
 
@@ -17,18 +17,18 @@ public class BallDoorSubsystem extends Subsystem {
   
   public BallDoorSubsystem() {
     
-    ballDoorServo = new Servo(1);
+    ballDoorServo = new Servo(RobotMap.ballDoorServo);
 
   }
   
   public void ballDoorOpen(){
     
-    ballDoorServo.setAngle(75);
+    ballDoorServo.set(1);
   }
   
   public void ballDoorClose(){
     
-    ballDoorServo.setAngle(25);
+    ballDoorServo.set(-.5);
   }
   
   public void ballDoorRest(){

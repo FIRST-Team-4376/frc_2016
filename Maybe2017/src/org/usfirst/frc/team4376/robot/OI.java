@@ -8,6 +8,15 @@ import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.RampUpCommand;
 import org.usfirst.frc.team4376.robot.commands.RampDownCommand;
 import org.usfirst.frc.team4376.robot.commands.RampAtRestCommand;
+import org.usfirst.frc.team4376.robot.commands.BallDoorOpenCommand;
+import org.usfirst.frc.team4376.robot.commands.BallDoorRestCommand;
+import org.usfirst.frc.team4376.robot.commands.BallDoorCloseCommand;
+import org.usfirst.frc.team4376.robot.commands.LiftBotCommand;
+import org.usfirst.frc.team4376.robot.commands.LowerBotCommand;
+import org.usfirst.frc.team4376.robot.commands.RestBotCommand;
+import org.usfirst.frc.team4376.robot.commands.PickUpBallsCommand;
+import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
+import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
 
 
 /**
@@ -44,8 +53,10 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	public Joystick driveStick;
-	public Button RampUp;
-	public Button RampDown;
+	public Button rampUp;
+	public Button rampDown;
+	public Button ballDoorOpen;
+	public Button ballDoorClose;
 	
 	public OI(){
 		
@@ -56,15 +67,36 @@ public class OI {
 
 		JoystickButton ballDoorOpen = new JoystickButton(driveStick, 3);
 		JoystickButton ballDoorClose = new JoystickButton(driveStick, 4);
+		
+		JoystickButton liftBot = new JoystickButton(driveStick, 7);
+		JoystickButton lowerBot = new JoystickButton(driveStick, 8);
+
+		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
+		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
+
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
 		ballDoorClose.whenPressed(new BallDoorCloseCommand());
+		ballDoorOpen.whenReleased(new BallDoorRestCommand());
+		ballDoorClose.whenReleased(new BallDoorRestCommand());
 		
 		rampUp.whenPressed(new RampUpCommand());
 		rampUp.whenReleased(new RampAtRestCommand());
 		
 		rampDown.whenPressed(new RampDownCommand());
 		rampDown.whenReleased(new RampAtRestCommand());
+		
+		liftBot.whenPressed(new LiftBotCommand());
+		liftBot.whenReleased(new RestBotCommand());
+		
+		lowerBot.whenPressed(new LowerBotCommand());
+		lowerBot.whenReleased(new RestBotCommand());
+		
+		putDownBalls.whenPressed(new PutDownBallsCommand());
+		putDownBalls.whenReleased(new StopBallsCommand());
+
+		pickUpBalls.whenPressed(new PickUpBallsCommand());
+		pickUpBalls.whenReleased(new StopBallsCommand());
 
 	}
 	

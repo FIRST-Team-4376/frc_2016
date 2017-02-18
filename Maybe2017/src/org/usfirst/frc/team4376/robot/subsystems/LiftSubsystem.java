@@ -23,12 +23,12 @@ public class LiftSubsystem extends Subsystem {
 	
 	public void liftBot(){
 		
-		liftMotor.set(.3);
+		liftMotor.set(1);
 	}
 	
 	public void lowerBot(){
 		
-		liftMotor.set(-.3);
+		liftMotor.set(-.5);
 	}
 	
 	public void restBot(){
