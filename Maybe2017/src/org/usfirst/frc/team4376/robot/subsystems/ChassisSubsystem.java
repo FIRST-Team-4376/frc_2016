@@ -38,6 +38,10 @@ public class ChassisSubsystem extends Subsystem {
 		
 	}
 	
+	public void driveMe(double x, double y, double rotation) {
+		chassis.mecanumDrive_Cartesian(x, y, rotation, 0);
+	}
+	
 	public void stopMe(){
 		
 		chassis.mecanumDrive_Cartesian(0, 0, 0, 0);
