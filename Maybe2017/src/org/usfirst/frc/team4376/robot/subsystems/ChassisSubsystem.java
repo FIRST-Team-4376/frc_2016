@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4376.robot.RobotMap;
 import org.usfirst.frc.team4376.robot.commands.DriveCommand;
+import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 
 
 
@@ -34,6 +35,8 @@ public class ChassisSubsystem extends Subsystem {
 	}
 	
 	public void driveMe(){		
+		new LineUpGearCommand().execute();
+		System.out.println("TEST");
 		chassis.mecanumDrive_Cartesian(stick.getX() * .5, stick.getY() * .5, stick.getZ() * .5, 0);
 		
 	}

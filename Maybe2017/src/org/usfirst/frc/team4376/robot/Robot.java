@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
+import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftSubsystem;
@@ -50,6 +51,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		System.out.println("INIT");
 		oi = new OI();
 		chooser.addDefault("Default Auto", new FirstAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -128,6 +130,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		//new LineUpGearCommand().execute();
 		Scheduler.getInstance().run();
 	}
 

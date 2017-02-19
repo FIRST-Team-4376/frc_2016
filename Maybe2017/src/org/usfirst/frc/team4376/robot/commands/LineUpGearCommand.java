@@ -21,9 +21,10 @@ public class LineUpGearCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	double dCx = SmartDashboard.getDouble("dCx", -1);
-    	System.out.println("dCx: " + dCx);
+    public void execute() {
+    	System.out.println("test");
+    	double robotTime = SmartDashboard.getDouble("robotTime", -1);
+    	System.out.println("Robot Time: " + robotTime);
     }
 
     // Make this return true when this Command no longer needs to run execute()
