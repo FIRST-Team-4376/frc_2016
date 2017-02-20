@@ -20,6 +20,7 @@ import org.usfirst.frc.team4376.robot.subsystems.LiftSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
+import org.usfirst.frc.team4376.robot.subsystems.VisionSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,6 +37,7 @@ public class Robot extends IterativeRobot {
 	public static final RampMotorSubsystem ramp = new RampMotorSubsystem();
 	public static final BallDoorSubsystem ballDoor = new BallDoorSubsystem();
 	public static final PickUpSubsystem pickUp = new PickUpSubsystem();
+	public static final VisionSubsystem vision = new VisionSubsystem();
 
 	public static OI oi;
 	

@@ -35,8 +35,6 @@ public class ChassisSubsystem extends Subsystem {
 	}
 	
 	public void driveMe(){		
-		new LineUpGearCommand().execute();
-		System.out.println("TEST");
 		chassis.mecanumDrive_Cartesian(stick.getX() * .5, stick.getY() * .5, stick.getZ() * .5, 0);
 		
 	}

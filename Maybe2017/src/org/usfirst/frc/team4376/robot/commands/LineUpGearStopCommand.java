@@ -3,17 +3,18 @@ package org.usfirst.frc.team4376.robot.commands;
 import org.usfirst.frc.team4376.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class LineUpGearCommand extends Command {
+public class LineUpGearStopCommand extends Command {
 
-    public LineUpGearCommand() {
+    public LineUpGearStopCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.vision);
+    	
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +23,7 @@ public class LineUpGearCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     public void execute() {
-    	Robot.vision.lineUpGear();
+    	Robot.vision.stopLineUpGear();
     }
 
     // Make this return true when this Command no longer needs to run execute()

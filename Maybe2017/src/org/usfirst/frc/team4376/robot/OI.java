@@ -18,6 +18,7 @@ import org.usfirst.frc.team4376.robot.commands.PickUpBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
+import org.usfirst.frc.team4376.robot.commands.LineUpGearStopCommand;
 
 
 /**
@@ -79,6 +80,7 @@ public class OI {
 
 
 		lineUpGear.whenPressed(new LineUpGearCommand());
+		lineUpGear.whenPressed(new LineUpGearStopCommand());
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
 		ballDoorClose.whenPressed(new BallDoorCloseCommand());
