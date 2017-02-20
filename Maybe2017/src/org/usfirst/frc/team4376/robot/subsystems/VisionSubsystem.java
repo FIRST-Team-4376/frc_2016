@@ -24,7 +24,10 @@ public class VisionSubsystem extends Subsystem {
 	public void lineUpGear(){
     	System.out.println("test");
     	double overallCenterX = SmartDashboard.getDouble("overallCenterX", -1);
-    	System.out.println("Overall Center X:" + overallCenterX);
+    	System.out.println("Overall Center X:" + SmartDashboard.getDouble("overallCenterX", -1));
+    	System.out.println("Overall Center Y:" + SmartDashboard.getDouble("overallCenterY", -1));
+    	System.out.println("Image Width:" + SmartDashboard.getDouble("imageWidth", -1));
+    	System.out.println("Image Height:" + SmartDashboard.getDouble("imageHeight", -1));
     	// Robot.chassis.driveForward();
 	}
 	
