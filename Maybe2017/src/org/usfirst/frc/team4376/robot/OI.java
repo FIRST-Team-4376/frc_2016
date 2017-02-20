@@ -17,6 +17,7 @@ import org.usfirst.frc.team4376.robot.commands.RestBotCommand;
 import org.usfirst.frc.team4376.robot.commands.PickUpBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
+import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 
 
 /**
@@ -57,6 +58,7 @@ public class OI {
 	public Button rampDown;
 	public Button ballDoorOpen;
 	public Button ballDoorClose;
+	public Button lineUpGear;
 	
 	public OI(){
 		
@@ -73,7 +75,10 @@ public class OI {
 
 		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
 		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
+		JoystickButton lineUpGear = new JoystickButton(driveStick, 1);
 
+
+		lineUpGear.whenPressed(new LineUpGearCommand());
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
 		ballDoorClose.whenPressed(new BallDoorCloseCommand());

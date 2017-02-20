@@ -130,7 +130,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		//new LineUpGearCommand().execute();
 		Scheduler.getInstance().run();
 	}
 
