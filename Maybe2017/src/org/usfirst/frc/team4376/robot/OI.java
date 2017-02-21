@@ -76,7 +76,7 @@ public class OI {
 
 		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
 		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
-		JoystickButton lineUpGear = new JoystickButton(driveStick, 1);
+		JoystickButton lineUpGear = new JoystickButton(driveStick, 6);
 
 
 		lineUpGear.whenPressed(new LineUpGearCommand());
@@ -106,20 +106,20 @@ public class OI {
 		
 		// Ball pick-up attempt to toggle:
 		
-		boolean toggle = true;
-		boolean pickUp = false;
-		if (toggle && pickUpBalls.get() == true) {
-			toggle = false;
-			if (pickUp){
-				pickUp = false;
-				new PickUpBallsCommand();
-			}	else{
-			pickUp = true;
-				new StopBallsCommand();
-		} }
-			else if(pickUpBalls.get() == false) {
-				toggle = true;
-			}
+		//boolean toggle = true;
+		//boolean pickUp = false;
+		//if (toggle && pickUpBalls.get() == true) {
+			//toggle = false;
+			//if (pickUp){
+				//pickUp = false;
+				//new PickUpBallsCommand();
+			//}	else{
+			//pickUp = true;
+			//	new StopBallsCommand();
+	//	} }
+		//	else if(pickUpBalls.get() == false) {
+			//	toggle = true;
+		//	}
 	}
 	
 }
