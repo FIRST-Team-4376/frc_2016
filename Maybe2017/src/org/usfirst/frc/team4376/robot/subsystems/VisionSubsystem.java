@@ -40,6 +40,9 @@ public class VisionSubsystem extends Subsystem {
     			imageWidth != -1.0 &&
     			imageWidth > 0.0){
     		double imageCenter = imageWidth / 2.0;
+    		imageCenter = imageCenter - 30.0;
+    		
+    		//Robot.chassis.driveMe(0.0, .20, 0.0);
     		
     		if (overallCenterX < imageCenter){
     			System.out.println("IF 1");
@@ -49,10 +52,16 @@ public class VisionSubsystem extends Subsystem {
     			Robot.chassis.driveMe(0.25, 0.0, 0.0);
     		}
     		
-    		if (leftCenterY < rightCenterY){
-    			Robot.chassis.driveMe(0, 0, .25);
-    		} else if (leftCenterY > rightCenterY){
-    			Robot.chassis.driveMe(0, 0, -.25);
+//    		if (leftCenterY < rightCenterY){
+//    			Robot.chassis.driveMe(0, 0, -1.55); //rotate counter clockwise
+//    		} else if (leftCenterY > rightCenterY){
+//    			Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+//    		}
+    		
+    		if (overallScoreRight > overallScoreLeft){
+    			Robot.chassis.driveMe(0, 0, -.15); //rotate counter clockwise
+    		} else if (overallScoreRight < overallScoreLeft){
+    			Robot.chassis.driveMe(0, 0, .15); //rotate clockwise
     		}
     	}
     	
