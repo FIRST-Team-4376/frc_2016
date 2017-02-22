@@ -35,6 +35,9 @@ public class VisionSubsystem extends Subsystem {
     	System.out.println("Image Width:" + SmartDashboard.getDouble("imageWidth", -1));
     	System.out.println("Image Height:" + SmartDashboard.getDouble("imageHeight", -1));
     	
+    	System.out.print("getAngle " + Robot.gyro.getAngle());
+    	System.out.print("getAngleZ " + Robot.gyro.getAngleZ());
+    	
     	if (overallCenterX != -1.0 &&
     			overallCenterX > 0.0 &&
     			imageWidth != -1.0 &&
@@ -63,18 +66,6 @@ public class VisionSubsystem extends Subsystem {
     			for(int i = 0; i < movement_based_on_pct_diff; i++){
     				Robot.chassis.driveMe(0.35, 0.0, 0.0);
     			}
-    		}
-    		
-//    		if (leftCenterY < rightCenterY){
-//    			Robot.chassis.driveMe(0, 0, -1.55); //rotate counter clockwise
-//    		} else if (leftCenterY > rightCenterY){
-//    			Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
-//    		}
-    		
-    		if (overallScoreRight > overallScoreLeft){
-    			Robot.chassis.driveMe(0, 0, -.15); //rotate counter clockwise
-    		} else if (overallScoreRight < overallScoreLeft){
-    			Robot.chassis.driveMe(0, 0, .15); //rotate clockwise
     		}
     	}
     	

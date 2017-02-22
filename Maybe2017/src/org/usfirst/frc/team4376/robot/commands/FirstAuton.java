@@ -23,19 +23,32 @@ public class FirstAuton extends Command {
     	timer = new Timer();
     	
     	timer.reset();
+    	Robot.gyro.calibrate();
+    	Robot.gyro.reset();
     	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	//if(timer.get() <= 1){
-    		//Robot.chassis.driveForward();
-    	//}
-    	
-    	if(timer.get() > 1 && timer.get() <= 4){
-    		Robot.chassis.driveForward();
-    	}
+    	if(timer.get() > 0 && timer.get() <= 2.5){
+    		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){
+    			Robot.chassis.driveMe(0, -.25, 0);
+    		} else if(Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2){
+    			Robot.chassis.driveMe(0, -.25, -.25);
+    		} else if(Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		} else if(Robot.gyro.getAngleZ() > 62){
+    			Robot.chassis.driveMe(0, -.25, 0);
+    		}
+    		else if(Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58){
+    			Robot.chassis.driveMe(0, -.25, -.25);
+    		} else if (Robot.gyro.getAngleZ() < -62){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		}
+        }
     	
     }
 

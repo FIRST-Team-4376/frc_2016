@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4376.robot.Robot;
 import org.usfirst.frc.team4376.robot.RobotMap;
 import org.usfirst.frc.team4376.robot.commands.DriveCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
@@ -50,6 +52,10 @@ public class ChassisSubsystem extends Subsystem {
 
 	public void driveForward(){
 		chassis.mecanumDrive_Cartesian(0, .4, 0, 0);
+	}
+	
+	public void driveBackward(){
+		chassis.mecanumDrive_Cartesian(0, -.4, 0, 0);
 	}
 	
     // Put methods for controlling this subsystem
