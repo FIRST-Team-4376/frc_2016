@@ -60,6 +60,8 @@ public class OI {
 	public Button ballDoorOpen;
 	public Button ballDoorClose;
 	public Button lineUpGear;
+	public Button putDownBalls;
+	public Button pickUpBalls;
 	
 	public OI(){
 		
