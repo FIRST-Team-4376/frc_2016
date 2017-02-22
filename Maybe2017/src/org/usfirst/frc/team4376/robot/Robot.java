@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team3618.sensorlib.ADIS16448_IMU;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
@@ -44,6 +45,8 @@ public class Robot extends IterativeRobot {
 	CameraServer camServer;
 	UsbCamera lifecam;
 	
+	ADIS16448_IMU gyro;
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -61,6 +64,9 @@ public class Robot extends IterativeRobot {
 		
 		camServer = CameraServer.getInstance();
 		lifecam = new UsbCamera("cam0", 0);
+		
+		gyro = new ADIS16448_IMU();
+		gyro.calibrate();
 	}
 
 	/**
@@ -141,5 +147,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void testPeriodic() {
 		LiveWindow.run();
+	}
+	
+	public void robotPeriodic(){
+		SmartDashboard.putNumber("Robot Angle", gyro.getAngleZ());
 	}
 }
