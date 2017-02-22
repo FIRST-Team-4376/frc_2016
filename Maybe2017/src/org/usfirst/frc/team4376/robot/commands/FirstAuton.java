@@ -16,6 +16,7 @@ public class FirstAuton extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
+    	requires(Robot.vision);
     }
 
     // Called just before this Command runs the first time
@@ -33,8 +34,12 @@ public class FirstAuton extends Command {
     		//Robot.chassis.driveForward();
     	//}
     	
-    	if(timer.get() > 1 && timer.get() <= 4){
-    		Robot.chassis.driveForward();
+    	if(timer.get() > 1 && timer.get() <= 8){
+    		Robot.vision.lineUpGear();
+    	}
+    	
+    	if(timer.get() >3 && timer.get() <= 8.5){
+    		Robot.chassis.driveMe(0, .5, 0);
     	}
     	
     }

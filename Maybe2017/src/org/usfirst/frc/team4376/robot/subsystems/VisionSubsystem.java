@@ -56,6 +56,38 @@ public class VisionSubsystem extends Subsystem {
     		}
     	}
     	
+   
+    	
+    	if (Robot.gyro.getAngleZ() != 0 && Robot.gyro.getAngleZ() < -5 && 
+    			Robot.gyro.getAngleZ() > -20){
+    		
+    		Robot.chassis.driveMe(0, 0, -.25);
+    		
+    	} else if (Robot.gyro.getAngleZ() != 0 && Robot.gyro.getAngleZ() > 5 && 
+    			Robot.gyro.getAngleZ() < 20){
+    		
+    		Robot.chassis.driveMe(0, 0, .25);
+    		
+    	} else if (Robot.gyro.getAngleZ() > -5 && Robot.gyro.getAngleZ() < 5){
+    		Robot.chassis.stopMe();
+    	}
+    	
+    	if (Robot.gyro.getAngleZ() != 60 && Robot.gyro.getAngleZ() > 65 && 
+    			Robot.gyro.getAngleZ() < 80){
+    		
+    		Robot.chassis.driveMe(0, 0, -.25);
+    		
+    	} else if (Robot.gyro.getAngleZ() != -60 && Robot.gyro.getAngleZ() < -65 && 
+    			Robot.gyro.getAngleZ() > -80){
+    		
+    		Robot.chassis.driveMe(0, 0, .25);
+    		
+    	} else if (Robot.gyro.getAngleZ() > -65 && Robot.gyro.getAngleZ() < 55){
+    		Robot.chassis.stopMe();
+    	} else if (Robot.gyro.getAngleZ() < 65 && Robot.gyro.getAngleZ() > 55){
+    		Robot.chassis.stopMe();
+    	}
+    	
     	// Robot.chassis.driveForward();
 	}
 	

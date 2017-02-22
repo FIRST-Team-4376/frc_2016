@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 	CameraServer camServer;
 	UsbCamera lifecam;
 	
-	ADIS16448_IMU gyro;
+	public static ADIS16448_IMU gyro;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
