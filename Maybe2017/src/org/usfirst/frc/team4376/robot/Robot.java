@@ -66,6 +66,7 @@ public class Robot extends IterativeRobot {
 		lifecam = new UsbCamera("cam0", 0);
 		
 		gyro = new ADIS16448_IMU();
+		gyro.reset();
 		gyro.calibrate();
 	}
 
