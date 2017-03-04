@@ -19,6 +19,7 @@ import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearStopCommand;
+import org.usfirst.frc.team4376.robot.commands.ChangeCameraCommand;
 
 
 /**
@@ -62,25 +63,27 @@ public class OI {
 	public Button lineUpGear;
 	public Button putDownBalls;
 	public Button pickUpBalls;
+	public Button changeCamera;
 	
 	public OI(){
 		
 		driveStick = new Joystick(RobotMap.driveStick);
 		
-		JoystickButton rampUp = new JoystickButton(driveStick, 10);
+//		JoystickButton rampUp = new JoystickButton(driveStick, 10);
 		JoystickButton rampDown = new JoystickButton(driveStick, 9);
 
+		JoystickButton changeCamera = new JoystickButton(driveStick, 1);
+		
 		JoystickButton ballDoorOpen = new JoystickButton(driveStick, 3);
 		JoystickButton ballDoorClose = new JoystickButton(driveStick, 4);
 		
 		JoystickButton liftBot = new JoystickButton(driveStick, 7);
 		JoystickButton lowerBot = new JoystickButton(driveStick, 8);
 
-		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
-		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
+//		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
+//		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
 		JoystickButton lineUpGear = new JoystickButton(driveStick, 6);
-
-
+		
 		lineUpGear.whenPressed(new LineUpGearCommand());
 		lineUpGear.whenReleased(new LineUpGearStopCommand());
 
@@ -89,8 +92,10 @@ public class OI {
 		//ballDoorOpen.whenReleased(new BallDoorRestCommand());
 		//ballDoorClose.whenReleased(new BallDoorRestCommand());
 		
-		rampUp.whenPressed(new RampUpCommand());
-		rampUp.whenReleased(new RampAtRestCommand());
+//		rampUp.whenPressed(new RampUpCommand());
+//		rampUp.whenReleased(new RampAtRestCommand());
+		
+//		changeCamera.whenPressed(new ChangeCameraCommand());
 		
 		rampDown.whenPressed(new RampDownCommand());
 		rampDown.whenReleased(new RampAtRestCommand());
@@ -101,10 +106,10 @@ public class OI {
 		lowerBot.whenPressed(new LowerBotCommand());
 		lowerBot.whenReleased(new RestBotCommand());
 		
-		putDownBalls.whenPressed(new PutDownBallsCommand());
-		putDownBalls.whenReleased(new StopBallsCommand());
-		pickUpBalls.whenPressed(new PickUpBallsCommand());
-		pickUpBalls.whenReleased(new StopBallsCommand());
+//		putDownBalls.whenPressed(new PutDownBallsCommand());
+//		putDownBalls.whenReleased(new StopBallsCommand());
+//		pickUpBalls.whenPressed(new PickUpBallsCommand());
+//		pickUpBalls.whenReleased(new StopBallsCommand());
 		
 		// Ball pick-up attempt to toggle:
 		
