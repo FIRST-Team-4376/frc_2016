@@ -41,8 +41,9 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	
-	CameraServer camServer;
-	UsbCamera lifecam;
+//	CameraServer camServer;
+//	UsbCamera lifecam;
+//	public MultiCameraServer multiCamServer;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -58,9 +59,14 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new FirstAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		vision.multiCamServer.switchToFrontCamera();
+//		multiCamServer = new MultiCameraServer(1024, 768, 30);
+//		camServer = CameraServer.getInstance();
+//		multiCamServer = new MultiCameraServer(1024, 768, 30);
+//		multiCamServer.switchToFrontCamera();
+//		camServer.startAutomaticCapture(multiCamServer.getCurrentCamera());
 		
-		camServer = CameraServer.getInstance();
-		lifecam = new UsbCamera("cam0", 0);
+		
 	}
 
 	/**
@@ -122,9 +128,10 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		lifecam.setFPS(15);
+
+//		lifecam.setFPS(15);
         //lifecam.openCamera();
-        camServer.startAutomaticCapture(lifecam);
+//        camServer.startAutomaticCapture(lifecam);
 	}
 
 	/**
