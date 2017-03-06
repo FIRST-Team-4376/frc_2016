@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class VisionSubsystem extends Subsystem {
 
-	public MultiCameraServer multiCamServer;
+	public static final MultiCameraServer multiCamServer = new MultiCameraServer(1024, 768, 30);
 	
 	
     // Put methods for controlling this subsystem
@@ -22,6 +22,7 @@ public class VisionSubsystem extends Subsystem {
 	
 	public VisionSubsystem() {
 //		multiCamServer = new MultiCameraServer(1024, 768, 30);
+//        multiCamServer.switchToFrontCamera();
 	}
 	
 	public void switchCamera(){

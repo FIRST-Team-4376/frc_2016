@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	
 //	CameraServer camServer;
 //	UsbCamera lifecam;
-	public MultiCameraServer multiCamServer;
+//	public MultiCameraServer multiCamServer;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -59,8 +59,8 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new FirstAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		multiCamServer = new MultiCameraServer(1024, 768, 30);
-		multiCamServer.switchToFrontCamera();
+		vision.multiCamServer.switchToFrontCamera();
+//		multiCamServer = new MultiCameraServer(1024, 768, 30);
 //		camServer = CameraServer.getInstance();
 //		multiCamServer = new MultiCameraServer(1024, 768, 30);
 //		multiCamServer.switchToFrontCamera();

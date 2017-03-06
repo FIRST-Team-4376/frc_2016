@@ -19,7 +19,7 @@ import org.usfirst.frc.team4376.robot.commands.PutDownBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.StopBallsCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearStopCommand;
-import org.usfirst.frc.team4376.robot.commands.ChangeCameraCommand;
+import org.usfirst.frc.team4376.robot.commands.SwitchCameraCommand;
 
 
 /**
@@ -95,7 +95,7 @@ public class OI {
 //		rampUp.whenPressed(new RampUpCommand());
 //		rampUp.whenReleased(new RampAtRestCommand());
 		
-//		changeCamera.whenPressed(new ChangeCameraCommand());
+		changeCamera.whenPressed(new SwitchCameraCommand());
 		
 		rampDown.whenPressed(new RampDownCommand());
 		rampDown.whenReleased(new RampAtRestCommand());
