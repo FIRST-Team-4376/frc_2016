@@ -10,6 +10,7 @@ import org.usfirst.frc.team4376.robot.commands.RampDownCommand;
 import org.usfirst.frc.team4376.robot.commands.RampAtRestCommand;
 import org.usfirst.frc.team4376.robot.commands.BallDoorOpenCommand;
 import org.usfirst.frc.team4376.robot.commands.BallDoorRestCommand;
+import org.usfirst.frc.team4376.robot.commands.ChangeCameraCommand;
 import org.usfirst.frc.team4376.robot.commands.BallDoorCloseCommand;
 import org.usfirst.frc.team4376.robot.commands.LiftBotCommand;
 import org.usfirst.frc.team4376.robot.commands.LowerBotCommand;
@@ -62,6 +63,7 @@ public class OI {
 	public Button lineUpGear;
 	public Button putDownBalls;
 	public Button pickUpBalls;
+	public Button changeCamera;
 	
 	public OI(){
 		
@@ -79,6 +81,9 @@ public class OI {
 		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
 		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
 		JoystickButton lineUpGear = new JoystickButton(driveStick, 6);
+
+		JoystickButton changeCamera = new JoystickButton(driveStick, 1);
+		changeCamera.whenReleased(new ChangeCameraCommand());
 
 
 		lineUpGear.whenPressed(new LineUpGearCommand());

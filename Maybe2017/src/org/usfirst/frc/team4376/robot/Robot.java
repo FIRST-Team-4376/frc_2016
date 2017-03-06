@@ -46,9 +46,6 @@ public class Robot extends IterativeRobot {
 	
 	public static boolean selectedCamera = false;
 	
-	CameraServer camServer;
-	UsbCamera lifecam;
-	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -173,9 +170,6 @@ public class Robot extends IterativeRobot {
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		
-		lifecam.setFPS(15);
-        //lifecam.openCamera();
-        camServer.startAutomaticCapture(lifecam);
 	}
 
 	/**
