@@ -33,8 +33,5 @@ public class RobotMap {
 	public static int liftMotor = 1;
 	
 	public static int driveStick = 0;
-
-	public static int CAMERA_ONE = 0;
-	public static int CAMERA_TWO = 1;
 	
 }

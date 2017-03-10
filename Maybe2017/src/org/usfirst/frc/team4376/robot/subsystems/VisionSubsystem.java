@@ -3,7 +3,6 @@ package org.usfirst.frc.team4376.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 
-import org.usfirst.frc.team4376.robot.MultiCameraServer;
 import org.usfirst.frc.team4376.robot.Robot;
 import org.usfirst.frc.team4376.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -14,19 +13,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class VisionSubsystem extends Subsystem {
 
-	public static final MultiCameraServer multiCamServer = new MultiCameraServer(1024, 768, 30);
-	
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
 	public VisionSubsystem() {
-//		multiCamServer = new MultiCameraServer(1024, 768, 30);
-//        multiCamServer.switchToFrontCamera();
-	}
-	
-	public void switchCamera(){
-		multiCamServer.switchCamera();
+		
 	}
 	
 	public void lineUpGear(){
