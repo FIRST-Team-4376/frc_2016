@@ -12,8 +12,16 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.VisionThread;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import org.opencv.core.KeyPoint;
 import org.opencv.core.Mat;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
@@ -24,6 +32,8 @@ import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.VisionSubsystem;
+import org.usfirst.frc.team4376.robot.vision.Pipeline;
+import org.usfirst.frc.team4376.robot.vision.VisionProcessor;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -45,10 +55,20 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	
 	public static boolean selectedCamera = false;
+	public boolean currentCamera = selectedCamera;
+	public VisionProcessor visionProcessor = new VisionProcessor();
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
+	
+    VisionThread visionThread;
+	private final Object imgLock = new Object();
+	private static final int IMG_WIDTH = 320;
+	private static final int IMG_HEIGHT = 240; 
+	public static double dCx;
+	
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -62,53 +82,139 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
-        Thread cameraThread = new Thread(() -> {        	
-            // 640, 480
-            // 320, 240
-            // 160, 120
+//        Thread cameraThread = new Thread(() -> {        	
+//            // 640, 480
+//            // 320, 240
+//            // 160, 120
+//      
+//        	
+//            UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
+//            camera1.setResolution(320, 240);
+//            camera1.setFPS(20);
+//            
+//            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+//            camera2.setResolution(320, 240);
+//            camera2.setFPS(20);
+//            
+//            CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
+//            CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
+//            Mat source = new Mat();     
+//
+//            boolean currentCamera = selectedCamera;
+//            while( !Thread.interrupted() ) {
+//            	// We support two cameras, so the selectedCamera is a boolean to toggle
+//            	// between camera1 and camera2
+//            	if ( currentCamera != selectedCamera ) {
+//            		currentCamera = selectedCamera;
+//	            	if ( selectedCamera == false ) {
+//	            		// Set the source to camera1
+//	            		cvSink.setSource(camera1);            		
+//	                	SmartDashboard.putString("Camera", "Camera 1");
+//	            	} else {
+//	            		// Set the source to camera2
+//	            		cvSink.setSource(camera2);
+//	                	SmartDashboard.putString("Camera", "Camera 2");
+//	            	}
+//            	}
+// 
+//            	//Grab image from the source camera
+//            	cvSink.grabFrame(source);
+//
+////            	pipeline.process(source);
+////            	outputStream.putFrame(pipeline.hsvThresholdOutput());
+//            	
+//            	// if there was an image collected, then send it to the dashboard via
+//            	// the output stream
+//            	if ( source.empty() == false ) {
+//                	source = visionProcessor.drawContoursOnImage(source);
+//            		outputStream.putFrame(source);
+//            	}
+//            }
+//        });
+//        
+//        cameraThread.start();
+		
+      UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
+      camera1.setResolution(IMG_WIDTH, IMG_HEIGHT);
+      camera1.setFPS(20);
       
-        	
-            UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
-            camera1.setResolution(320, 240);
-            camera1.setFPS(20);
-            
-            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-            camera2.setResolution(320, 240);
-            camera2.setFPS(20);
-            
-            CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
-            CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
-            Mat source = new Mat();     
-
-            boolean currentCamera = selectedCamera;
-            while( !Thread.interrupted() ) {
-            	// We support two cameras, so the selectedCamera is a boolean to toggle
-            	// between camera1 and camera2
-            	if ( currentCamera != selectedCamera ) {
-            		currentCamera = selectedCamera;
+      UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+      camera2.setResolution(IMG_WIDTH, IMG_HEIGHT);
+      camera2.setFPS(20);
+		
+		
+//		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//	    camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+//		camera.setExposureManual(100);
+        CvSink cvSink = CameraServer.getInstance().getVideo();
+        CvSource blobStream = CameraServer.getInstance().putVideo("blobPoints", 640, 480); 
+        CvSource thresholdStream = CameraServer.getInstance().putVideo("Threshold", 640, 480);
+	    final int IMG_CENTER = IMG_WIDTH / 2;
+		final Object imgLock = new Object();
+		
+	    visionThread = new VisionThread(camera1, new Pipeline(), pipeline -> {
+	    	Mat blobPoints = new Mat();
+	    	Mat thresholdImg = new Mat();
+	    	synchronized (imgLock) {
+	    		
+	        	if ( currentCamera != selectedCamera ) {
+		    		System.out.println("currentCamera" + currentCamera);
+		    		System.out.println("selectedCamera" + selectedCamera);
+	        		currentCamera = selectedCamera;
 	            	if ( selectedCamera == false ) {
-	            		// Set the source to camera1
-	            		cvSink.setSource(camera1);            		
+	            		// Set the source to camera1       
+	            		camera2.setFPS(1);
+	            		camera2.setResolution(3, 3);
+	            		camera1.setFPS(20);
+	            		camera1.setResolution(IMG_WIDTH, IMG_HEIGHT);
+	            		cvSink.setSource(camera1);
 	                	SmartDashboard.putString("Camera", "Camera 1");
+	                	
+	                	return;
 	            	} else {
 	            		// Set the source to camera2
+	            		camera1.setFPS(1);
+	            		camera1.setResolution(3, 3);
+	            		camera2.setFPS(20);
+	            		camera2.setResolution(IMG_WIDTH, IMG_HEIGHT);
 	            		cvSink.setSource(camera2);
 	                	SmartDashboard.putString("Camera", "Camera 2");
+	                	return;
 	            	}
-            	}
- 
-            	//Grab image from the source camera
-            	cvSink.grabFrame(source);
-            	
-            	// if there was an image collected, then send it to the dashboard via
-            	// the output stream
-            	if ( source.empty() == false ) {
-            		outputStream.putFrame(source);
-            	}
-            }
-        });
-        
-        cameraThread.start();
+	        	}
+	    		
+	    		
+				
+//				System.out.println("Blobs: " + blobs.size());
+				
+				cvSink.grabFrame(blobPoints);
+				
+
+				
+				if(cvSink.getSource().getName().equals("USB Camera 0")){
+					
+					List<KeyPoint> blobs = pipeline.findBlobsOutput().toList();
+					for (KeyPoint blob : blobs) {
+						Imgproc.drawMarker(blobPoints, blob.pt, new Scalar(255,0,0));
+					}
+					thresholdImg = pipeline.hsvThresholdOutput();
+					thresholdStream.putFrame(thresholdImg);
+					if (blobs.size() > 1) {
+						Collections.sort(blobs, new Comparator<KeyPoint>() {
+							@Override
+							public int compare(KeyPoint arg0, KeyPoint arg1) {
+								// TODO Auto-generated method stub
+								return (arg0.size > arg1.size) ? -1 : (arg0.size < arg1.size) ? 1 : 0;
+							}
+						});
+						dCx = ((blobs.get(0).pt.x + blobs.get(1).pt.x)/2) - IMG_CENTER;
+	//					System.out.println(dCx);
+					}
+				}
+				blobStream.putFrame(blobPoints);
+	    	}
+	    });
+	    visionThread.start();
 	}
 
 	/**
