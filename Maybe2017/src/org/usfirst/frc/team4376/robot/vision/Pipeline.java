@@ -30,6 +30,7 @@ public class Pipeline implements VisionPipeline {
 	//Outputs
 	private Mat hsvThresholdOutput = new Mat();
 	private MatOfKeyPoint findBlobsOutput = new MatOfKeyPoint();
+	private List<MatOfPoint> contoursList = new ArrayList<MatOfPoint>();
 
 	static {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -41,9 +42,9 @@ public class Pipeline implements VisionPipeline {
 	@Override	public void process(Mat source0) {
 		// Step HSV_Threshold0:
 		Mat hsvThresholdInput = source0;
-		double[] hsvThresholdHue = {0.0, 255.0};
-		double[] hsvThresholdSaturation = {0.0, 42.0};
-		double[] hsvThresholdValue = {0.0, 255.0};
+		double[] hsvThresholdHue = {17.0, 154.0};
+		double[] hsvThresholdSaturation = {0.0, 44.0};
+		double[] hsvThresholdValue = {249.0, 255.0};
 		hsvThreshold(hsvThresholdInput, hsvThresholdHue, hsvThresholdSaturation, hsvThresholdValue, hsvThresholdOutput);
 
 		// Step Find_Blobs0:
@@ -51,7 +52,8 @@ public class Pipeline implements VisionPipeline {
 		double findBlobsMinArea = 1.0;
 		double[] findBlobsCircularity = {0.0, 1.0};
 		boolean findBlobsDarkBlobs = false;
-		findBlobs(findBlobsInput, findBlobsMinArea, findBlobsCircularity, findBlobsDarkBlobs, findBlobsOutput);
+//		findBlobs(findBlobsInput, findBlobsMinArea, findBlobsCircularity, findBlobsDarkBlobs, findBlobsOutput);
+		findContours(hsvThresholdOutput);
 
 	}
 
@@ -69,6 +71,10 @@ public class Pipeline implements VisionPipeline {
 	 */
 	public MatOfKeyPoint findBlobsOutput() {
 		return findBlobsOutput;
+	}
+	
+	public List<MatOfPoint> getContoursList(){
+		return contoursList;
 	}
 
 
@@ -96,6 +102,24 @@ public class Pipeline implements VisionPipeline {
 	 * @param darkBlobs The boolean that determines if light or dark blobs are found.
 	 * @param blobList The output where the MatOfKeyPoint is stored.
 	 */
+
+	private void findContours(Mat input){
+		if (!input.empty()){
+			Mat hierarchy = new Mat();
+//			contoursList.removeAll(contoursList);
+			contoursList.clear();
+//			contoursList = new ArrayList<MatOfPoint>();
+			List<MatOfPoint>contoursList2 = new ArrayList<MatOfPoint>();
+			Imgproc.findContours(input, contoursList, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+//			return courseList.stream().filter(c -> c.getCourseName().equals(value));
+			for(Object thing : contoursList.stream().filter(c -> Imgproc.contourArea(c) >= 300.0).toArray()){
+				contoursList2.add((MatOfPoint)thing);
+				
+			}
+			contoursList.clear();
+		}
+	}
+	
 	private void findBlobs(Mat input, double minArea, double[] circularity,
 		Boolean darkBlobs, MatOfKeyPoint blobList) {
 		FeatureDetector blobDet = FeatureDetector.create(FeatureDetector.SIMPLEBLOB);
