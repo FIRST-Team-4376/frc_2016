@@ -34,4 +34,7 @@ public class RobotMap {
 	
 	public static int driveStick = 0;
 	
+	public static int limitSwitch1 = 9;
+	public static int limitSwitch2 = 8;
+	
 }
