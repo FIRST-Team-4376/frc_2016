@@ -52,7 +52,8 @@ public class Pipeline implements VisionPipeline {
 		double findBlobsMinArea = 1.0;
 		double[] findBlobsCircularity = {0.0, 1.0};
 		boolean findBlobsDarkBlobs = false;
-		findBlobs(findBlobsInput, findBlobsMinArea, findBlobsCircularity, findBlobsDarkBlobs, findBlobsOutput);
+//		findBlobs(findBlobsInput, findBlobsMinArea, findBlobsCircularity, findBlobsDarkBlobs, findBlobsOutput);
+		findContours(hsvThresholdOutput);
 
 	}
 
