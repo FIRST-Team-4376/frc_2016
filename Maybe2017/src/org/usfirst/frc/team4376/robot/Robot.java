@@ -20,8 +20,11 @@ import java.util.List;
 
 import org.opencv.core.KeyPoint;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.imgproc.Moments;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
@@ -193,23 +196,52 @@ public class Robot extends IterativeRobot {
 
 				if (cvSink.getSource().getName().equals("USB Camera 0")) {
 
-					List<KeyPoint> blobs = pipeline.findBlobsOutput().toList();
-					for (KeyPoint blob : blobs) {
-						Imgproc.drawMarker(blobPoints, blob.pt, new Scalar(255, 0, 0));
+					List<MatOfPoint> contoursList = pipeline.getContoursList();
+					
+					if(contoursList.size() > 1){
+						Imgproc.drawContours(blobPoints, contoursList, -1, new Scalar(0,255,0), 4);
 					}
-					thresholdImg = pipeline.hsvThresholdOutput();
-					thresholdStream.putFrame(thresholdImg);
-					if (blobs.size() > 1) {
-						Collections.sort(blobs, new Comparator<KeyPoint>() {
-							@Override
-							public int compare(KeyPoint arg0, KeyPoint arg1) {
-								// TODO Auto-generated method stub
-								return (arg0.size > arg1.size) ? -1 : (arg0.size < arg1.size) ? 1 : 0;
-							}
-						});
-						dCx = ((blobs.get(0).pt.x + blobs.get(1).pt.x) / 2) - IMG_CENTER;
-						// System.out.println(dCx);
+					
+					// Draw marker at center of each contour
+					for (MatOfPoint contour : contoursList){
+						Moments moments = Imgproc.moments(contour);
+						Point centroid = new Point();
+
+						centroid.x = moments.get_m10() / moments.get_m00();
+						centroid.y = moments.get_m01() / moments.get_m00();
+
+						Imgproc.drawMarker(blobPoints, centroid, new Scalar(0,0,255));
 					}
+
+					// Sort contours by area (largest first)
+					Collections.sort(contoursList, new Comparator<MatOfPoint>() {
+						@Override
+						public int compare(MatOfPoint arg0, MatOfPoint arg1) {
+							// TODO Auto-generated method stub
+							double arg0Area = Imgproc.contourArea(arg0);
+							double arg1Area = Imgproc.contourArea(arg1);
+							return (arg0Area > arg1Area) ? -1 : (arg0Area < arg1Area) ? 1 : 0;
+						}
+					});
+
+
+//					List<KeyPoint> blobs = pipeline.findBlobsOutput().toList();
+//					for (KeyPoint blob : blobs) {
+//						Imgproc.drawMarker(blobPoints, blob.pt, new Scalar(255, 0, 0));
+//					}
+//					thresholdImg = pipeline.hsvThresholdOutput();
+//					thresholdStream.putFrame(thresholdImg);
+//					if (blobs.size() > 1) {
+//						Collections.sort(blobs, new Comparator<KeyPoint>() {
+//							@Override
+//							public int compare(KeyPoint arg0, KeyPoint arg1) {
+//								// TODO Auto-generated method stub
+//								return (arg0.size > arg1.size) ? -1 : (arg0.size < arg1.size) ? 1 : 0;
+//							}
+//						});
+//						dCx = ((blobs.get(0).pt.x + blobs.get(1).pt.x) / 2) - IMG_CENTER;
+//						// System.out.println(dCx);
+//					}
 				}
 				blobStream.putFrame(blobPoints);
 			}

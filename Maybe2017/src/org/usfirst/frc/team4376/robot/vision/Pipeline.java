@@ -30,6 +30,7 @@ public class Pipeline implements VisionPipeline {
 	//Outputs
 	private Mat hsvThresholdOutput = new Mat();
 	private MatOfKeyPoint findBlobsOutput = new MatOfKeyPoint();
+	private List<MatOfPoint> contoursList = new ArrayList<MatOfPoint>();
 
 	static {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -70,6 +71,10 @@ public class Pipeline implements VisionPipeline {
 	public MatOfKeyPoint findBlobsOutput() {
 		return findBlobsOutput;
 	}
+	
+	public List<MatOfPoint> getContoursList(){
+		return contoursList;
+	}
 
 
 	/**
@@ -96,6 +101,11 @@ public class Pipeline implements VisionPipeline {
 	 * @param darkBlobs The boolean that determines if light or dark blobs are found.
 	 * @param blobList The output where the MatOfKeyPoint is stored.
 	 */
+
+	private void findContours(Mat input){
+		Imgproc.findContours(input, contoursList, null, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+	}
+	
 	private void findBlobs(Mat input, double minArea, double[] circularity,
 		Boolean darkBlobs, MatOfKeyPoint blobList) {
 		FeatureDetector blobDet = FeatureDetector.create(FeatureDetector.SIMPLEBLOB);
