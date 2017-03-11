@@ -42,9 +42,9 @@ public class Pipeline implements VisionPipeline {
 	@Override	public void process(Mat source0) {
 		// Step HSV_Threshold0:
 		Mat hsvThresholdInput = source0;
-		double[] hsvThresholdHue = {0.0, 255.0};
-		double[] hsvThresholdSaturation = {0.0, 42.0};
-		double[] hsvThresholdValue = {0.0, 255.0};
+		double[] hsvThresholdHue = {17.0, 154.0};
+		double[] hsvThresholdSaturation = {0.0, 44.0};
+		double[] hsvThresholdValue = {249.0, 255.0};
 		hsvThreshold(hsvThresholdInput, hsvThresholdHue, hsvThresholdSaturation, hsvThresholdValue, hsvThresholdOutput);
 
 		// Step Find_Blobs0:
@@ -104,7 +104,20 @@ public class Pipeline implements VisionPipeline {
 	 */
 
 	private void findContours(Mat input){
-		Imgproc.findContours(input, contoursList, null, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+		if (!input.empty()){
+			Mat hierarchy = new Mat();
+//			contoursList.removeAll(contoursList);
+			contoursList.clear();
+//			contoursList = new ArrayList<MatOfPoint>();
+			List<MatOfPoint>contoursList2 = new ArrayList<MatOfPoint>();
+			Imgproc.findContours(input, contoursList, hierarchy, Imgproc.RETR_TREE, Imgproc.CHAIN_APPROX_SIMPLE);
+//			return courseList.stream().filter(c -> c.getCourseName().equals(value));
+			for(Object thing : contoursList.stream().filter(c -> Imgproc.contourArea(c) >= 300.0).toArray()){
+				contoursList2.add((MatOfPoint)thing);
+				
+			}
+			contoursList.clear();
+		}
 	}
 	
 	private void findBlobs(Mat input, double minArea, double[] circularity,
