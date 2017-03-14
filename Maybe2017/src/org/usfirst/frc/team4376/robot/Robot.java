@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	
 	public static boolean selectedCamera = false;
+	public static double lastOverallX = -1.0;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
