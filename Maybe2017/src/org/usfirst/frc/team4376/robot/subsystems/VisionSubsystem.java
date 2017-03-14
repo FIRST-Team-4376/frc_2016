@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.Talon;
 
 import org.usfirst.frc.team4376.robot.Robot;
 import org.usfirst.frc.team4376.robot.RobotMap;
+import org.usfirst.frc.team4376.sensorlib.ADIS16448_IMU;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
@@ -12,16 +14,40 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  */
 public class VisionSubsystem extends Subsystem {
-
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
+	public ADIS16448_IMU gyro;
+	
 	public VisionSubsystem() {
+		
+		gyro = new ADIS16448_IMU();
 		
 	}
 	
+	public void straightenRobot(){
+		
+		if (gyro.getAngleZ() >= -2 && gyro.getAngleZ() <= 2){
+			Robot.chassis.driveMe();
+		} else if(gyro.getAngleZ() < -2 && gyro.getAngleZ() > -30){
+			Robot.chassis.driveMe(0, 0, .15);
+		} else if(gyro.getAngleZ() <= -30 && gyro.getAngleZ() >= -57){
+    			Robot.chassis.driveMe(0, 0, -.15);
+    	} else if(gyro.getAngleZ() < -63){
+			Robot.chassis.driveMe(0, 0, .15);
+		} else if(gyro.getAngleZ() > 2 && gyro.getAngleZ() < 30){
+			Robot.chassis.driveMe(0, 0, -.15);
+		} else if(gyro.getAngleZ() >= 30 && gyro.getAngleZ() <= 57){
+			Robot.chassis.driveMe(0, 0, .15);
+		} else if(gyro.getAngleZ() > 63){
+			Robot.chassis.driveMe(0, 0, -.15);
+		}
+	}
+	
 	public void lineUpGear(){
+		
+		
     	System.out.println("test");
     	double overallCenterX = SmartDashboard.getDouble("overallCenterX", -1.0);
     	double leftCenterY = SmartDashboard.getDouble("leftCenterY", -1.0);

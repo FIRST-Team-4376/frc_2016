@@ -24,6 +24,7 @@ import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.VisionSubsystem;
+import org.usfirst.frc.team4376.sensorlib.ADIS16448_IMU;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -46,6 +47,8 @@ public class Robot extends IterativeRobot {
 	
 	public static boolean selectedCamera = false;
 	public static double lastOverallX = -1.0;
+	
+	public ADIS16448_IMU gyro;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -110,6 +113,8 @@ public class Robot extends IterativeRobot {
         });
         
         cameraThread.start();
+        gyro = new ADIS16448_IMU();
+        gyro.calibrate();
 	}
 
 	/**

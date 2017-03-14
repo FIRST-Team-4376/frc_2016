@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class FirstAuton extends Command {
+public class TimedAuton extends Command {
 
 	private Timer timer;
 	
-    public FirstAuton() {
+    public TimedAuton() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.chassis);
@@ -39,7 +39,7 @@ public class FirstAuton extends Command {
     	}
     	if(timer.get() > 4 && timer.get() <= 9){
     		Robot.chassis.driveMe(0, .25, 0);
-    		Robot.vision.lineUpGear();
+    		Robot.vision.straightenRobot();
     	}
     	
     }
