@@ -41,7 +41,7 @@ public class VisionSubsystem extends Subsystem {
     			overallCenterX != Robot.lastOverallX &&
     			imageWidth > 0.0){
     		double imageCenter = imageWidth / 2.0;
-    		imageCenter = imageCenter - 30.0;
+    		imageCenter = imageCenter - 70.0;
     		
     		double pct_diff_from_center = (Math.abs(imageCenter - overallCenterX) / imageWidth);
     		System.out.println("pct diff: " + pct_diff_from_center);
@@ -49,19 +49,19 @@ public class VisionSubsystem extends Subsystem {
     		
     		//Robot.chassis.driveMe(0.0, .20, 0.0);
     		
-    		double movement_based_on_pct_diff = (int)Math.round((1+pct_diff_from_center) * 6000);
+    		double movement_based_on_pct_diff = (int)Math.round((1+pct_diff_from_center) * 5000);
     		System.out.println("movement_based_on_pct_diff: " + movement_based_on_pct_diff);
     		if (overallCenterX < imageCenter){
     			Robot.lastOverallX = overallCenterX;
     			System.out.println("IF 1");
     			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(0.25, 0.0, 0.0);
+    				Robot.chassis.driveMe(-0.35, 0.0, 0.0);
     			}
     		} else if (overallCenterX > imageCenter){
     			Robot.lastOverallX = overallCenterX;
     			System.out.println("IF 2");
     			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(-0.25, 0.0, 0.0);
+    				Robot.chassis.driveMe(0.35, 0.0, 0.0);
     			}
     		}
     		
