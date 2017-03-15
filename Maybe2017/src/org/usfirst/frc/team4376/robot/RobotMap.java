@@ -20,11 +20,11 @@ public class RobotMap {
 	// public static int rangefinderModule = 1;
 	
 	public static int frontLeftWheel = 4;
-	public static int frontRightWheel = 2;
+	public static int frontRightWheel = 0;
 	public static int backRightWheel = 3;
 	public static int backLeftWheel = 5;
 	
-	public static int rampMotor = 0;
+	public static int rampMotor = 2;
 	
 	public static int pickUpMotor = 6;
 	
