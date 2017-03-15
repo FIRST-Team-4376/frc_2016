@@ -18,6 +18,7 @@ public class VisionSubsystem extends Subsystem {
     // here. Call these from Commands.
 	
 	public VisionSubsystem() {
+		Robot.miniPID.setSetpoint(250.0); //Image center - 70 pixels
 		
 	}
 	
@@ -46,24 +47,28 @@ public class VisionSubsystem extends Subsystem {
     		double pct_diff_from_center = (Math.abs(imageCenter - overallCenterX) / imageWidth);
     		System.out.println("pct diff: " + pct_diff_from_center);
     		
-    		
+    		double pidOutput = Robot.miniPID.getOutput(overallCenterX);
+    		System.out.println("PID Output: " + pidOutput);
     		//Robot.chassis.driveMe(0.0, .20, 0.0);
+
+//    		TODO: Uncomment this when you are comfortable with PID output
+//    		Robot.chassis.driveMe(pidOutput, 0.0, 0.0);
     		
-    		double movement_based_on_pct_diff = (int)Math.round((1+pct_diff_from_center) * 5000);
-    		System.out.println("movement_based_on_pct_diff: " + movement_based_on_pct_diff);
-    		if (overallCenterX < imageCenter){
-    			Robot.lastOverallX = overallCenterX;
-    			System.out.println("IF 1");
-    			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(-0.35, 0.0, 0.0);
-    			}
-    		} else if (overallCenterX > imageCenter){
-    			Robot.lastOverallX = overallCenterX;
-    			System.out.println("IF 2");
-    			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(0.35, 0.0, 0.0);
-    			}
-    		}
+//    		double movement_based_on_pct_diff = (int)Math.round((1+pct_diff_from_center) * 5000);
+//    		System.out.println("movement_based_on_pct_diff: " + movement_based_on_pct_diff);
+//    		if (overallCenterX < imageCenter){
+//    			Robot.lastOverallX = overallCenterX;
+//    			System.out.println("IF 1");
+//    			for(int i = 0; i < movement_based_on_pct_diff; i++){
+//    				Robot.chassis.driveMe(-0.35, 0.0, 0.0);
+//    			}
+//    		} else if (overallCenterX > imageCenter){
+//    			Robot.lastOverallX = overallCenterX;
+//    			System.out.println("IF 2");
+//    			for(int i = 0; i < movement_based_on_pct_diff; i++){
+//    				Robot.chassis.driveMe(0.35, 0.0, 0.0);
+//    			}
+//    		}
     		
 //    		if (leftCenterY < rightCenterY){
 //    			Robot.chassis.driveMe(0, 0, -1.55); //rotate counter clockwise

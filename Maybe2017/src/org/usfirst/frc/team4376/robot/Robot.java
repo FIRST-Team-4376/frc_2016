@@ -47,6 +47,8 @@ public class Robot extends IterativeRobot {
 	public static boolean selectedCamera = false;
 	public static double lastOverallX = -1.0;
 	
+	public static MiniPID miniPID;
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -56,6 +58,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		miniPID = new MiniPID(0.25, 0.01, 0.4);
+		miniPID.setOutputLimits(1.0);
+		miniPID.setSetpointRange(320.0);
 		System.out.println("INIT");
 		oi = new OI();
 		chooser.addDefault("Default Auto", new FirstAuton());
