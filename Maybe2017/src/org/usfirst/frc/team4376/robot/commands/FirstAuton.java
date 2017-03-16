@@ -34,15 +34,17 @@ public class FirstAuton extends Command {
     		//Robot.chassis.driveForward();
     	//}
     	
-//    	if(timer.get() > 1 && timer.get() <= 4){
-//    		Robot.chassis.driveForward();
-//    	}
-    	double initialGyro = Robot.gyro.getAngle();
-    	while(Robot.gyro.getAngle() < initialGyro + 45){
-    		System.out.println("initialGyro " + initialGyro);
-    		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
-    		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+    	if(timer.get() > 1 && timer.get() <= 4){
+    		Robot.chassis.driveForward();
+    	} else {
+        	double initialGyro = Robot.gyro.getAngle();
+        	while(Robot.gyro.getAngle() < initialGyro + 45){
+        		System.out.println("initialGyro " + initialGyro);
+        		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+        		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+        	}
     	}
+
     	
     	
     }
