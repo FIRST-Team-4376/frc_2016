@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public static boolean selectedCamera = false;
 	public static double lastOverallX = -1.0;
 	
-	ADIS16448_IMU gyro;
+	public static ADIS16448_IMU gyro;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();

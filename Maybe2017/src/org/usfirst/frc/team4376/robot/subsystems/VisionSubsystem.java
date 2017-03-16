@@ -22,6 +22,14 @@ public class VisionSubsystem extends Subsystem {
 	}
 	
 	public void lineUpGear(){
+		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+		System.out.println("gyro getAngleZ " + Robot.gyro.getAngleZ());
+		System.out.println("gyro getAngleX " + Robot.gyro.getAngleX());
+		System.out.println("gyro getAngleY " + Robot.gyro.getAngleY());
+		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+	}
+	
+	public void lineUpGearOld(){
     	System.out.println("test");
     	double overallCenterX = SmartDashboard.getDouble("overallCenterX", -1.0);
     	double leftCenterY = SmartDashboard.getDouble("leftCenterY", -1.0);
@@ -34,6 +42,9 @@ public class VisionSubsystem extends Subsystem {
     	System.out.println("Overall Center Y:" + SmartDashboard.getDouble("overallCenterY", -1));
     	System.out.println("Image Width:" + SmartDashboard.getDouble("imageWidth", -1));
     	System.out.println("Image Height:" + SmartDashboard.getDouble("imageHeight", -1));
+    	
+    	System.out.print("getAngle " + Robot.gyro.getAngle());
+    	System.out.print("getAngleZ " + Robot.gyro.getAngleZ());
     	
     	if (overallCenterX != -1.0 &&
     			overallCenterX > 0.0 &&
@@ -71,11 +82,11 @@ public class VisionSubsystem extends Subsystem {
 //    			Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
 //    		}
     		
-    		if (overallScoreRight > overallScoreLeft){
-    			Robot.chassis.driveMe(0, 0, -.15); //rotate counter clockwise
-    		} else if (overallScoreRight < overallScoreLeft){
-    			Robot.chassis.driveMe(0, 0, .15); //rotate clockwise
-    		}
+//    		if (overallScoreRight > overallScoreLeft){
+//    			Robot.chassis.driveMe(0, 0, -.15); //rotate counter clockwise
+//    		} else if (overallScoreRight < overallScoreLeft){
+//    			Robot.chassis.driveMe(0, 0, .15); //rotate clockwise
+//    		}
     	}
     	
     	// Robot.chassis.driveForward();
