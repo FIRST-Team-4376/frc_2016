@@ -57,7 +57,15 @@ public class FirstAuton extends Command {
     			Robot.chassis.driveMe(0, -.25, -.25);
     		} else if (Robot.gyro.getAngleZ() < -62){
     			Robot.chassis.driveMe(0, -.25, .25);
-    		} }
+    		}
+    	} else {
+    		for (int i=0; i<10; i++){
+    			Robot.chassis.driveMe(.2, 0, .25); //rotate clockwise	
+    		}
+    		for (int i=0; i<10; i++){
+    			Robot.chassis.driveMe(.2, 0, -.25); //rotate counter-clockwise	
+    		}
+    	}
 //    		
 //    	} else {
 //        	double initialGyro = Robot.gyro.getAngle();
