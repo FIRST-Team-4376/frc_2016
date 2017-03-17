@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.core.Mat;
+import org.usfirst.frc.team4376.robot.commands.CrossWhiteLineAuton;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LeftSideAuton;
@@ -63,7 +64,9 @@ public class Robot extends IterativeRobot {
 		System.out.println("INIT");
 		oi = new OI();
 		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
+		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
 		chooser.addObject("Left starting spot", new LeftSideAuton());
+		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
