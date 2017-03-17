@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.opencv.core.Mat;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
+import org.usfirst.frc.team4376.robot.commands.LeftSideAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.ExampleSubsystem;
@@ -61,7 +62,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		System.out.println("INIT");
 		oi = new OI();
-		chooser.addDefault("Default Auto", new FirstAuton());
+		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
+		chooser.addObject("Left starting spot", new LeftSideAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		

@@ -61,13 +61,18 @@ public class FirstAuton extends Command {
     			Robot.chassis.driveMe(0, -.25, .25);
     		}
     	}else if (timer.get() >= 5.5 && timer.get() <= 12.0) {
-//    		int timer_int = (int)timer.get();
-    		if(iteration % 2 == 0){
-    			Robot.chassis.driveMe(0, 0, .35); //rotate clockwise
-    		} else {
-    			Robot.chassis.driveMe(0, 0, -.35); //rotate counter-clockwise
-    		}
-    		iteration++;
+			// int timer_int = (int)timer.get();
+			double shake_direction = 1.0;
+			if (iteration % 2 == 0){
+				shake_direction *= -1.0;
+			}
+			Robot.chassis.driveMe(0, -.25, .45*shake_direction);
+//			if (iteration % 2 == 0) {
+//				Robot.chassis.driveMe(0, -.25, .45); // rotate clockwise
+//			} else {
+//				Robot.chassis.driveMe(0, -.25, -.45); // rotate counter-clockwise
+//			}
+			iteration++;
     			
     	}
 //    	} else if (timer.get() >= 5.5 && timer.get() <= 7.5){
