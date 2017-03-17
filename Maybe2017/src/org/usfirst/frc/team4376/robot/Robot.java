@@ -24,6 +24,7 @@ import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.VisionSubsystem;
+import org.usfirst.frc.team4376.sensorlib.ADIS16448_IMU;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -47,6 +48,8 @@ public class Robot extends IterativeRobot {
 	public static boolean selectedCamera = false;
 	public static double lastOverallX = -1.0;
 	
+	public static ADIS16448_IMU gyro;
+	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -62,6 +65,10 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
+		gyro = new ADIS16448_IMU();
+		gyro.reset();
+		gyro.calibrate();
+
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
         Thread cameraThread = new Thread(() -> {        	
             // 640, 480
@@ -188,4 +195,5 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
 }
