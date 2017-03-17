@@ -12,6 +12,8 @@ public class FirstAuton extends Command {
 
 	private Timer timer;
 	
+	public int iteration = 1;
+	
     public FirstAuton() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -58,13 +60,14 @@ public class FirstAuton extends Command {
     		} else if (Robot.gyro.getAngleZ() < -62){
     			Robot.chassis.driveMe(0, -.25, .25);
     		}
-    	}else if (timer.get() <= 12.0) {
-    		int timer_int = (int)timer.get();
-    		if(timer_int % 2 == 0){
-    			Robot.chassis.driveMe(.2, 0, .25); //rotate clockwise
+    	}else if (timer.get() >= 5.5 && timer.get() <= 12.0) {
+//    		int timer_int = (int)timer.get();
+    		if(iteration % 2 == 0){
+    			Robot.chassis.driveMe(0, 0, .35); //rotate clockwise
     		} else {
-    			Robot.chassis.driveMe(.2, 0, -.25); //rotate counter-clockwise
+    			Robot.chassis.driveMe(0, 0, -.35); //rotate counter-clockwise
     		}
+    		iteration++;
     			
     	}
 //    	} else if (timer.get() >= 5.5 && timer.get() <= 7.5){
