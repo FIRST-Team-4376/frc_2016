@@ -66,7 +66,7 @@ public class FirstAuton extends Command {
 			if (iteration % 2 == 0){
 				shake_direction *= -1.0;
 			}
-			Robot.chassis.driveMe(0, -.25, .45*shake_direction);
+			Robot.chassis.driveMe(0, 0, .45*shake_direction);
 //			if (iteration % 2 == 0) {
 //				Robot.chassis.driveMe(0, -.25, .45); // rotate clockwise
 //			} else {

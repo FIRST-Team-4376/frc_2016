@@ -37,7 +37,7 @@ public class ChassisSubsystem extends Subsystem {
 	}
 	
 	public void driveMe(){		
-		chassis.mecanumDrive_Cartesian(stick.getX() * .5, stick.getY() * .5, stick.getZ() * .5, 0);
+		chassis.mecanumDrive_Cartesian(stick.getX() * .75, stick.getY() * .75, stick.getZ() * .75, 0);
 		
 	}
 	
