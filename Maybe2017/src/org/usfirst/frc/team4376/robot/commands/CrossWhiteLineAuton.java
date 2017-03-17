@@ -38,7 +38,7 @@ public class CrossWhiteLineAuton extends Command {
     		//Robot.chassis.driveForward();
     	//}
     	
-    	if(timer.get() > 0 && timer.get() <= 10.0){
+    	if(timer.get() > 0 && timer.get() <= 7.0){
     		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){
     			Robot.chassis.driveMe(0, -.25, 0);
     		} else if (Robot.gyro.getAngleZ() > 2) {
