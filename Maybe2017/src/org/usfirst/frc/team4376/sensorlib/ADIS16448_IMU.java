@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package org.usfirst.frc.team3618.sensorlib;
+package org.usfirst.frc.team4376.sensorlib;
 
 import java.nio.ByteOrder;
 import java.nio.ByteBuffer;

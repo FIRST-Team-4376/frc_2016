@@ -30,20 +30,43 @@ public class FirstAuton extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
+    	Robot.gyro.reset();
+    	Robot.gyro.calibrate();
     	//if(timer.get() <= 1){
     		//Robot.chassis.driveForward();
     	//}
     	
     	if(timer.get() > 1 && timer.get() <= 4){
-    		Robot.chassis.driveForward();
-    	} else {
-        	double initialGyro = Robot.gyro.getAngle();
-        	while(Robot.gyro.getAngle() < initialGyro + 45){
-        		System.out.println("initialGyro " + initialGyro);
-        		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
-        		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
-        	}
-    	}
+    		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){
+    			Robot.chassis.driveMe(0, -.25, 0);
+//    		} else if (Robot.gyro.getAngleZ() <2){
+//    			Robot.chassis.driveMe(0, -.25, -.25);
+//    		} else {
+//    			Robot.chassis.driveMe(0, -.25, .25);
+//    		}
+    		} else if(Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2){
+    			Robot.chassis.driveMe(0, -.25, -.25);
+    		} else if(Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		} else if(Robot.gyro.getAngleZ() > 62){
+    			Robot.chassis.driveMe(0, -.25, 0);
+    		}
+    		else if(Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58){
+    			Robot.chassis.driveMe(0, -.25, -.25);
+    		} else if (Robot.gyro.getAngleZ() < -62){
+    			Robot.chassis.driveMe(0, -.25, .25);
+    		} }
+//    		
+//    	} else {
+//        	double initialGyro = Robot.gyro.getAngle();
+//        	while(Robot.gyro.getAngle() < initialGyro + 45){
+//        		System.out.println("initialGyro " + initialGyro);
+//        		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+//        		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+//        	}
+//    	}
 
     	
     	

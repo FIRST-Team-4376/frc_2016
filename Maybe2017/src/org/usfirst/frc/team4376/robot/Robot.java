@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.core.Mat;
-import org.usfirst.frc.team3618.sensorlib.ADIS16448_IMU;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
@@ -25,6 +24,7 @@ import org.usfirst.frc.team4376.robot.subsystems.PickUpSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.RampMotorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.BallDoorSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.VisionSubsystem;
+import org.usfirst.frc.team4376.sensorlib.ADIS16448_IMU;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -64,6 +64,11 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new FirstAuton());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		
+		gyro = new ADIS16448_IMU();
+		gyro.reset();
+		gyro.calibrate();
+
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
         Thread cameraThread = new Thread(() -> {        	
             // 640, 480
@@ -113,8 +118,7 @@ public class Robot extends IterativeRobot {
         
         cameraThread.start();
 		
-		gyro = new ADIS16448_IMU();
-		gyro.calibrate();
+
 	}
 
 	/**
@@ -183,7 +187,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("Gyro", Robot.gyro.getAngle());
 		Scheduler.getInstance().run();
 	}
 
@@ -196,6 +199,5 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void robotPeriodic(){
-		SmartDashboard.putNumber("Robot Angle", gyro.getAngleZ());
 	}
 }
