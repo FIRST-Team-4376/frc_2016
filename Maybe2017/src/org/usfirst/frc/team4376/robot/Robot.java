@@ -88,12 +88,10 @@ public class Robot extends IterativeRobot {
             camera1.setResolution(320, 240);
             camera1.setFPS(20);
             
-            
             UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
             camera2.setResolution(320, 240);
             camera2.setFPS(20);
-//            camera2.setExposureManual(35);
-//            
+            
             CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
             CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
             Mat source = new Mat();     

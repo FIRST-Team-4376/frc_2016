@@ -37,7 +37,7 @@ public class LeftSideAuton extends Command {
 		// Robot.chassis.driveForward();
 		// }
 
-		if (timer.get() > 0 && timer.get() <= 2.5) {
+		if (timer.get() > 0 && timer.get() <= 3.0) {
 			if (Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2) {
 				Robot.chassis.driveMe(0, -.25, 0);
 				// } else if (Robot.gyro.getAngleZ() <2){
@@ -58,82 +58,66 @@ public class LeftSideAuton extends Command {
 			} else if (Robot.gyro.getAngleZ() < -62) {
 				Robot.chassis.driveMe(0, -.25, .25);
 			}
-		} else if (timer.get() > 2.5 && timer.get() <= 5.0) {
-			if (Robot.gyro.getAngleZ() < 59) {
+		}    else if(timer.get() > 3.0 && timer.get() <= 5.5){
+			if(Robot.gyro.getAngleZ() < 59){
 				Robot.chassis.driveMe(0, 0, .20);
-			} else if (Robot.gyro.getAngleZ() > 61) {
+			}
+			else if (Robot.gyro.getAngleZ() > 61){
 				Robot.chassis.driveMe(0, 0, -.20);
 			}
-		} else if (timer.get() > 5.0 && timer.get() < 6.0) {
-			if (Robot.gyro.getAngleZ() < 59) {
+		}	else if (timer.get() > 5.5 && timer.get() < 6.5){
+			if(Robot.gyro.getAngleZ() < 59){
 				Robot.chassis.driveMe(0, 0, .15);
-			} else if (Robot.gyro.getAngleZ() > 61) {
+			}
+			else if (Robot.gyro.getAngleZ() > 61){
 				Robot.chassis.driveMe(0, 0, -.15);
 			}
-		} else if (timer.get() > 6.0 && timer.get() <= 6.5) {
-			if (Robot.gyro.getAngleZ() < 62 && Robot.gyro.getAngleZ() > 58) {
-				Robot.chassis.driveMe(0, -.25, 0);
-			} else if (Robot.gyro.getAngleZ() < 58) {
+		}
+		else if(timer.get() > 6.5 && timer.get() <= 7.5){
+				if(Robot.gyro.getAngleZ() < 62 && Robot.gyro.getAngleZ() > 58){
+						Robot.chassis.driveMe(0, -.25, 0);
+				} else if(Robot.gyro.getAngleZ() < 58){
 				Robot.chassis.driveMe(0, -0.25, .15);
-			} else if (Robot.gyro.getAngleZ() > 62) {
+			}	else if(Robot.gyro.getAngleZ() > 62){
 				Robot.chassis.driveMe(0, -0.25, -.15);
 			}
-		} else if (timer.get() > 6.5 && timer.get() <= 8.0) {
-			if (Robot.gyro.getAngleZ() < 62 && Robot.gyro.getAngleZ() > 58) {
-				Robot.chassis.driveMe(0, -.15, 0);
-			} else if (Robot.gyro.getAngleZ() < 58) {
-				Robot.chassis.driveMe(0, -0.15, .15);
-			} else if (Robot.gyro.getAngleZ() > 62) {
-				Robot.chassis.driveMe(0, -0.15, -.15);
-			}
-		} else if (timer.get() > 8.0 && timer.get() <= 12.5) {
-			// int timer_int = (int)timer.get();
-			double shake_direction = 1.0;
-			if (iteration % 2 == 0) {
-				shake_direction *= -1.0;
-			}
-			Robot.chassis.driveMe(0, 0, .45 * shake_direction);
-			// if (iteration % 2 == 0) {
-			// Robot.chassis.driveMe(0, -.25, .45); // rotate clockwise
-			// } else {
-			// Robot.chassis.driveMe(0, -.25, -.45); // rotate counter-clockwise
-			// }
-			iteration++;
+		}
+		
+		
+		
+		
+//		else if (timer.get() > 7.5 && timer.get() <= 12.0) {
+//			// int timer_int = (int)timer.get();
+//			double shake_direction = 1.0;
+//			if (iteration % 2 == 0){
+//				shake_direction *= -1.0;
+//			}
+//			Robot.chassis.driveMe(0, 0, .45*shake_direction);
+////			if (iteration % 2 == 0) {
+////				Robot.chassis.driveMe(0, -.25, .45); // rotate clockwise
+////			} else {
+////				Robot.chassis.driveMe(0, -.25, -.45); // rotate counter-clockwise
+////			}
+//			iteration++;
 
 		}
-
-		// else if (timer.get() > 7.5 && timer.get() <= 12.0) {
-		// // int timer_int = (int)timer.get();
-		// double shake_direction = 1.0;
-		// if (iteration % 2 == 0){
-		// shake_direction *= -1.0;
+		// } else if (timer.get() >= 5.5 && timer.get() <= 7.5){
+		// for (int i=0; i<10; i++){
+		// Robot.chassis.driveMe(.2, 0, .25); //rotate clockwise
 		// }
-		// Robot.chassis.driveMe(0, 0, .45*shake_direction);
-		//// if (iteration % 2 == 0) {
-		//// Robot.chassis.driveMe(0, -.25, .45); // rotate clockwise
-		//// } else {
-		//// Robot.chassis.driveMe(0, -.25, -.45); // rotate counter-clockwise
-		//// }
-		// iteration++;
-
-	}
-	// } else if (timer.get() >= 5.5 && timer.get() <= 7.5){
-	// for (int i=0; i<10; i++){
-	// Robot.chassis.driveMe(.2, 0, .25); //rotate clockwise
-	// }
-	// for (int i=0; i<10; i++){
-	// Robot.chassis.driveMe(.2, 0, -.25); //rotate counter-clockwise
-	// }
-	// }
-	//
-	// } else {
-	// double initialGyro = Robot.gyro.getAngle();
-	// while(Robot.gyro.getAngle() < initialGyro + 45){
-	// System.out.println("initialGyro " + initialGyro);
-	// System.out.println("gyro getAngle " + Robot.gyro.getAngle());
-	// Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
-	// }
-	// }
+		// for (int i=0; i<10; i++){
+		// Robot.chassis.driveMe(.2, 0, -.25); //rotate counter-clockwise
+		// }
+		// }
+		//
+		// } else {
+		// double initialGyro = Robot.gyro.getAngle();
+		// while(Robot.gyro.getAngle() < initialGyro + 45){
+		// System.out.println("initialGyro " + initialGyro);
+		// System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+		// Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+		// }
+		// }
 
 	// }
 
