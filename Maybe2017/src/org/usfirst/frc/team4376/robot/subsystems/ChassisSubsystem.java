@@ -68,20 +68,12 @@ public class ChassisSubsystem extends Subsystem {
 		targetGyroHeading = Robot.gyro.getAngleZ();
 	}
 	
-	public boolean gyroHeadingLeftOfTarget(){
-		return Robot.gyro.getAngleZ() < targetGyroHeading - 1.0;
-	}
-	
-	public boolean gyroHeadingRightOfTarget(){
-		return Robot.gyro.getAngleZ() > targetGyroHeading + 1.0;
-	}
-	
 	
 	public void straightBotWithStickInput(){
 		double zChange = 0.0;
-		if (gyroHeadingLeftOfTarget()){
+		if (Robot.gyro.getAngleZ() - .5 < targetGyroHeading){
 			zChange = .15;
-		} else if (gyroHeadingRightOfTarget()){
+		} else if (Robot.gyro.getAngleZ() + .5 > targetGyroHeading) {
 			zChange = -.15;
 		}
 		
@@ -91,10 +83,10 @@ public class ChassisSubsystem extends Subsystem {
 	
 	public void straightBot(){
 		double zChange = 0.0;
-		if (gyroHeadingLeftOfTarget()){
-			zChange = .10;
-		} else if (gyroHeadingRightOfTarget()){ 
-			zChange = -.10;
+		if (Robot.gyro.getAngleZ() < targetGyroHeading){
+			zChange = .15;
+		} else if (Robot.gyro.getAngleZ() > targetGyroHeading) {
+			zChange = -.15;
 		}
 		
 		
