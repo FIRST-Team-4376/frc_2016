@@ -19,6 +19,7 @@ import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LeftSideAuton;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
+import org.usfirst.frc.team4376.robot.commands.RightSideAuton;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftSubsystem;
@@ -66,6 +67,8 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
 		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
 		chooser.addObject("Left starting spot", new LeftSideAuton());
+		chooser.addObject("Right starting spot", new RightSideAuton());
+		
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
