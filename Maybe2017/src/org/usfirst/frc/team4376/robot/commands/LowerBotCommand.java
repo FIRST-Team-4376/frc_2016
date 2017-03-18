@@ -23,6 +23,7 @@ public class LowerBotCommand extends Command {
     protected void execute() {
     	
     	Robot.lift.lowerBot();
+//    	Robot.ballDoor.ballDoorClose();
     }
 
     // Make this return true when this Command no longer needs to run execute()
