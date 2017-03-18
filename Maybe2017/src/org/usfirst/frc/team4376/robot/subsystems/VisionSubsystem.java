@@ -14,9 +14,9 @@ public class VisionSubsystem extends Subsystem {
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public int screenWidth = 640;
+  public int screenWidth = 320;
   public int centerOfScreen = screenWidth / 2;
-  public int desiredAlignmentX = centerOfScreen;
+  public int desiredAlignmentX = centerOfScreen - 20;
   public int xPosOfTarget = -1;
   private int lastFrameNumber = -1;
 
@@ -30,20 +30,29 @@ public class VisionSubsystem extends Subsystem {
       lastFrameNumber = frameNumber;
       xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
       onCameraUpdate();
+      driveTowardsTarget();
     }
   }
 
+  public void driveTowardsTarget(){
+	  for(int i = 0; i < 10; i++){
+	    if (onTarget()) {
+	      Robot.chassis.driveMe(0, -.5, 0);
+	    } else if (leftOfTarget()) {
+	      Robot.chassis.driveMe(0, -.5, .5);
+	    } else {
+	      Robot.chassis.driveMe(0, -0.5, -.5);
+	    }
+	  }
+  }
+  
   public void onCameraUpdate() {
-    if (onTarget()) {
-      Robot.chassis.driveMe(0, -.25, 0);
-    } else if (leftOfTarget()) {
-      Robot.chassis.driveMe(0, -.25, .15);
-    } else {
-      Robot.chassis.driveMe(0, -0.25, -.15);
-    }
+	  System.out.println("camera update!");
+	  
   }
 
   public void lineUpGear() {
+	System.out.println(SmartDashboard.getDouble("frameNumber"));
     checkForCameraUpdate();
   }
 
