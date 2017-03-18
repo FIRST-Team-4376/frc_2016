@@ -24,12 +24,11 @@ public class VisionSubsystem extends Subsystem {
 	}
 	
 	public void lineUpGear(){
-		Robot.chassis.straightBotWithStickInput();
-//		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
-//		System.out.println("gyro getAngleZ " + Robot.gyro.getAngleZ());
-//		System.out.println("gyro getAngleX " + Robot.gyro.getAngleX());
-//		System.out.println("gyro getAngleY " + Robot.gyro.getAngleY());
-//		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+		System.out.println("gyro getAngleZ " + Robot.gyro.getAngleZ());
+		System.out.println("gyro getAngleX " + Robot.gyro.getAngleX());
+		System.out.println("gyro getAngleY " + Robot.gyro.getAngleY());
+		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
 	}
 	
 	public void lineUpGearOld(){
