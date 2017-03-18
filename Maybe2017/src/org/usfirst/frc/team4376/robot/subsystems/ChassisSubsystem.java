@@ -18,6 +18,8 @@ import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
  */
 public class ChassisSubsystem extends Subsystem {
 	
+	public double targetGyroHeading;
+	
 	public RobotDrive chassis;
 	
 	Joystick stick = new Joystick(RobotMap.driveStick);
@@ -58,26 +60,61 @@ public class ChassisSubsystem extends Subsystem {
 		chassis.mecanumDrive_Cartesian(0, -.4, 0, 0);
 	}
 	
-	public void straightBot(){
-		
-		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){
-			Robot.chassis.driveMe(0, -.25, 0);
-		} else if(Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2){
-			Robot.chassis.driveMe(0, -.25, -.25);
-		} else if(Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30){
-			Robot.chassis.driveMe(0, -.25, .25);
-		} else if(Robot.gyro.getAngleZ() > 62){
-			Robot.chassis.driveMe(0, -.25, 0);
-		}
-		else if(Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30){
-			Robot.chassis.driveMe(0, -.25, .25);
-		} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58){
-			Robot.chassis.driveMe(0, -.25, -.25);
-		} else if (Robot.gyro.getAngleZ() < -62){
-			Robot.chassis.driveMe(0, -.25, .25);
-		}
-		
+	public void setTargetGyroHeading(double number){
+		targetGyroHeading = number;
 	}
+	
+	public void setTargetGyroHeading(){
+		targetGyroHeading = Robot.gyro.getAngleZ();
+	}
+	
+	
+	public void straightBotWithStickInput(){
+		double zChange = 0.0;
+		if (Robot.gyro.getAngleZ() - .5 < targetGyroHeading){
+			zChange = .15;
+		} else if (Robot.gyro.getAngleZ() + .5 > targetGyroHeading) {
+			zChange = -.15;
+		}
+		
+		
+		Robot.chassis.driveMe(stick.getX() * .75, stick.getY() * .75, zChange);
+	}
+	
+	public void straightBot(){
+		double zChange = 0.0;
+		if (Robot.gyro.getAngleZ() < targetGyroHeading){
+			zChange = .15;
+		} else if (Robot.gyro.getAngleZ() > targetGyroHeading) {
+			zChange = -.15;
+		}
+		
+		
+		Robot.chassis.driveMe(0.0, -.25, zChange);
+	}
+		
+		
+		
+		
+//	public void straightBot(){
+//		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){
+//			Robot.chassis.driveMe(0, -.25, 0);
+//		} else if(Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2){
+//			Robot.chassis.driveMe(0, -.25, -.25);
+//		} else if(Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30){
+//			Robot.chassis.driveMe(0, -.25, .25);
+//		} else if(Robot.gyro.getAngleZ() > 62){
+//			Robot.chassis.driveMe(0, -.25, 0);
+//		}
+//		else if(Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30){
+//			Robot.chassis.driveMe(0, -.25, .25);
+//		} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58){
+//			Robot.chassis.driveMe(0, -.25, -.25);
+//		} else if (Robot.gyro.getAngleZ() < -62){
+//			Robot.chassis.driveMe(0, -.25, .25);
+//		}
+//		
+//	}
 	
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
