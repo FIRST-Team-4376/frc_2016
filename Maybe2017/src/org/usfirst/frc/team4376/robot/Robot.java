@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.opencv.core.Mat;
+import org.usfirst.frc.team4376.robot.commands.CenterVisionAuton;
 import org.usfirst.frc.team4376.robot.commands.CrossWhiteLineAuton;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
@@ -68,6 +69,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
 		chooser.addObject("Left starting spot", new LeftSideAuton());
 		chooser.addObject("Right starting spot", new RightSideAuton());
+		chooser.addObject("Center starting spot WITH VISION", new CenterVisionAuton());
 		
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
