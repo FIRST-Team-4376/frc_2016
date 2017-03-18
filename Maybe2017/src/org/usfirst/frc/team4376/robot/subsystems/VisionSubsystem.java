@@ -16,7 +16,7 @@ public class VisionSubsystem extends Subsystem {
   // here. Call these from Commands.
   public int screenWidth = 320;
   public int centerOfScreen = screenWidth / 2;
-  public int desiredAlignmentX = centerOfScreen - 20;
+  public int desiredAlignmentX = centerOfScreen - 30;
   public int xPosOfTarget = -1;
   private int lastFrameNumber = -1;
 
