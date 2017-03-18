@@ -7,100 +7,64 @@ import org.usfirst.frc.team4376.robot.Robot;
 import org.usfirst.frc.team4376.robot.RobotMap;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  *
  */
 public class VisionSubsystem extends Subsystem {
 
-	
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	
-	
-	
-	public VisionSubsystem() {
-		
-	}
-	
-	public void lineUpGear(){
-		System.out.println("gyro getAngle " + Robot.gyro.getAngle());
-		System.out.println("gyro getAngleZ " + Robot.gyro.getAngleZ());
-		System.out.println("gyro getAngleX " + Robot.gyro.getAngleX());
-		System.out.println("gyro getAngleY " + Robot.gyro.getAngleY());
-		Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
-	}
-	
-	public void lineUpGearOld(){
-    	System.out.println("test");
-    	double overallCenterX = SmartDashboard.getDouble("overallCenterX", -1.0);
-    	double leftCenterY = SmartDashboard.getDouble("leftCenterY", -1.0);
-    	double rightCenterY = SmartDashboard.getDouble("rightCenterY", -1.0);
-    	double overallScoreLeft = SmartDashboard.getDouble("overallScoreLeft", -1.0);
-    	double overallScoreRight = SmartDashboard.getDouble("overallScoreRight", -1.0);
+  // Put methods for controlling this subsystem
+  // here. Call these from Commands.
+  public int screenWidth = 640;
+  public int centerOfScreen = screenWidth / 2;
+  public int desiredAlignmentX = centerOfScreen;
+  public int xPosOfTarget = -1;
+  private int lastFrameNumber = -1;
 
-    	double imageWidth = SmartDashboard.getDouble("imageWidth", -1.0);
-    	System.out.println("Overall Center X:" + SmartDashboard.getDouble("overallCenterX", -1));
-    	System.out.println("Overall Center Y:" + SmartDashboard.getDouble("overallCenterY", -1));
-    	System.out.println("Image Width:" + SmartDashboard.getDouble("imageWidth", -1));
-    	System.out.println("Image Height:" + SmartDashboard.getDouble("imageHeight", -1));
-    	
-    	System.out.print("getAngle " + Robot.gyro.getAngle());
-    	System.out.print("getAngleZ " + Robot.gyro.getAngleZ());
-    	
-    	if (overallCenterX != -1.0 &&
-    			overallCenterX > 0.0 &&
-    			imageWidth != -1.0 &&
-    			overallCenterX != Robot.lastOverallX &&
-    			imageWidth > 0.0){
-    		double imageCenter = imageWidth / 2.0;
-    		imageCenter = imageCenter - 70.0;
-    		
-    		double pct_diff_from_center = (Math.abs(imageCenter - overallCenterX) / imageWidth);
-    		System.out.println("pct diff: " + pct_diff_from_center);
-    		
-    		
-    		//Robot.chassis.driveMe(0.0, .20, 0.0);
-    		
-    		double movement_based_on_pct_diff = (int)Math.round((1+pct_diff_from_center) * 5000);
-    		System.out.println("movement_based_on_pct_diff: " + movement_based_on_pct_diff);
-    		if (overallCenterX < imageCenter){
-    			Robot.lastOverallX = overallCenterX;
-    			System.out.println("IF 1");
-    			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(-0.35, 0.0, 0.0);
-    			}
-    		} else if (overallCenterX > imageCenter){
-    			Robot.lastOverallX = overallCenterX;
-    			System.out.println("IF 2");
-    			for(int i = 0; i < movement_based_on_pct_diff; i++){
-    				Robot.chassis.driveMe(0.35, 0.0, 0.0);
-    			}
-    		}
-    		
-//    		if (leftCenterY < rightCenterY){
-//    			Robot.chassis.driveMe(0, 0, -1.55); //rotate counter clockwise
-//    		} else if (leftCenterY > rightCenterY){
-//    			Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
-//    		}
-    		
-//    		if (overallScoreRight > overallScoreLeft){
-//    			Robot.chassis.driveMe(0, 0, -.15); //rotate counter clockwise
-//    		} else if (overallScoreRight < overallScoreLeft){
-//    			Robot.chassis.driveMe(0, 0, .15); //rotate clockwise
-//    		}
-    	}
-    	
-    	// Robot.chassis.driveForward();
-	}
-	
-	public void stopLineUpGear(){
-		return;
-	}
+  public VisionSubsystem() {
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void checkForCameraUpdate() {
+    int frameNumber = SmartDashboard.getInt("frameNumber", lastFrameNumber);
+    if (frameNumber != lastFrameNumber) {
+      lastFrameNumber = frameNumber;
+      xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
+      onCameraUpdate();
     }
-}
+  }
 
+  public void onCameraUpdate() {
+    if (onTarget()) {
+      Robot.chassis.driveMe(0, -.25, 0);
+    } else if (leftOfTarget()) {
+      Robot.chassis.driveMe(0, -.25, .15);
+    } else {
+      Robot.chassis.driveMe(0, -0.25, -.15);
+    }
+  }
+
+  public void lineUpGear() {
+    checkForCameraUpdate();
+  }
+
+  public int targetOffsetFromDesired() {
+    return xPosOfTarget - desiredAlignmentX;
+  }
+
+  public boolean onTarget() {
+    return (Math.abs(targetOffsetFromDesired()) <= 10);
+  }
+
+  public boolean leftOfTarget() {
+    return targetOffsetFromDesired() > 10;
+  }
+
+  public void stopLineUpGear() {
+    return;
+  }
+
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+  }
+}
