@@ -82,6 +82,15 @@ public class LeftSideAuton extends Command {
 				Robot.chassis.driveMe(0, -0.25, -.15);
 			}
 		}
+		else if(timer.get() > 7.5 && timer.get() <= 8.5){
+			if(Robot.gyro.getAngleZ() < 61 && Robot.gyro.getAngleZ() > 59){
+					Robot.chassis.driveMe(0, -.15, 0);
+			} else if(Robot.gyro.getAngleZ() < 59){
+			Robot.chassis.driveMe(0, -0.15, .15);
+		}	else if(Robot.gyro.getAngleZ() > 61){
+			Robot.chassis.driveMe(0, -0.15, -.15);
+		}
+	}
 		
 		
 		
