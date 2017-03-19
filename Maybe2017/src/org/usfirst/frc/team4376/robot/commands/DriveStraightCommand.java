@@ -1,31 +1,29 @@
 package org.usfirst.frc.team4376.robot.commands;
 
+import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4376.robot.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class LineUpGearCommand extends Command {
+public class DriveStraightCommand extends Command {
 
-    public LineUpGearCommand() {
+	
+    public DriveStraightCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.vision);
     	requires(Robot.chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+
     }
 
     // Called repeatedly when this Command is scheduled to run
-    public void execute() {
-    	Robot.vision.checkForCameraUpdate();
-    	Robot.chassis.driveAtAngle(0.0, -.15, Robot.gyro.getAngleZ() + Robot.vision.targetOffsetAngleFromDesired());
-//    	Robot.vision.lineUpGear();
+    protected void execute() {
+    	Robot.chassis.driveMe();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -35,6 +33,7 @@ public class LineUpGearCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.chassis.stopMe();
     }
 
     // Called when another command which requires one or more of the same
