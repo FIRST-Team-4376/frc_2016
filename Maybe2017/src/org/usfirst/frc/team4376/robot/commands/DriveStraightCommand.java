@@ -10,9 +10,12 @@ import org.usfirst.frc.team4376.robot.Robot;
 public class DriveStraightCommand extends Command {
 
 	
+	public double targetAngle;
+	
     public DriveStraightCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	targetAngle = Robot.gyro.getAngleZ();
     	requires(Robot.chassis);
     }
 
