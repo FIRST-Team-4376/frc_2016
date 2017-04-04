@@ -31,7 +31,10 @@ public class VisionSubsystem extends Subsystem {
       xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
       onCameraUpdate();
       driveTowardsTarget();
+    } else {
+        Robot.chassis.driveMe(0, -.5, 0);    	
     }
+
   }
 
   public void driveTowardsTarget(){

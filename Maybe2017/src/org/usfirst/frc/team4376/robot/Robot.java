@@ -80,53 +80,53 @@ public class Robot extends IterativeRobot {
 		gyro.calibrate();
 
         /** Instantiate a the camera server for both USB webcams in a separate thread **/
-//        Thread cameraThread = new Thread(() -> {        	
-//            // 640, 480
-//            // 320, 240
-//            // 160, 120
-//      
-//        	
-//            UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
-//            camera1.setResolution(320, 240);
-//            camera1.setFPS(20);
-//            
-//            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
-//            camera2.setResolution(320, 240);
-//            camera2.setFPS(20);
-//            
-//            CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
-//            CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
-//            Mat source = new Mat();     
-//
-//            boolean currentCamera = selectedCamera;
-//            while( !Thread.interrupted() ) {
-//            	// We support two cameras, so the selectedCamera is a boolean to toggle
-//            	// between camera1 and camera2
-//            	if ( currentCamera != selectedCamera ) {
-//            		currentCamera = selectedCamera;
-//	            	if ( selectedCamera == false ) {
-//	            		// Set the source to camera1
-//	            		cvSink.setSource(camera1);            		
-//	                	SmartDashboard.putString("Camera", "Camera 1");
-//	            	} else {
-//	            		// Set the source to camera2
-//	            		cvSink.setSource(camera2);
-//	                	SmartDashboard.putString("Camera", "Camera 2");
-//	            	}
-//            	}
-// 
-//            	//Grab image from the source camera
-//            	cvSink.grabFrame(source);
-//            	
-//            	// if there was an image collected, then send it to the dashboard via
-//            	// the output stream
-//            	if ( source.empty() == false ) {
-//            		outputStream.putFrame(source);
-//            	}
-//            }
-//        });
-//        
-//        cameraThread.start();
+        Thread cameraThread = new Thread(() -> {        	
+            // 640, 480
+            // 320, 240
+            // 160, 120
+      
+        	
+            UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);            
+            camera1.setResolution(320, 240);
+            camera1.setFPS(20);
+            
+            UsbCamera camera2 = CameraServer.getInstance().startAutomaticCapture(1);
+            camera2.setResolution(320, 240);
+            camera2.setFPS(20);
+            
+            CvSink cvSink = CameraServer.getInstance().getVideo(camera1);
+            CvSource outputStream = CameraServer.getInstance().putVideo("Video", 320, 240);
+            Mat source = new Mat();     
+
+            boolean currentCamera = selectedCamera;
+            while( !Thread.interrupted() ) {
+            	// We support two cameras, so the selectedCamera is a boolean to toggle
+            	// between camera1 and camera2
+            	if ( currentCamera != selectedCamera ) {
+            		currentCamera = selectedCamera;
+	            	if ( selectedCamera == false ) {
+	            		// Set the source to camera1
+	            		cvSink.setSource(camera1);            		
+	                	SmartDashboard.putString("Camera", "Camera 1");
+	            	} else {
+	            		// Set the source to camera2
+	            		cvSink.setSource(camera2);
+	                	SmartDashboard.putString("Camera", "Camera 2");
+	            	}
+            	}
+ 
+            	//Grab image from the source camera
+            	cvSink.grabFrame(source);
+            	
+            	// if there was an image collected, then send it to the dashboard via
+            	// the output stream
+            	if ( source.empty() == false ) {
+            		outputStream.putFrame(source);
+            	}
+            }
+        });
+        
+        cameraThread.start();
 		
 
 	}
