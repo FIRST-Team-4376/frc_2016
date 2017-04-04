@@ -19,6 +19,7 @@ import org.usfirst.frc.team4376.robot.commands.CrossWhiteLineAuton;
 import org.usfirst.frc.team4376.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4376.robot.commands.FirstAuton;
 import org.usfirst.frc.team4376.robot.commands.LeftSideAuton;
+import org.usfirst.frc.team4376.robot.commands.LeftSideAutonVision;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.commands.RightSideAuton;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
@@ -70,6 +71,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Left starting spot", new LeftSideAuton());
 		chooser.addObject("Right starting spot", new RightSideAuton());
 		chooser.addObject("Center starting spot WITH VISION", new CenterVisionAuton());
+		chooser.addObject("LEFT starting spot WITH VISION", new LeftSideAutonVision());
 		
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
