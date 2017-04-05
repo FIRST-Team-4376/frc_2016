@@ -34,6 +34,19 @@ public class CenterVisionAuton extends Command {
     protected void execute() {
     	if (timer.get() > 0 && timer.get() < 12.0){
     		Robot.vision.checkForCameraUpdate();
+//			if (Robot.vision.acquiredTarget()){ //doesnt work
+//				Robot.vision.checkForCameraUpdate();
+//			} else {
+//				if(Robot.gyro.getAngleZ() < -1){
+//					Robot.chassis.driveMe(0, -.10, .15);
+//				}
+//				else if (Robot.gyro.getAngleZ() > 1){
+//					Robot.chassis.driveMe(0, -.10, -.15);
+//				} else {
+//					Robot.chassis.driveMe(0, -.15, 0);
+//				}
+//
+//			}
     	}
     }
 

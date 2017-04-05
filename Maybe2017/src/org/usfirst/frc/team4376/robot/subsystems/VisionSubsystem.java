@@ -16,7 +16,7 @@ public class VisionSubsystem extends Subsystem {
   // here. Call these from Commands.
   public int screenWidth = 320;
   public int centerOfScreen = screenWidth / 2;
-  public int desiredAlignmentX = centerOfScreen - 30;
+  public int desiredAlignmentX = centerOfScreen - 32;
   public int xPosOfTarget = -1;
   private int lastFrameNumber = -1;
 
@@ -32,21 +32,35 @@ public class VisionSubsystem extends Subsystem {
       onCameraUpdate();
       driveTowardsTarget();
     } else {
-        Robot.chassis.driveMe(0, -.5, 0);    	
+        Robot.chassis.driveMe(0, -.15, 0);
+//    	if(acquiredTarget()){
+//            Robot.chassis.driveMe(0, -.15, 0);
+//    	} else {
+//            Robot.chassis.driveMe(0, -.10, 0);    		
+//    	}
+
     }
 
   }
 
   public void driveTowardsTarget(){
-	  for(int i = 0; i < 10; i++){
+	  for(int i = 0; i < 15; i++){
 	    if (onTarget()) {
-	      Robot.chassis.driveMe(0, -.5, 0);
+	      Robot.chassis.driveMe(0, -.15, 0);
 	    } else if (leftOfTarget()) {
-	      Robot.chassis.driveMe(0, -.5, .5);
+	      Robot.chassis.driveMe(0, -.15, .5); // rotate
+//	      Robot.chassis.driveMe(.5, -.15, 0); //strafe
+//	      Robot.chassis.driveMe(.5, -.15, .5); //both WARNING REALLY CRAPPY
 	    } else {
-	      Robot.chassis.driveMe(0, -0.5, -.5);
+	      Robot.chassis.driveMe(0, -0.15, -.5); //rotate
+//	      Robot.chassis.driveMe(-.5, -.15, 0); //strafe
+//	      Robot.chassis.driveMe(-.5, -.15, -.5); //both WARNING REALLY CRAPPY
 	    }
 	  }
+  }
+  
+  public boolean acquiredTarget() {
+return lastFrameNumber != -1;
   }
   
   public void onCameraUpdate() {

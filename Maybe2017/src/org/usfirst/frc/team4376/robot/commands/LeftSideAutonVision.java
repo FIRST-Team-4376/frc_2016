@@ -65,16 +65,28 @@ public class LeftSideAutonVision extends Command {
 			else if (Robot.gyro.getAngleZ() > 61){
 				Robot.chassis.driveMe(0, 0, -.20);
 			}
-		}	else if (timer.get() > 5.5 && timer.get() < 6.5){
+		}	else if (timer.get() > 5.5 && timer.get() < 7.5){
 			if(Robot.gyro.getAngleZ() < 59){
-				Robot.chassis.driveMe(0, 0, .15);
+				Robot.chassis.driveMe(0, 0, .25);
 			}
 			else if (Robot.gyro.getAngleZ() > 61){
-				Robot.chassis.driveMe(0, 0, -.15);
+				Robot.chassis.driveMe(0, 0, -.25);
 			}
 		}
-		else if(timer.get() > 6.5 && timer.get() <= 12.5){
-			Robot.vision.checkForCameraUpdate();
+		else if(timer.get() > 7.5 && timer.get() <= 13.5){
+			if (Robot.vision.acquiredTarget()){
+				Robot.vision.checkForCameraUpdate();
+			} else {
+				if(Robot.gyro.getAngleZ() < 59){
+					Robot.chassis.driveMe(0, -.15, .20);
+				}
+				else if (Robot.gyro.getAngleZ() > 61){
+					Robot.chassis.driveMe(0, -.15, -.20);
+				} else {
+					Robot.chassis.driveMe(0, -.15, -.20);
+				}
+
+			}
 		}
 		
 		
