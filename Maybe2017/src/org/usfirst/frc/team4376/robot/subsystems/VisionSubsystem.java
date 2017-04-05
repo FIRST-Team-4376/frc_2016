@@ -25,7 +25,7 @@ public class VisionSubsystem extends Subsystem {
   }
 
   public void checkForCameraUpdate() {
-    int frameNumber = SmartDashboard.getInt("frameNumber", lastFrameNumber);
+    int frameNumber = getFrameNumber();
     if (frameNumber != lastFrameNumber) {
       lastFrameNumber = frameNumber;
       xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
@@ -43,6 +43,10 @@ public class VisionSubsystem extends Subsystem {
 
   }
 
+  public int getFrameNumber(){
+	  return SmartDashboard.getInt("frameNumber", lastFrameNumber);
+  }
+  
   public void driveTowardsTarget(){
 	  for(int i = 0; i < 15; i++){
 	    if (onTarget()) {
