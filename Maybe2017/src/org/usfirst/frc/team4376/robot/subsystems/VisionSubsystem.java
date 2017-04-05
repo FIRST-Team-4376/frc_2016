@@ -60,7 +60,7 @@ public class VisionSubsystem extends Subsystem {
   }
   
   public boolean acquiredTarget() {
-return lastFrameNumber != -1;
+	  return lastFrameNumber != -1;
   }
   
   public void onCameraUpdate() {
