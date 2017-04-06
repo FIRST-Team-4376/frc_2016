@@ -66,7 +66,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		System.out.println("INIT");
 		oi = new OI();
-		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
+		chooser.addDefault("left auton vision", new LeftSideAutonVision());
+//		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
 		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
 		chooser.addObject("Left starting spot", new LeftSideAuton());
 		chooser.addObject("Right starting spot", new RightSideAuton());

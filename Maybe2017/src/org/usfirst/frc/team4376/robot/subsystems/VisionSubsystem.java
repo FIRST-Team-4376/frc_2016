@@ -19,6 +19,7 @@ public class VisionSubsystem extends Subsystem {
   public int desiredAlignmentX = centerOfScreen - 32;
   public int xPosOfTarget = -1;
   private int lastFrameNumber = -1;
+  private boolean acquiredTarget = false;
 
   public VisionSubsystem() {
 
@@ -27,12 +28,19 @@ public class VisionSubsystem extends Subsystem {
   public void checkForCameraUpdate() {
     int frameNumber = getFrameNumber();
     if (frameNumber != lastFrameNumber) {
+//      acquiredTarget = true;
       lastFrameNumber = frameNumber;
       xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
       onCameraUpdate();
       driveTowardsTarget();
     } else {
-        Robot.chassis.driveMe(0, -.15, 0);
+    	Robot.chassis.driveMe(0, -.15, 0);
+//    	if (acquiredTarget){
+//    		Robot.chassis.driveMe(0, -.15, 0);
+//    	}
+//    	else {
+//    		Robot.chassis.driveMe(0, -.25, 0);
+//    	}
 //    	if(acquiredTarget()){
 //            Robot.chassis.driveMe(0, -.15, 0);
 //    	} else {

@@ -60,7 +60,7 @@ public class LeftSideAutonVision extends Command {
 //				Robot.chassis.driveMe(0, -.25, .25);
 //			}
 			Robot.chassis.driveAtAngle(0.0, -0.25);
-		} else if (timer.get() > 3.0 && timer.get() <= 7.5) {
+		} else if (timer.get() > 3.0 && timer.get() <= 5.5) {
 //			if (Robot.gyro.getAngleZ() < 59) {
 //				Robot.chassis.driveMe(0, 0, .20);
 //			} else if (Robot.gyro.getAngleZ() > 61) {
@@ -70,7 +70,9 @@ public class LeftSideAutonVision extends Command {
 //			}
 			
 			if (turnInPlaceComplete) {
-				Robot.chassis.driveAtAngle(60.0, -0.25);
+				System.out.println("final thing");
+//				Robot.chassis.driveAtAngle(60.0, -0.15);
+				Robot.vision.checkForCameraUpdate();
 
 			} else {
 				Robot.chassis.driveAtAngle(60.0, 0.0);
@@ -78,21 +80,8 @@ public class LeftSideAutonVision extends Command {
 					turnInPlaceComplete = true;
 				}
 			}
-		} else if (timer.get() > 7.5 && timer.get() <= 13.5) {
-			Robot.vision.getFrameNumber();
-			if (Robot.vision.acquiredTarget()) {
-				Robot.vision.checkForCameraUpdate();
-			} else {
-				Robot.chassis.driveAtAngle(60.0, -.25);
-//				if (Robot.gyro.getAngleZ() < 59) {
-//					Robot.chassis.driveMe(0, -.15, .20);
-//				} else if (Robot.gyro.getAngleZ() > 61) {
-//					Robot.chassis.driveMe(0, -.15, -.20);
-//				} else {
-//					Robot.chassis.driveMe(0, -.15, 0.0);
-//				}
-
-			}
+		} else if (timer.get() > 5.5 && timer.get() <= 13.5) {
+			Robot.vision.checkForCameraUpdate();
 		}
 
 		// else if (timer.get() > 7.5 && timer.get() <= 12.0) {
