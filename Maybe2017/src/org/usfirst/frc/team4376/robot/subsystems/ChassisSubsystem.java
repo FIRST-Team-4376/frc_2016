@@ -58,6 +58,20 @@ public class ChassisSubsystem extends Subsystem {
 		chassis.mecanumDrive_Cartesian(0, -.4, 0, 0);
 	}
 	
+	public void driveAtAngle(double targetAngle, double driveSpeed){
+		double marginOfError = 1.0;
+		double leftMostAngle = targetAngle - marginOfError;
+		double rightMostAngle = targetAngle + marginOfError;
+		
+		if(Robot.gyro.getAngleZ() < leftMostAngle){
+			Robot.chassis.driveMe(0, driveSpeed, .25);
+		} else if(Robot.gyro.getAngleZ() > rightMostAngle){
+			Robot.chassis.driveMe(0, driveSpeed, -.25);
+		} else{
+			Robot.chassis.driveMe(0.0, driveSpeed, 0.0);
+		}
+	}
+	
 	public void straightBot(){
 		
 		if(Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2){

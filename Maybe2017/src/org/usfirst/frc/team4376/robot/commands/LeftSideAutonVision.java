@@ -13,6 +13,7 @@ public class LeftSideAutonVision extends Command {
 	private Timer timer;
 
 	public int iteration = 1;
+	public boolean turnInPlaceComplete = false;
 
 	public LeftSideAutonVision() {
 		// Use requires() here to declare subsystem dependencies
@@ -38,46 +39,58 @@ public class LeftSideAutonVision extends Command {
 		// }
 
 		if (timer.get() > 0 && timer.get() <= 3.0) {
-			if (Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2) {
-				Robot.chassis.driveMe(0, -.25, 0);
-				// } else if (Robot.gyro.getAngleZ() <2){
-				// Robot.chassis.driveMe(0, -.25, -.25);
-				// } else {
-				// Robot.chassis.driveMe(0, -.25, .25);
-				// }
-			} else if (Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2) {
-				Robot.chassis.driveMe(0, -.25, -.25);
-			} else if (Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30) {
-				Robot.chassis.driveMe(0, -.25, .25);
-			} else if (Robot.gyro.getAngleZ() > 62) {
-				Robot.chassis.driveMe(0, -.25, -.25);
-			} else if (Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30) {
-				Robot.chassis.driveMe(0, -.25, .25);
-			} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58) {
-				Robot.chassis.driveMe(0, -.25, -.25);
-			} else if (Robot.gyro.getAngleZ() < -62) {
-				Robot.chassis.driveMe(0, -.25, .25);
-			}
+//			if (Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2) {
+//				Robot.chassis.driveMe(0, -.25, 0);
+//				// } else if (Robot.gyro.getAngleZ() <2){
+//				// Robot.chassis.driveMe(0, -.25, -.25);
+//				// } else {
+//				// Robot.chassis.driveMe(0, -.25, .25);
+//				// }
+//			} else if (Robot.gyro.getAngleZ() <= 30 && Robot.gyro.getAngleZ() > 2) {
+//				Robot.chassis.driveMe(0, -.25, -.25);
+//			} else if (Robot.gyro.getAngleZ() < 58 && Robot.gyro.getAngleZ() > 30) {
+//				Robot.chassis.driveMe(0, -.25, .25);
+//			} else if (Robot.gyro.getAngleZ() > 62) {
+//				Robot.chassis.driveMe(0, -.25, -.25);
+//			} else if (Robot.gyro.getAngleZ() < -2 && Robot.gyro.getAngleZ() >= -30) {
+//				Robot.chassis.driveMe(0, -.25, .25);
+//			} else if (Robot.gyro.getAngleZ() < -30 && Robot.gyro.getAngleZ() > -58) {
+//				Robot.chassis.driveMe(0, -.25, -.25);
+//			} else if (Robot.gyro.getAngleZ() < -62) {
+//				Robot.chassis.driveMe(0, -.25, .25);
+//			}
+			Robot.chassis.driveAtAngle(0.0, -0.25);
 		} else if (timer.get() > 3.0 && timer.get() <= 7.5) {
-			if (Robot.gyro.getAngleZ() < 59) {
-				Robot.chassis.driveMe(0, 0, .20);
-			} else if (Robot.gyro.getAngleZ() > 61) {
-				Robot.chassis.driveMe(0, 0, -.20);
-			} else{
-				Robot.chassis.driveMe(0, -.25, 0);
+//			if (Robot.gyro.getAngleZ() < 59) {
+//				Robot.chassis.driveMe(0, 0, .20);
+//			} else if (Robot.gyro.getAngleZ() > 61) {
+//				Robot.chassis.driveMe(0, 0, -.20);
+//			} else{
+//				Robot.chassis.driveMe(0, -.25, 0);
+//			}
+			
+			if (turnInPlaceComplete) {
+				Robot.chassis.driveAtAngle(60.0, -0.25);
+
+			} else {
+				Robot.chassis.driveAtAngle(60.0, 0.0);
+				if (Robot.gyro.getAngleZ() >= 59 && Robot.gyro.getAngleZ() <= 61){
+					turnInPlaceComplete = true;
+				}
 			}
 		} else if (timer.get() > 7.5 && timer.get() <= 13.5) {
 			Robot.vision.getFrameNumber();
 			if (Robot.vision.acquiredTarget()) {
 				Robot.vision.checkForCameraUpdate();
 			} else {
-				if (Robot.gyro.getAngleZ() < 59) {
-					Robot.chassis.driveMe(0, -.15, .20);
-				} else if (Robot.gyro.getAngleZ() > 61) {
-					Robot.chassis.driveMe(0, -.15, -.20);
-				} else {
-					Robot.chassis.driveMe(0, -.15, 0.0);
-				}
+				Robot.chassis.driveAtAngle(60.0, -.25);
+//				if (Robot.gyro.getAngleZ() < 59) {
+//					Robot.chassis.driveMe(0, -.15, .20);
+//				} else if (Robot.gyro.getAngleZ() > 61) {
+//					Robot.chassis.driveMe(0, -.15, -.20);
+//				} else {
+//					Robot.chassis.driveMe(0, -.15, 0.0);
+//				}
 
 			}
 		}
