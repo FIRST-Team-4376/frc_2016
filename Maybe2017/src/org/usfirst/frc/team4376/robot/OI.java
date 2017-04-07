@@ -90,6 +90,7 @@ public class OI {
 		lineUpGear.whenReleased(new LineUpGearStopCommand());
 
 		ballDoorOpen.whenPressed(new BallDoorOpenCommand());
+		ballDoorOpen.whenReleased(new BallDoorCloseCommand());
 		ballDoorClose.whenPressed(new BallDoorCloseCommand());
 		//ballDoorOpen.whenReleased(new BallDoorRestCommand());
 		//ballDoorClose.whenReleased(new BallDoorRestCommand());
