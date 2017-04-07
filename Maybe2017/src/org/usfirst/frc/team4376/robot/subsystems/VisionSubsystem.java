@@ -50,52 +50,9 @@ public class VisionSubsystem extends Subsystem {
     }
 
   }
-  
-  public void checkForCameraUpdate(double rotationSpeed) {
-	    int frameNumber = getFrameNumber();
-	    if (frameNumber != lastFrameNumber) {
-//	      acquiredTarget = true;
-	      lastFrameNumber = frameNumber;
-	      xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
-	      onCameraUpdate();
-	      driveTowardsTarget(rotationSpeed);
-	    } else {
-	    	Robot.chassis.driveMe(0, -.15, 0);
-//	    	if (acquiredTarget){
-//	    		Robot.chassis.driveMe(0, -.15, 0);
-//	    	}
-//	    	else {
-//	    		Robot.chassis.driveMe(0, -.25, 0);
-//	    	}
-//	    	if(acquiredTarget()){
-//	            Robot.chassis.driveMe(0, -.15, 0);
-//	    	} else {
-//	            Robot.chassis.driveMe(0, -.10, 0);    		
-//	    	}
-
-	    }
-
-	  }
 
   public int getFrameNumber(){
 	  return SmartDashboard.getInt("frameNumber", lastFrameNumber);
-  }
-  
-  public void driveTowardsTarget(double rotationSpeed){
-	  for(int i = 0; i < 15; i++){
-		    if (onTarget()) {
-		      Robot.chassis.driveMe(0, -.15, 0);
-		    } else if (leftOfTarget()) {
-		      Robot.chassis.driveMe(0, -.15, rotationSpeed); // rotate
-//		      Robot.chassis.driveMe(.5, -.15, 0); //strafe
-//		      Robot.chassis.driveMe(.5, -.15, .5); //both WARNING REALLY CRAPPY
-		    } else {
-		      Robot.chassis.driveMe(0, -0.15, rotationSpeed * -1.0); //rotate
-//		      Robot.chassis.driveMe(-.5, -.15, 0); //strafe
-//		      Robot.chassis.driveMe(-.5, -.15, -.5); //both WARNING REALLY CRAPPY
-		    }
-		  }
-	  
   }
   
   public void driveTowardsTarget(){
