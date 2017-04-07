@@ -34,10 +34,10 @@ public class RightSideAutonVision extends Command {
   // Called repeatedly when this Command is scheduled to run
   protected void execute() {
 
-    if (timer.get() > 0 && timer.get() <= 1.0) {
+    if (timer.get() > 0 && timer.get() <= 1.25) {
       turnInPlaceComplete = false;
       Robot.chassis.driveAtAngle(0.0, -0.50);
-    } else if (timer.get() > 1.0 && timer.get() <= 5.5) {
+    } else if (timer.get() > 1.25 && timer.get() <= 5.5) {
 
       
       if (turnInPlaceComplete) {

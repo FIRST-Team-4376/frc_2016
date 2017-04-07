@@ -38,7 +38,7 @@ public class LeftSideAutonVision extends Command {
 		// Robot.chassis.driveForward();
 		// }
 
-		if (timer.get() > 0 && timer.get() <= 1.0) {
+		if (timer.get() > 0 && timer.get() <= 1.25) {
 			turnInPlaceComplete = false;
 //			if (Robot.gyro.getAngleZ() <= 2 && Robot.gyro.getAngleZ() >= -2) {
 //				Robot.chassis.driveMe(0, -.25, 0);
@@ -61,7 +61,7 @@ public class LeftSideAutonVision extends Command {
 //				Robot.chassis.driveMe(0, -.25, .25);
 //			}
 			Robot.chassis.driveAtAngle(0.0, -0.40);
-		} else if (timer.get() > 1.0 && timer.get() <= 5.5) {
+		} else if (timer.get() > 1.25 && timer.get() <= 5.5) {
 //			if (Robot.gyro.getAngleZ() < 59) {
 //				Robot.chassis.driveMe(0, 0, .20);
 //			} else if (Robot.gyro.getAngleZ() > 61) {
