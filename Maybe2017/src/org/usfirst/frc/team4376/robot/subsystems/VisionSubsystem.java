@@ -60,11 +60,11 @@ public class VisionSubsystem extends Subsystem {
 	    if (onTarget()) {
 	      Robot.chassis.driveMe(0, -.15, 0);
 	    } else if (leftOfTarget()) {
-	      Robot.chassis.driveMe(0, -.15, .5); // rotate
+	      Robot.chassis.driveMe(0, -.15, .3); // rotate
 //	      Robot.chassis.driveMe(.5, -.15, 0); //strafe
 //	      Robot.chassis.driveMe(.5, -.15, .5); //both WARNING REALLY CRAPPY
 	    } else {
-	      Robot.chassis.driveMe(0, -0.15, -.5); //rotate
+	      Robot.chassis.driveMe(0, -0.15, -.3); //rotate
 //	      Robot.chassis.driveMe(-.5, -.15, 0); //strafe
 //	      Robot.chassis.driveMe(-.5, -.15, -.5); //both WARNING REALLY CRAPPY
 	    }
