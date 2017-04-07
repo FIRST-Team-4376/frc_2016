@@ -22,6 +22,7 @@ import org.usfirst.frc.team4376.robot.commands.LeftSideAuton;
 import org.usfirst.frc.team4376.robot.commands.LeftSideAutonVision;
 import org.usfirst.frc.team4376.robot.commands.LineUpGearCommand;
 import org.usfirst.frc.team4376.robot.commands.RightSideAuton;
+import org.usfirst.frc.team4376.robot.commands.RightSideAutonVision;
 import org.usfirst.frc.team4376.robot.subsystems.ChassisSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4376.robot.subsystems.LiftSubsystem;
@@ -66,13 +67,15 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		System.out.println("INIT");
 		oi = new OI();
-		chooser.addDefault("left auton vision", new LeftSideAutonVision());
+		chooser.addDefault("Center starting spot WITH VISION", new CenterVisionAuton());
+//		chooser.addDefault("left auton vision", new LeftSideAutonVision());
 //		chooser.addDefault("Middle spot (straight ahead to gear)", new FirstAuton());
-		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
-		chooser.addObject("Left starting spot", new LeftSideAuton());
-		chooser.addObject("Right starting spot", new RightSideAuton());
-		chooser.addObject("Center starting spot WITH VISION", new CenterVisionAuton());
+//		chooser.addObject("Cross White Line", new CrossWhiteLineAuton());
+//		chooser.addObject("Left starting spot", new LeftSideAuton());
+//		chooser.addObject("Right starting spot", new RightSideAuton());
+		chooser.addObject("CENTER starting spot WITH VISION", new CenterVisionAuton());
 		chooser.addObject("LEFT starting spot WITH VISION", new LeftSideAutonVision());
+		chooser.addObject("RIGHT starting spot WITH VISION", new RightSideAutonVision());
 		
 		
 		// chooser.addObject("My Auto", new MyAutoCommand());
