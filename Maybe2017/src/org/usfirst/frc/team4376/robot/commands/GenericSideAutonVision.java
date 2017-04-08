@@ -8,14 +8,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RightSideAutonVision extends Command {
+public class GenericSideAutonVision extends Command {
 
   private Timer timer;
 
   public int iteration = 1;
   public boolean turnInPlaceComplete = false;
+  public double finalApproachAngle;
+  public double turnDirection;
+  public double approachAngleMarginOfError;
 
-  public RightSideAutonVision() {
+  public GenericSideAutonVision(double direction) {
+    turnDirection = direction;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.chassis);
@@ -23,6 +27,10 @@ public class RightSideAutonVision extends Command {
 
   // Called just before this Command runs the first time
   protected void initialize() {
+
+    finalApproachAngle = 60.0 * turnDirection;
+    approachAngleMarginOfError = 1.0;
+
     timer = new Timer();
 
     Robot.gyro.reset();
@@ -43,21 +51,40 @@ public class RightSideAutonVision extends Command {
       if (turnInPlaceComplete) {
         System.out.println("final thing");
 //        Robot.chassis.driveAtAngle(60.0, -0.25);
-        // Robot.vision.checkForCameraUpdate();
-        Robot.vision.checkForCameraUpdateStrafeAngle(-60.0);
+        Robot.vision.checkForCameraUpdate();
 
       } else {
-        Robot.chassis.driveAtAngle(-60.0, 0.0, .15);
-        if (Robot.gyro.getAngleZ() >= -61 && Robot.gyro.getAngleZ() <= -59){
+        Robot.chassis.driveAtAngle(finalApproachAngle, 0.0, .15);
+        if (Robot.gyro.getAngleZ() >= finalApproachAngle - approachAngleMarginOfError && 
+            Robot.gyro.getAngleZ() <= finalApproachAngle + approachAngleMarginOfError){
           turnInPlaceComplete = true;
         }
       }
     } else if (timer.get() > 5.5 && timer.get() <= 13.5) {
       //Robot.vision.checkForCameraUpdate(.15);
-    	Robot.vision.checkForCameraUpdateStrafeAngle(-60.0);
+      Robot.vision.checkForCameraUpdateStrafeAngle(finalApproachAngle);
     }
 
   }
+  // } else if (timer.get() >= 5.5 && timer.get() <= 7.5){
+  // for (int i=0; i<10; i++){
+  // Robot.chassis.driveMe(.2, 0, .25); //rotate clockwise
+  // }
+  // for (int i=0; i<10; i++){
+  // Robot.chassis.driveMe(.2, 0, -.25); //rotate counter-clockwise
+  // }
+  // }
+  //
+  // } else {
+  // double initialGyro = Robot.gyro.getAngle();
+  // while(Robot.gyro.getAngle() < initialGyro + 45){
+  // System.out.println("initialGyro " + initialGyro);
+  // System.out.println("gyro getAngle " + Robot.gyro.getAngle());
+  // Robot.chassis.driveMe(0, 0, 1.25); //rotate clockwise
+  // }
+  // }
+
+  // }
 
   // Make this return true when this Command no longer needs to run execute()
   protected boolean isFinished() {
