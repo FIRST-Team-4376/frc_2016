@@ -76,7 +76,7 @@ public class OI {
 		JoystickButton ballDoorClose = new JoystickButton(driveStick, 4);
 		
 		JoystickButton liftBot = new JoystickButton(driveStick, 7);
-		JoystickButton lowerBot = new JoystickButton(driveStick, 8);
+		//JoystickButton lowerBot = new JoystickButton(driveStick, 8);
 
 		JoystickButton pickUpBalls = new JoystickButton(driveStick, 11);
 		JoystickButton putDownBalls = new JoystickButton(driveStick, 12);
@@ -104,8 +104,8 @@ public class OI {
 		liftBot.whenPressed(new LiftBotCommand());
 		liftBot.whenReleased(new RestBotCommand());
 		
-		lowerBot.whenPressed(new LowerBotCommand());
-		lowerBot.whenReleased(new RestBotCommand());
+		//lowerBot.whenPressed(new LowerBotCommand());
+		//lowerBot.whenReleased(new RestBotCommand());
 		
 		putDownBalls.whenPressed(new PutDownBallsCommand());
 		putDownBalls.whenReleased(new StopBallsCommand());
