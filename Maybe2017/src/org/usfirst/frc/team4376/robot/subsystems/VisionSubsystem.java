@@ -37,7 +37,7 @@ public class VisionSubsystem extends Subsystem {
 	      //driveTowardsTarget();
 	      strafeTowardsTargetAtAngle(angle);
 	    } else {
-	    	Robot.chassis.driveMe(0, -.15, 0);
+        Robot.chassis.driveAtAngle(angle, -.15);
 //	    	if (acquiredTarget){
 //	    		Robot.chassis.driveMe(0, -.15, 0);
 //	    	}
@@ -133,7 +133,7 @@ public class VisionSubsystem extends Subsystem {
 	  double rotationSpeed = .05 + Math.abs(targetOffsetFromDesired());
 	  for(int i = 0; i < 15; i++){
 	    if (onTarget()) {
-	      Robot.chassis.driveAtAngle(0.0, -.15);
+	      Robot.chassis.driveAtAngle(angle, -.15);
 	    } else if (leftOfTarget()) {
 	      //Robot.chassis.driveMe(0, -.15, rotationSpeed); // rotate
 	      Robot.chassis.driveMe(rotationSpeed, -.15, 0); // strafe
