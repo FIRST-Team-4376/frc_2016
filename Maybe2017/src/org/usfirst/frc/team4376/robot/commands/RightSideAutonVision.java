@@ -43,12 +43,12 @@ public class RightSideAutonVision extends Command {
       if (turnInPlaceComplete) {
         System.out.println("final thing");
 //        Robot.chassis.driveAtAngle(60.0, -0.25);
-        // Robot.vision.checkForCameraUpdate();
-        Robot.vision.checkForCameraUpdateStrafeAngle(-60.0);
+         Robot.vision.checkForCameraUpdate();
+        //Robot.vision.checkForCameraUpdateStrafeAngle(-60.0);
 
       } else {
         Robot.chassis.driveAtAngle(-60.0, 0.0, .15);
-        if (Robot.gyro.getAngleZ() >= -61 && Robot.gyro.getAngleZ() <= -59){
+        if (Robot.gyro.getAngleZ() >= -59 && Robot.gyro.getAngleZ() <= -61){
           turnInPlaceComplete = true;
         }
       }
