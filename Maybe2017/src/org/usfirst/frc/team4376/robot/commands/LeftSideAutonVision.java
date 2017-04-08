@@ -74,7 +74,7 @@ public class LeftSideAutonVision extends Command {
 				System.out.println("final thing");
 //				Robot.chassis.driveAtAngle(60.0, -0.25);
 				// Robot.vision.checkForCameraUpdate();
-				checkForCameraUpdateStrafeAngle(60.0);
+				Robot.vision.checkForCameraUpdateStrafeAngle(60.0);
 
 			} else {
 				Robot.chassis.driveAtAngle(60.0, 0.0, .15);
@@ -84,7 +84,7 @@ public class LeftSideAutonVision extends Command {
 			}
 		} else if (timer.get() > 5.5 && timer.get() <= 13.5) {
 			// Robot.vision.checkForCameraUpdate();
-			checkForCameraUpdateStrafeAngle(60.0);
+			Robot.vision.checkForCameraUpdateStrafeAngle(60.0);
 		}
 
 		// else if (timer.get() > 7.5 && timer.get() <= 12.0) {
