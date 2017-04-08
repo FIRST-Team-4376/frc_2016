@@ -16,15 +16,45 @@ public class VisionSubsystem extends Subsystem {
   // here. Call these from Commands.
   public int screenWidth = 320;
   public int centerOfScreen = screenWidth / 2;
-  public int desiredAlignmentX = centerOfScreen - 32;
+  public int desiredAlignmentX = centerOfScreen - 12;
   public int xPosOfTarget = -1;
   private int lastFrameNumber = -1;
+  public int marginOfError = 20;
   private boolean acquiredTarget = false;
 
   public VisionSubsystem() {
 
   }
 
+  
+  public void checkForCameraUpdateStrafeAngle(double angle) {
+	    int frameNumber = getFrameNumber();
+	    if (frameNumber != lastFrameNumber) {
+//	      acquiredTarget = true;
+	      lastFrameNumber = frameNumber;
+	      xPosOfTarget = SmartDashboard.getInt("overallCenterX", desiredAlignmentX);
+	      onCameraUpdate();
+	      //driveTowardsTarget();
+	      strafeTowardsTargetAtAngle(angle);
+	    } else {
+	    	Robot.chassis.driveMe(0, -.15, 0);
+//	    	if (acquiredTarget){
+//	    		Robot.chassis.driveMe(0, -.15, 0);
+//	    	}
+//	    	else {
+//	    		Robot.chassis.driveMe(0, -.25, 0);
+//	    	}
+//	    	if(acquiredTarget()){
+//	            Robot.chassis.driveMe(0, -.15, 0);
+//	    	} else {
+//	            Robot.chassis.driveMe(0, -.10, 0);    		
+//	    	}
+
+	    }
+
+	  }
+	  
+  
   public void checkForCameraUpdate() {
     int frameNumber = getFrameNumber();
     if (frameNumber != lastFrameNumber) {
@@ -97,17 +127,40 @@ public class VisionSubsystem extends Subsystem {
 		  }
 	  
   }
+
+  
+  public void strafeTowardsTargetAtAngle(double angle){
+	  double rotationSpeed = .05 + Math.abs(targetOffsetFromDesired());
+	  for(int i = 0; i < 15; i++){
+	    if (onTarget()) {
+	      Robot.chassis.driveAtAngle(0.0, -.15);
+	    } else if (leftOfTarget()) {
+	      //Robot.chassis.driveMe(0, -.15, rotationSpeed); // rotate
+	      Robot.chassis.driveMe(rotationSpeed, -.15, 0); // strafe
+//	      Robot.chassis.driveMe(.5, -.15, 0); //strafe
+//	      Robot.chassis.driveMe(.5, -.15, .5); //both WARNING REALLY CRAPPY
+	    } else {
+	      //Robot.chassis.driveMe(0, -0.15, rotationSpeed * -1.0); //rotate
+	      Robot.chassis.driveMe(rotationSpeed * -1.0, -0.15, 0); //strafe
+//	      Robot.chassis.driveMe(-.5, -.15, 0); //strafe
+//	      Robot.chassis.driveMe(-.5, -.15, -.5); //both WARNING REALLY CRAPPY
+	    }
+	  }
+  }
   
   public void driveTowardsTarget(){
+	  double rotationSpeed = .05 + Math.abs(targetOffsetFromDesired());
 	  for(int i = 0; i < 15; i++){
 	    if (onTarget()) {
 	      Robot.chassis.driveMe(0, -.15, 0);
 	    } else if (leftOfTarget()) {
-	      Robot.chassis.driveMe(0, -.15, .3); // rotate
+	      //Robot.chassis.driveMe(0, -.15, rotationSpeed); // rotate
+	      Robot.chassis.driveMe(rotationSpeed, -.15, 0); // strafe
 //	      Robot.chassis.driveMe(.5, -.15, 0); //strafe
 //	      Robot.chassis.driveMe(.5, -.15, .5); //both WARNING REALLY CRAPPY
 	    } else {
-	      Robot.chassis.driveMe(0, -0.15, -.3); //rotate
+	      //Robot.chassis.driveMe(0, -0.15, rotationSpeed * -1.0); //rotate
+	      Robot.chassis.driveMe(rotationSpeed * -1.0, -0.15, 0); //strafe
 //	      Robot.chassis.driveMe(-.5, -.15, 0); //strafe
 //	      Robot.chassis.driveMe(-.5, -.15, -.5); //both WARNING REALLY CRAPPY
 	    }
@@ -133,11 +186,11 @@ public class VisionSubsystem extends Subsystem {
   }
 
   public boolean onTarget() {
-    return (Math.abs(targetOffsetFromDesired()) <= 10);
+    return (Math.abs(targetOffsetFromDesired()) <= marginOfError);
   }
 
   public boolean leftOfTarget() {
-    return targetOffsetFromDesired() > 10;
+    return targetOffsetFromDesired() > marginOfError;
   }
 
   public void stopLineUpGear() {

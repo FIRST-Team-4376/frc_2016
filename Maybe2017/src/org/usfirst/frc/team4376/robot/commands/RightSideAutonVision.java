@@ -47,12 +47,13 @@ public class RightSideAutonVision extends Command {
 
       } else {
         Robot.chassis.driveAtAngle(-60.0, 0.0, .15);
-        if (Robot.gyro.getAngleZ() >= -58 && Robot.gyro.getAngleZ() <= -62){
+        if (Robot.gyro.getAngleZ() >= -59 && Robot.gyro.getAngleZ() <= -61){
           turnInPlaceComplete = true;
         }
       }
     } else if (timer.get() > 5.5 && timer.get() <= 13.5) {
-      Robot.vision.checkForCameraUpdate();
+      //Robot.vision.checkForCameraUpdate(.15);
+    	Robot.vision.checkForCameraUpdateStrafeAngle(-60.0);
     }
 
   }
