@@ -60,7 +60,7 @@ public class LeftSideAutonVision extends Command {
 //			} else if (Robot.gyro.getAngleZ() < -62) {
 //				Robot.chassis.driveMe(0, -.25, .25);
 //			}
-			Robot.chassis.driveAtAngle(0.0, -0.40);
+			Robot.chassis.driveAtAngle(0.0, -0.45);
 		} else if (timer.get() > 1.25 && timer.get() <= 5.5) {
 //			if (Robot.gyro.getAngleZ() < 59) {
 //				Robot.chassis.driveMe(0, 0, .20);

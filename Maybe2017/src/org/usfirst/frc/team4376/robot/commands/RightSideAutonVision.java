@@ -36,7 +36,7 @@ public class RightSideAutonVision extends Command {
 
     if (timer.get() > 0 && timer.get() <= 1.25) {
       turnInPlaceComplete = false;
-      Robot.chassis.driveAtAngle(0.0, -0.40);
+      Robot.chassis.driveAtAngle(0.0, -0.45);
     } else if (timer.get() > 1.25 && timer.get() <= 5.5) {
 
       

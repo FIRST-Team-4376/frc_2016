@@ -130,7 +130,7 @@ public class VisionSubsystem extends Subsystem {
 
   
   public void strafeTowardsTargetAtAngle(double angle){
-	  double rotationSpeed = .05 + Math.abs(targetOffsetFromDesired());
+	  double rotationSpeed = .05 + Math.abs(targetOffsetFromDesired() / 50.0);
 	  for(int i = 0; i < 15; i++){
 	    if (onTarget()) {
 	      Robot.chassis.driveAtAngle(angle, -.15);
