@@ -32,8 +32,15 @@ public class CenterVisionAuton extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (timer.get() > 0 && timer.get() < 13.0){
-    		Robot.vision.checkForCameraUpdate(.5);
+    	
+    	if (timer.get() > 0.0 && timer.get() < 0.8){
+    		Robot.chassis.driveMe(0.0, -0.50, 0.0);
+    	}
+    	else if (timer.get() > 0.8 && timer.get() < 1.55){
+    		Robot.chassis.driveMe(0.0, 0.0, -.50);
+    	}
+    	else if (timer.get() > 1.55 && timer.get() < 8.0){
+    		Robot.vision.checkForCameraUpdate(.50);
 //			if (Robot.vision.acquiredTarget()){ //doesnt work
 //				Robot.vision.checkForCameraUpdate();
 //			} else {

@@ -48,7 +48,7 @@ public class RightSideAutonVision extends Command {
 
       } else {
         Robot.chassis.driveAtAngle(-60.0, 0.0, .15);
-        if (Robot.gyro.getAngleZ() >= -59 && Robot.gyro.getAngleZ() <= -61){
+        if (Robot.gyro.getAngleZ() <= -59 && Robot.gyro.getAngleZ() >= -61){
           turnInPlaceComplete = true;
         }
       }
