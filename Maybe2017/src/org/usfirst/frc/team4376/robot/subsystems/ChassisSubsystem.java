@@ -33,10 +33,13 @@ public class ChassisSubsystem extends Subsystem {
 		//RobotDrive.setInvertedMotor(kFrontRight);
 		
 		//public void setLeftRightMotorOutputs(double stick. * -1, double stick.getX());
+	  	Robot.gyro.calibrate();
+	  	Robot.gyro.reset();
 
 	}
 	
-	public void driveMe(){		
+	public void driveMe(){	
+		System.out.println("GRYO Z: " + Robot.gyro.getAngleZ());	
 		chassis.mecanumDrive_Cartesian(stick.getX() * .5, stick.getY() * .5, stick.getZ() * .5, 0);
 		
 	}
